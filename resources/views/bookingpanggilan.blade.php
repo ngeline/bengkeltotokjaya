@@ -13,7 +13,7 @@
                             </h1>
                         </div>
                         <div class="card-body px-lg-5 py-lg-5">
-                            <form method="POST" action="{{ url('/booking') }}/{{ auth()->user()->id }}"
+                            <form method="POST" action="{{ url('/bookingpanggilan') }}/{{ auth()->user()->id }}"
                                 id="contactform">
                                 {{ csrf_field() }}
                                 <div class="form-group">
