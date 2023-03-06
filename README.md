@@ -22,12 +22,13 @@
 
 - email: admin@gmail.com
 - password: 123123123
-<hr>
+<hr><hr>
 - email: owner@gmail.com
 - password: 123123123
-- <hr>
+<hr><hr>
 - email: pengguna@gmail.com
 - password: 123123123
+<hr>
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
