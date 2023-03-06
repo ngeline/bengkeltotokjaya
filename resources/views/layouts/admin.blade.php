@@ -229,7 +229,7 @@
                                 href="{{ route('bookingdata') }}" aria-expanded="false"><i
                                     class="mdi mdi-car-connected"></i><span class="hide-menu">Booking Service</span></a></li>
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
-                                href="{{ route('bookingpanggilan') }}" aria-expanded="false"><i
+                                href="{{ route('bookingpanggilanadmin') }}" aria-expanded="false"><i
                                     class="mdi mdi-voice"></i><span class="hide-menu">Booking Panggilan</span></a></li>
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
                                 href="{{ route('admin.laporantransaksi') }}" aria-expanded="false"><i

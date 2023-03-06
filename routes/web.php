@@ -198,7 +198,7 @@ Route::group(['middleware' => ['web', 'auth','cekrole']], function(){      // we
         Route::post('addSparepart', [App\Http\Controllers\Admin\InvoiceController::class, 'render'])->name('addscari');
         
 
-        Route::get('bookingpanggilan', [App\Http\Controllers\Admin\BookingPanggilanController::class, 'index'])->name('bookingpanggilan');
+        Route::get('bookingpanggilanadmin', [App\Http\Controllers\Admin\BookingPanggilanController::class, 'index'])->name('bookingpanggilanadmin');
 
         // gratiservice
 //         });
