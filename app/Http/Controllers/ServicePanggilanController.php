@@ -21,7 +21,7 @@ class ServicePanggilanController extends Controller
 
     public function index()
     {
-        return view('booking', [
+        return view('bookingpanggilan', [
             'categories' => Category::all()
         ]);
     }

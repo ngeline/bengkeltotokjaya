@@ -246,6 +246,8 @@ Route::group(['middleware' => ['web', 'auth','cekrole']], function(){      // we
         Route::post('/profile',  [App\Http\Controllers\ProfileController::class, 'update']);
         Route::get('/booking',  [App\Http\Controllers\ServiceController::class, 'index']);
         Route::post('/booking/{id}',  [App\Http\Controllers\ServiceController::class, 'save']);
+        Route::get('/bookingpanggilan',  [App\Http\Controllers\ServicePanggilanController::class, 'index']);
+        Route::post('/bookingpanggilan/{id}',  [App\Http\Controllers\ServicePanggilanController::class, 'save']);
         Route::post('/historyEdit/{id}',  [App\Http\Controllers\HistoryController::class, 'update']);
         Route::get('/history', [App\Http\Controllers\HistoryController::class, 'index'])->name('history');
         Route::get('history/{id}', [App\Http\Controllers\HistoryController::class, 'detail']);
