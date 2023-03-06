@@ -1,7 +1,6 @@
 @extends('layouts.admin')
 
 @section('content')
-
 <div class="page-wrapper">
     <!-- ============================================================== -->
     <!-- Bread crumb and right sidebar toggle -->
@@ -12,10 +11,10 @@
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb mb-0 d-flex align-items-center">
                       <li class="breadcrumb-item"><a href="index.html" class="link"><i class="mdi mdi-home-outline fs-4"></i></a></li>
-                      <li class="breadcrumb-item active" aria-current="page">Montir</li>
+                      <li class="breadcrumb-item active" aria-current="page">Chat</li>
                     </ol>
                   </nav>
-                <h1 class="mb-0 fw-bold">Montir</h1> 
+                <h1 class="mb-0 fw-bold">Chat</h1> 
             </div>
             
         </div>
@@ -37,14 +36,15 @@
                             <div class="tab-content rounded-bottom">
                                 <div class="tab-pane p-3 active preview" role="tabpanel" id="preview-416">
                                     <button class="btn btn-primary btn-l mb-4" type="button" data-toggle="modal" data-target="#CreateArticleModal">
-                                        Tambah Pengguna
+                                        Buat Chat
                                     </button>
                                     <table id="tabel-data" class="table table-striped table-hover yajra-datatable">
                                         <thead>
                                             <tr class="text-center">
                                                 <th scope="col">No</th>
                                                 <th scope="col">Nama</th>
-                                                <th scope="col">Status</th>
+                                                <th scope="col">Waktu</th>
+                                                <th scope="col">Pesan</th>
                                                 <th scope="col">Aksi</th>
                                             </tr>
                                         </thead>
@@ -58,13 +58,14 @@
         </div>
     </div>
 </div>
+
 <!-- Create Article Modal -->
 <div class="modal" id="CreateArticleModal">
     <div class="modal-dialog">
         <div class="modal-content">
             <!-- Modal Header -->
             <div class="modal-header">
-                <h4 class="modal-title">Tambah Montir</h4>
+                <h4 class="modal-title">Buat Chat</h4>
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
             <!-- Modal body -->
@@ -75,7 +76,7 @@
                     </button>
                 </div>
                 <div class="alert alert-success alert-dismissible fade show" role="alert" style="display: none;">
-                    <strong>Success!</strong>Montir berhasil ditambahkan.
+                    <strong>Success!</strong>Chat berhasil ditambahkan.
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -84,18 +85,22 @@
                     <label for="title">Nama:</label>
                     <input type="text" class="form-control" name="name" id="name">
                 </div>
-                <!-- <div class="form-group">
-                    <label for="status">Status:</label>
-                    <input class="form-control" name="status" id="status">
-                </div> -->
                 <div class="form-group">
-                    <label for="Status">Status:</label>
-                    <select type="text" class="form-control" name="status" id="status" >
-                        <option value="' . $data->status . '"></option>
-                        <option value="Aktif">Aktif</option>
-                        <option value="Non-Aktif">Non-Aktif</option>
-                    </select>
+                    <label for="title">Pesan:</label>
+                    <input type="text" class="form-control" name="pesan" id="pesan">
                 </div>
+                <!-- <div class="form-group">
+                    <label for="title">No Hp:</label>
+                    <input type="text" class="form-control" name="phoneNumber" id="phoneNumber">
+                </div>
+                <div class="form-group">
+                    <label for="title">Email:</label>
+                    <input type="text" class="form-control" name="email" id="email">
+                </div>
+                <div class="form-group">
+                    <label for="title">Password:</label>
+                    <input type="password" class="form-control" name="password" id="password">
+                </div> -->
             </div>
             <!-- Modal footer -->
             <div class="modal-footer">
@@ -112,7 +117,7 @@
         <div class="modal-content">
             <!-- Modal Header -->
             <div class="modal-header">
-                <h4 class="modal-title">Ubah Montir</h4>
+                <h4 class="modal-title">Ubah Chat</h4>
                 <button type="button" class="close modelClose" data-dismiss="modal">&times;</button>
             </div>
             <!-- Modal body -->
@@ -123,19 +128,18 @@
                     </button>
                 </div>
                 <div class="alert alert-success alert-dismissible fade show" role="alert" style="display: none;">
-                    <strong>Success!</strong>Berhasil Mengubah Montir.
+                    <strong>Success!</strong>Berhasil Mengubah Pesan.
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div id="EditArticleModalBody">
-                    
                 </div>
             </div>
             <!-- Modal footer -->
             <div class="modal-footer">
                 <button type="button" class="btn btn-success" id="SubmitEditArticleForm">Ubah</button>
-                <button type="button" class="btn btn-danger modelClose" data-dismiss="modal">Batal</button>
+                <button type="button" class="btn btn-danger modelClose" data-dismiss="modal">Kembali</button>
             </div>
         </div>
     </div>
@@ -147,12 +151,12 @@
         <div class="modal-content">
             <!-- Modal Header -->
             <div class="modal-header"> 
-                <h4 class="modal-title">Hapus Pengguna</h4>
+                <h4 class="modal-title">Hapus Chat</h4>
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
             <!-- Modal body -->
             <div class="modal-body">
-                <h4>Apakah Anda yakin ingin menghapus pengguna ini?</h4>
+                <h4>Apakah Anda yakin ingin menghapus chat ini?</h4>
             </div>
             <!-- Modal footer -->
             <div class="modal-footer">
@@ -173,41 +177,46 @@
 
 
 <script type="text/javascript">
-    $(function() {
-
-        var table = $('.yajra-datatable').DataTable({
-            responsive: true,
-            processing: true,
-            serverSide: true,
-            autoWidth: false,
-            pageLength: 5,
-            ajax: "{{ route('montir.index') }}",
-            columns: [{
-                    data: 'DT_RowIndex',
-                    name: 'DT_RowIndex',
-                    sClass:'text-center'
-                },
-                {
-                    data: 'name',
-                    name: 'name',
-                    sClass:'text-center'
-                },
-                {
-                    data: 'status',
-                    name: 'status',
-                    sClass:'text-center'
-                },
-                {
-                    data: 'action',
-                    name: 'action',
-                    orderable: true,
-                    searchable: true,
-                    sClass:'text-center'
-                },
-            ]
-        });
-        // Create article Ajax request.
-        $('#SubmitCreateArticleForm').click(function(e) {
+  $(function () {
+    
+    var table = $('.yajra-datatable').DataTable({
+        responsive: true,
+        processing: true,
+        serverSide: true,
+        autoWidth: false,
+        pageLength: 5,
+        ajax: "{{ route('chat.index') }}",
+        columns: [{
+                data: 'DT_RowIndex', 
+                name: 'DT_RowIndex',
+                sClass:'text-center'
+            },
+            {
+                data: 'name', 
+                name: 'name',
+                sClass:'text-center'
+            },
+            {
+                data: 'waktu', 
+                name: 'waktu',
+                sClass:'text-center'
+            },
+            {
+                data: 'pesan', 
+                name: 'pesan',
+                sClass:'text-center'
+            },
+            {
+                data: 'action', 
+                name: 'action', 
+                orderable: true, 
+                searchable: true,
+                sClass:'text-center'
+            },
+        ]
+    });
+    // Create article Ajax request.
+    $('#SubmitCreateArticleForm').click(function(e) {
             e.preventDefault();
             $.ajaxSetup({
                 headers: {
@@ -215,11 +224,15 @@
                 }
             });
             $.ajax({
-                url: "{{ route('montir.store') }}",
+                url: "{{ route('chat.store') }}",
                 method: 'POST',
                 data: {
                     name: $('#name').val(),
-                    status: $('#status').val(),
+                    alamat: $('#address').val(),
+                    no_hp: $('#phoneNumber').val(),
+                    email: $('#email').val(),
+                    role_id: $('#role_id').val(),
+                    password: $('#password').val(),
                 },
                 success: function(result) {
                     if (result.errors) {
@@ -232,33 +245,37 @@
                         $('.alert-danger').hide();
                         $('.alert-success').show();
                         $('.yajra-datatable').DataTable().ajax.reload();
-                        setInterval(function() {
+                        setInterval(function() { 
                             $('.alert-success').hide();
                             $('#CreateArticleModal').modal('hide');
                         }, 100);
-
+                        
                         $('#CreateArticleModal').modal().hide(); // modal togel diganti iki
                         $("body").removeClass("modal-open"); //ditambah
                         $(".modal-backdrop").remove(); // ditambah
                         $('#name').val('')
-                        $('#status').val('')
+                        $('#address').val('')
+                        $('#phoneNumber').val('')
+                        $('#email').val('')
+                        $('#password').val('')
                     }
                 }
             });
         });
 
+
         // Get single article in EditModel
-        $('.modelClose').on('click', function(){
+        $('.modelClose').on('click', function() {
             $('#EditArticleModal').hide();
         });
         var id;
         $('body').on('click', '#getEditArticleData', function(e) {
             // e.preventDefault();
-            $('.alert-danger').html('');
+            $('.alert-danger').html();
             $('.alert-danger').hide();
             id = $(this).data('id');
             $.ajax({
-                url: "montir/"+id+"/edit",
+                url: "chat/"+id+"/edit",
                 method: 'GET',
                 // data: {
                 //     id: id,
@@ -280,11 +297,14 @@
                 }
             });
             $.ajax({
-                url: "montir/"+id,
+                url: "chat/"+id,
                 method: 'PUT',
                 data: {
                     name: $('#editTitle').val(),
-                    status: $('#editDescription').val(),
+                    alamat: $('#editAddress').val(),
+                    no_hp: $('#editNumberPhone').val(),
+                    email: $('#editEmail').val(),
+                    role_id: $('#editRole').val(),
                 },
                 success: function(result) {
                     if(result.errors) {
@@ -296,18 +316,22 @@
                     } else {
                         $('.alert-danger').hide();
                         $('.alert-success').show();
-                        $('.yajra-datatable').DataTable().ajax.reload();
                         $('.alert-success').hide();
-                        $('#EditArticleModal').hide();
+                        // $('#EditArticleModal').modal('toggle'); // iki dihapus ae
+                        $('#EditArticleModal').modal().hide(); // modal togel diganti iki
+                        $("body").removeClass("modal-open"); //ditambah
+                        $(".modal-backdrop").remove(); // ditambah
+                        $('.yajra-datatable').DataTable().ajax.reload();
                         setInterval(function(){ 
+                            
                         }, 100);
                     }
                 }
             });
         });
 
-      // Delete article Ajax request.
-      var deleteID;
+     // Delete article Ajax request.
+     var deleteID;
         $('body').on('click', '#getDeleteId', function(){
             deleteID = $(this).data('id');
         })
@@ -320,7 +344,7 @@
                 }
             });
             $.ajax({
-                url: "index_get_montir/"+id,
+                url: "chat/"+id,
                 method: 'DELETE',
                 success: function(result) {
                         $('.yajra-datatable').DataTable().ajax.reload();
@@ -330,7 +354,8 @@
                 }
             });
         });
-
-    });
+    
+  });
 </script>
 @endsection
+

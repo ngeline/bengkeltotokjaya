@@ -23,7 +23,7 @@ class CustomerController extends Controller
                 ->addIndexColumn()
                 ->addColumn('action', function($data){
                     return '
-                    <button type="button" class="btn btn-success btn-sm" id="getEditArticleData" data-id="'.$data->id.'"  data-toggle="modal" data-target="#EditArticleModal" id="getEditArticleData" >Ubah</button>
+                    <button type="button" class="btn btn-warning btn-sm" id="getEditArticleData" data-id="'.$data->id.'"  data-toggle="modal" data-target="#EditArticleModal" id="getEditArticleData" >Ubah</button>
                     <button type="button" data-id="'.$data->id.'" data-toggle="modal" data-target="#DeleteArticleModal" class="btn btn-danger btn-sm" id="getDeleteId">Hapus</button>';
                 })
                 ->rawColumns(['action'])

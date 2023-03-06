@@ -12,17 +12,12 @@
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb mb-0 d-flex align-items-center">
                       <li class="breadcrumb-item"><a href="index.html" class="link"><i class="mdi mdi-home-outline fs-4"></i></a></li>
-                      <li class="breadcrumb-item active" aria-current="page">Basic Table</li>
+                      <li class="breadcrumb-item active" aria-current="page">Tipe Service</li>
                     </ol>
                   </nav>
-                <h1 class="mb-0 fw-bold">Basic Table</h1> 
+                <h1 class="mb-0 fw-bold">Tipe Service</h1> 
             </div>
-            <div class="col-6">
-                <div class="text-end upgrade-btn">
-                    <a href="https://www.wrappixel.com/templates/flexy-bootstrap-admin-template/" class="btn btn-primary text-white"
-                        target="_blank">Upgrade to Pro</a>
-                </div>
-            </div>
+            
         </div>
     </div>
     <!-- ============================================================== -->
@@ -177,7 +172,7 @@
             serverSide: true,
             autoWidth: false,
             pageLength: 5,
-            ajax: "{{ route('index_get_typeService.index') }}",
+            ajax: "{{ route('typeService.index') }}",
             columns: [{
                     data: 'DT_RowIndex',
                     name: 'DT_RowIndex',
@@ -211,7 +206,7 @@
                 }
             });
             $.ajax({
-                url: "{{ route('index_get_typeService.store') }}",
+                url: "{{ route('typeService.store') }}",
                 method: 'POST',
                 data: {
                     name: $('#name').val(),
@@ -254,7 +249,7 @@
             $('.alert-danger').hide();
             id = $(this).data('id');
             $.ajax({
-                url: "index_get_typeService/"+id+"/edit",
+                url: "typeService/"+id+"/edit",
                 method: 'GET',
                 // data: {
                 //     id: id,
@@ -276,7 +271,7 @@
                 }
             });
             $.ajax({
-                url: "index_get_typeService/"+id,
+                url: "typeService/"+id,
                 method: 'PUT',
                 data: {
                     name: $('#editTitle').val(),
@@ -316,7 +311,7 @@
                 }
             });
             $.ajax({
-                url: "index_get_typeService/"+id,
+                url: "typeService/"+id,
                 method: 'DELETE',
                 success: function(result) {
                         $('.yajra-datatable').DataTable().ajax.reload();

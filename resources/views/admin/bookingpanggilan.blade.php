@@ -12,10 +12,10 @@
                     <ol class="breadcrumb mb-0 d-flex align-items-center">
                         <li class="breadcrumb-item"><a href="index.html" class="link"><i
                                     class="mdi mdi-home-outline fs-4"></i></a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Booking Service</li>
+                        <li class="breadcrumb-item active" aria-current="page">Booking Panggilan</li>
                     </ol>
                 </nav>
-                <h1 class="mb-0 fw-bold">Booking Service</h1>
+                <h1 class="mb-0 fw-bold">Booking Panggilan</h1>
             </div>
             
         </div>
@@ -34,7 +34,7 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="card-body">
-                            <form action="{{ route('abcari') }}" method="GET">
+                            <form action="{{ route('abpcari') }}" method="GET">
                                 <div class="row mb-3">
                                     <div class="col-md-2">
                                         <input type="date" class="form-control" id="tgl_awal" name="start_date"
@@ -49,10 +49,8 @@
                                     <div class="col-md-6">
                                         <button id="filtercari" class="btn btn-primary"><i class="fa fa-filter"></i>
                                             Filter </button>
-                                        <a href="/bookingdata" class="btn btn-primary"><i class="fa fa-refresh"></i>
+                                        <a href="/bookingpanggilan" class="btn btn-primary"><i class="fa fa-refresh"></i>
                                             Refresh </a>
-                                        <a href="tambahbookingservice" class="btn btn-primary"><i class="fa fa-plus"
-                                                type="button"></i> Tambah Servis</a>
                                     </div>
                                 </div>
                             </form>
@@ -66,6 +64,8 @@
                                             <th>Nama Montir</th>
                                             <th>Tanggal</th>
                                             <th>Status Pemesanan</th>
+                                            <th>Foto</th>
+                                            <th>Maps</th>
                                             <th>Aksi</th>
                                         </tr>
                                     </thead>
@@ -84,6 +84,11 @@
                                                 @if($service->queue != null)
                                             </td>
                                             @endif
+                                            <td>{{ $service->photo }}</td>
+                                            <td>
+                                            <a href="{{ $service->maps }}" target="_blank" class="btn" style="background: #4D73DD; color: white;"><i
+                                                        class="fa fa-map"></i> Maps</a>
+                                            </td>
                                             <td>
                                                 @if($service->status == 'Menunggu diproses' || $service->status ==
                                                 'Servis diproses' || $service->status == 'Queue available')
@@ -136,6 +141,7 @@
             </div>
         </div>
 
+
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.js"></script>
         <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
@@ -150,3 +156,6 @@
                 var table = $('.yajra-datatable').DataTable({});
             });
             @endsection
+        </script>
+    </div>
+</div>

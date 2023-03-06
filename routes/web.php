@@ -21,6 +21,8 @@ use App\Http\Controllers\Admin\CustomerController;
 use App\Http\Controllers\Admin\InvoiceController;
 use App\Http\Controllers\Admin\TypeServiceController;
 use App\Http\Controllers\Admin\CustomerServiceController;
+use App\Http\Controllers\Admin\BookingPanggilanController;
+
 // Pemilik
 use App\Http\Controllers\Pemilik\PerkembanganController;
 use App\Http\Controllers\Pemilik\InvoiceServiceController;
@@ -89,6 +91,16 @@ Route::get('/rejectrole', [LoginController::class, 'rejectrole'])->name('rejectr
 Route::auth();
 
 
+// Route::group(['middleware' => ['web', 'auth','cekrole']], function(){      // web untuk koneksi ke web, auth untuk authentication check, cekrole untuk cek level user
+//     Route::group(['cekrole' => 'admin'], function(){   // jika rolenya superadmin
+//         // Route::prefix('admin')->group(function(){
+//         Route::prefix('admin')->name('admin.')->group(function(){ //
+//             Route::get('home', [App\Http\Controllers\HomeController::class, 'adminHome'])->name('home');
+//             Route::resource('user', 'App\Http\Controllers\Admin\CustomerController');
+//             Route::resource('montir', 'App\Http\Controllers\Admin\MontirController');
+//             Route::resource('typeService', 'App\Http\Controllers\Admin\TypeServiceController');
+//             Route::resource('category', 'App\Http\Controllers\Admin\CategoryController');
+//             Route::resource('sparepart', 'App\Http\Controllers\Admin\SparepartController');
 
 
 Route::group(['middleware' => ['web', 'auth','cekrole']], function(){      // web untuk koneksi ke web, auth untuk authentication check, cekrole untuk cek level user
@@ -97,15 +109,16 @@ Route::group(['middleware' => ['web', 'auth','cekrole']], function(){      // we
     Route::group(['cekrole' => 'admin'], function(){   // jika rolenya superadmin
 
         Route::get('/admin/home', [App\Http\Controllers\HomeController::class, 'adminHome'])->name('admin.home');
-        Route::resource('index_get_user', 'App\Http\Controllers\Admin\CustomerController');
-        Route::resource('index_get_montir', 'App\Http\Controllers\Admin\MontirController');
-        Route::resource('index_get_typeService', 'App\Http\Controllers\Admin\TypeServiceController');
-        Route::resource('index_get_category', 'App\Http\Controllers\Admin\CategoryController');
-        Route::resource('index_get_sparepart', 'App\Http\Controllers\Admin\SparepartController');
+        Route::resource('user', 'App\Http\Controllers\Admin\CustomerController');
+        Route::resource('montir', 'App\Http\Controllers\Admin\MontirController');
+        Route::resource('typeService', 'App\Http\Controllers\Admin\TypeServiceController');
+        Route::resource('category', 'App\Http\Controllers\Admin\CategoryController');
+        Route::resource('spareparts', 'App\Http\Controllers\Admin\SparepartController');
+        Route::resource('chat', 'App\Http\Controllers\Admin\ChatController');
 
-        // Sifat Surat
-        Route::resource('/index_get_user', CustomerController::class)->except(['destroy']);
-        Route::get('/index_get_user/{customers}/delete', [CustomerController::class, 'destroy'])->name('customers.destroy');
+        // Sif
+        Route::resource('/user', CustomerController::class)->except(['destroy']);
+        Route::get('/user/{customers}/delete', [CustomerController::class, 'destroy'])->name('customers.destroy');
 
         // Booking Data
         Route::get('bookingdata', [App\Http\Controllers\Admin\BookingDataController::class, 'index'])->name('bookingdata');
@@ -117,19 +130,23 @@ Route::group(['middleware' => ['web', 'auth','cekrole']], function(){      // we
         Route::get('bookingdata/invoice/{id}', [App\Http\Controllers\Admin\InvoiceController::class, 'detail']);
         Route::get('bookingdata/invoiceDone/{id}', [App\Http\Controllers\Admin\InvoiceController::class, 'invoice']);
         
-        // Laporan Transaksi Admin
-        Route::get('laporantransaksiadmin', [App\Http\Controllers\Admin\LaporanTransaksiController::class, 'index'])->name('admin.laporantransaksi');
-
         // Cari Booking Data Admin
         Route::get('seePaymentTransaksi/{id}', [App\Http\Controllers\Admin\LaporanTransaksiController::class, 'seePaymentTransaksi']);
         Route::get('/caribookingdataadmin', [App\Http\Controllers\Admin\BookingDataController::class, 'bookingcari'])->name('abcari');
 
+
+        // Cari service panggilan
+        Route::get('/caribookingpanggilanadmin', [App\Http\Controllers\Admin\BookingPanggilanController::class, 'bookingpanggilancari'])->name('abpcari');
+        
         // Tambah Data Service 
         Route::get('/tambahbookingservice',  [App\Http\Controllers\Admin\BookingDataController::class, 'tambahdatabooking']);
         Route::post('/tambahbookingservice/{id}',  [App\Http\Controllers\Admin\BookingDataController::class, 'tambahservice']);
         
         // Cari Laporan Transaksi admin
         Route::get('/carilaporantransaksiadmin', [App\Http\Controllers\Admin\LaporanTransaksiController::class, 'transaksi'])->name('acari');
+        
+        // Laporan Transaksi Admin
+        Route::get('laporantransaksiadmin', [App\Http\Controllers\Admin\LaporanTransaksiController::class, 'index'])->name('admin.laporantransaksi');
         
         // Route::post('seePayment/{id}',[App\Http\Controllers\Admin\BookingDataController::class, 'savePayment']);
         Route::get('seePayment/{id}', [App\Http\Controllers\Admin\BookingDataController::class, 'seePayment']);
@@ -150,8 +167,8 @@ Route::group(['middleware' => ['web', 'auth','cekrole']], function(){      // we
         Route::delete('/message/delete/{id}',  [App\Http\Controllers\Admin\ContactController::class, 'delete']);
 
         //  Profil Admin
-        Route::get('/profileAdmin', [App\Http\Controllers\ProfileController::class, 'indexAdmin'])->name('profileAdmin');
-        Route::post('/profileAdmin',  [App\Http\Controllers\ProfileController::class, 'profilAdmin']);
+        Route::get('/profileAdmin', [App\Http\Controllers\Admin\ProfileController::class, 'indexAdmin'])->name('profileAdmin');
+        Route::post('/profileAdmin',  [App\Http\Controllers\Admin\ProfileController::class, 'profilAdmin']);
         Route::post('/seePayment/update/{id}',  [App\Http\Controllers\Admin\BookingDataController::class, 'verifikasipembayaran'])->name('seePayment.update');
 
         // verifikasi pembayaran
@@ -180,8 +197,11 @@ Route::group(['middleware' => ['web', 'auth','cekrole']], function(){      // we
         // Cari
         Route::post('addSparepart', [App\Http\Controllers\Admin\InvoiceController::class, 'render'])->name('addscari');
         
-        // gratiservice
 
+        Route::get('bookingpanggilan', [App\Http\Controllers\Admin\BookingPanggilanController::class, 'index'])->name('bookingpanggilan');
+
+        // gratiservice
+//         });
     });
 
 
@@ -232,9 +252,9 @@ Route::group(['middleware' => ['web', 'auth','cekrole']], function(){      // we
         Route::get('payment/{id}', [App\Http\Controllers\PaymentController::class, 'index']);
         Route::get('history/seePayment/{id}', [App\Http\Controllers\PaymentController::class, 'seePayment']);
         Route::post('payment/{id}', [App\Http\Controllers\PaymentController::class, 'save']);
-        Route::get('/sparepart', [App\Http\Controllers\SparepartController::class, 'render'])->name('sparepart');
+        // Route::get('/sparepart', [App\Http\Controllers\SparepartController::class, 'render'])->name('sparepart');
         Route::get('cari',[App\Http\Controllers\SparepartController::class, 'cari']);
-        Route::get('/sparepart/category/{category}', [App\Http\Controllers\CategoryController::class, 'render'])->name('spareparts.category');
+        // Route::get('/sparepart/category/{category}', [App\Http\Controllers\CategoryController::class, 'render'])->name('spareparts.category');
         Route::get('invoice/{id}', [App\Http\Controllers\HistoryController::class, 'invoice']);
         Route::get('/invoice/print/{id}', [App\Http\Controllers\HistoryController::class, 'cetak_pdf']);
         Route::get('/serviceHistory',  [App\Http\Controllers\HistoryController::class, 'index_service'])->name('serviceHistory');

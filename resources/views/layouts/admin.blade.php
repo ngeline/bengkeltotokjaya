@@ -13,19 +13,23 @@
     <meta name="robots" content="noindex,nofollow">
     <meta name="author" content="">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>Flexy Admin Lite Template by WrapPixel</title>
+    <title>{{ config('', 'Bengkel Totok Jaya') }}</title>
     <link rel="canonical" href="https://www.wrappixel.com/templates/Flexy-admin-lite/" />
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('flexy-bootstrap-lite') }}/assets/images/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16"
+        href="{{ asset('flexy-bootstrap-lite') }}/assets/images/favicon.png">
     <!-- Custom CSS -->
     <link href="{{ asset('flexy-bootstrap-lite') }}/assets/libs/chartist/dist/chartist.min.css" rel="stylesheet">
-    <link href="{{ asset('flexy-bootstrap-lite') }}/assets/libs/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.css" rel="stylesheet">
+    <link
+        href="{{ asset('flexy-bootstrap-lite') }}/assets/libs/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.css"
+        rel="stylesheet">
     <!-- Custom CSS -->
     <link href="{{ asset('flexy-bootstrap-lite') }}/dist/css/style.min.css" rel="stylesheet">
 
-    
-    <link rel="stylesheet" type="text/css" href="{{ asset('flexy-bootstrap-lite') }}/plugins/datatable/datatables.min.css">
-    
+
+    <link rel="stylesheet" type="text/css"
+        href="{{ asset('flexy-bootstrap-lite') }}/plugins/datatable/datatables.min.css">
+
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.23.0/themes/prism.css">
 
 
@@ -34,11 +38,12 @@
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.8/js/select2.min.js" defer></script>
-    <link href="https://cdn.datatables.net/v/bs4/dt-1.13.2/datatables.min.css"/>
+    <link href="https://cdn.datatables.net/v/bs4/dt-1.13.2/datatables.min.css" />
     <!-- <script src="/js/select2.min.js"></script> -->
 
     <!--===============================================================================================-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css">
 
     <script>
         window.dataLayer = window.dataLayer || [];
@@ -51,6 +56,7 @@
         gtag('config', 'UA-118965717-3');
         // Bootstrap ID
         gtag('config', 'UA-118965717-5');
+
     </script>
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -90,17 +96,21 @@
                         <b class="logo-icon">
                             <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
                             <!-- Dark Logo icon -->
-                            <img src="{{ asset('flexy-bootstrap-lite') }}/assets/images/logo-icon.png" alt="homepage" class="dark-logo" />
+                            <img src="{{ asset('flexy-bootstrap-lite') }}/assets/images/logo-icon.png" alt="homepage"
+                                class="dark-logo" />
                             <!-- Light Logo icon -->
-                            <img src="{{ asset('flexy-bootstrap-lite') }}/assets/images/logo-light-icon.png" alt="homepage" class="light-logo" />
+                            <img src="{{ asset('flexy-bootstrap-lite') }}/assets/images/logo-light-icon.png"
+                                alt="homepage" class="light-logo" />
                         </b>
                         <!--End Logo icon -->
                         <!-- Logo text -->
                         <span class="logo-text">
                             <!-- dark Logo text -->
-                            <img src="{{ asset('flexy-bootstrap-lite') }}/assets/images/logo-text.png" alt="homepage" class="dark-logo" />
+                            <img src="{{ asset('flexy-bootstrap-lite') }}/assets/images/logo-text.png" alt="homepage"
+                                class="dark-logo" />
                             <!-- Light Logo text -->
-                            <img src="{{ asset('flexy-bootstrap-lite') }}/assets/images/logo-light-text.png" class="light-logo" alt="homepage" />
+                            <img src="{{ asset('flexy-bootstrap-lite') }}/assets/images/logo-light-text.png"
+                                class="light-logo" alt="homepage" />
                         </span>
                     </a>
                     <!-- ============================================================== -->
@@ -122,7 +132,8 @@
                         <!-- Search -->
                         <!-- ============================================================== -->
                         <li class="nav-item search-box"> <a class="nav-link waves-effect waves-dark"
-                                href="javascript:void(0)"><i class="mdi mdi-magnify me-1"></i> <span class="font-16">Search</span></a>
+                                href="javascript:void(0)"><i class="mdi mdi-magnify me-1"></i> <span
+                                    class="font-16">Search</span></a>
                             <form class="app-search position-absolute">
                                 <input type="text" class="form-control" placeholder="Search &amp; enter"> <a
                                     class="srh-btn"><i class="mdi mdi-window-close"></i></a>
@@ -147,12 +158,17 @@
                         <!-- User profile and search -->
                         <!-- ============================================================== -->
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark pro-pic" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ Auth::user()->name }}</span>
-                                <img src="{{ asset('flexy-bootstrap-lite') }}/assets/images/users/profile.png" alt="user" class="rounded-circle" width="31">
+                            <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark pro-pic" href="#"
+                                id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <span
+                                    class="mr-2 d-none d-lg-inline text-gray-600 small me-2">{{ Auth::user()->name }}</span>
+                                <img src="{{ asset('flexy-bootstrap-lite') }}/assets/images/users/profile.png"
+                                    alt="user" class="rounded-circle" width="31">
                             </a>
-                            <ul class="dropdown-menu dropdown-menu-end user-dd animated" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{ url('profileAdmin') }}"><i class="ti-user m-r-5 m-l-5"></i>
+                            <ul class="dropdown-menu dropdown-menu-end user-dd animated"
+                                aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="{{ url('profileAdmin') }}"><i
+                                        class="ti-user m-r-5 m-l-5"></i>
                                     My Profile</a>
                                 <a class="dropdown-item" href="javascript:void(0)"><i class="ti-wallet m-r-5 m-l-5"></i>
                                     My Balance</a>
@@ -160,7 +176,7 @@
                                     Inbox</a>
                                 <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                         document.getElementById('logout-form').submit();">
-                                                        <i class="ti-email m-r-5 m-l-5"></i>
+                                    <i class="ti-back-left m-r-5 m-l-5"></i>
                                     Logout</a>
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                     @csrf
@@ -188,29 +204,37 @@
                 <nav class="sidebar-nav">
                     <ul id="sidebarnav">
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
-                                href="{{ route('admin.home')}}" aria-expanded="false"><i class="mdi mdi-view-dashboard"></i><span
-                                    class="hide-menu">Dashboard</span></a></li>
+                                href="{{ route('admin.home')}}" aria-expanded="false"><i
+                                    class="mdi mdi-view-dashboard"></i><span class="hide-menu">Dashboard</span></a></li>
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
-                                href="{{ url('index_get_user')}}" aria-expanded="false"><i
+                                href="{{ url('user')}}" aria-expanded="false"><i
                                     class="mdi mdi-account-network"></i><span class="hide-menu">User</span></a></li>
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
-                                href="{{ url('index_get_montir')}}" aria-expanded="false"><i class="mdi mdi-account-settings-variant"></i><span
+                                href="{{ url('montir')}}" aria-expanded="false"><i
+                                    class="mdi mdi-account-settings-variant"></i><span
                                     class="hide-menu">Montir</span></a></li>
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
-                                href="{{ url('index_get_category')}}" aria-expanded="false"><i class="mdi mdi-car"></i><span
-                                    class="hide-menu">Merek Mobil</span></a></li>
+                                href="{{ url('category')}}" aria-expanded="false"><i
+                                    class="mdi mdi-car"></i><span class="hide-menu">Merek Mobil</span></a></li>
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
-                                href="{{ url('index_get_typeService')}}" aria-expanded="false"><i class="mdi mdi mdi-wrench"></i><span
-                                    class="hide-menu">Tipe Service</span></a></li>
+                                href="{{ url('typeService')}}" aria-expanded="false"><i
+                                    class="mdi mdi mdi-wrench"></i><span class="hide-menu">Tipe Service</span></a></li>
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
-                                href="{{ url('index_get_sparepart')}}" aria-expanded="false"><i class="mdi mdi-engine"></i><span
-                                    class="hide-menu">Suku Cadang</span></a></li>
+                                href="{{ url('spareparts')}}" aria-expanded="false"><i
+                                    class="mdi mdi-engine"></i><span class="hide-menu">Suku Cadang</span></a></li>
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
-                                href="{{ route('bookingdata') }}" aria-expanded="false"><i class="mdi mdi-voice"></i><span
-                                    class="hide-menu">Booking Service</span></a></li>
+                                href="chat" aria-expanded="false"><i
+                                    class="mdi mdi-message"></i><span class="hide-menu">Live Chat</span></a></li>
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
-                                href="{{ route('admin.laporantransaksi') }}" aria-expanded="false"><i class="mdi mdi-book-multiple-variant"></i><span
-                                    class="hide-menu">Laporan</span></a></li>
+                                href="{{ route('bookingdata') }}" aria-expanded="false"><i
+                                    class="mdi mdi-car-connected"></i><span class="hide-menu">Booking Service</span></a></li>
+                        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
+                                href="{{ route('bookingpanggilan') }}" aria-expanded="false"><i
+                                    class="mdi mdi-voice"></i><span class="hide-menu">Booking Panggilan</span></a></li>
+                        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
+                                href="{{ route('admin.laporantransaksi') }}" aria-expanded="false"><i
+                                    class="mdi mdi-book-multiple-variant"></i><span class="hide-menu">Laporan</span></a>
+                        </li>
                         <!-- <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
                                 href="table-basic.html" aria-expanded="false"><i class="mdi mdi-border-all"></i><span
                                     class="hide-menu">Table</span></a></li>
@@ -234,27 +258,27 @@
             </div>
             <!-- End Sidebar scroll-->
         </aside>
-        
+
 
         <main>
-                 @yield('content')
+            @yield('content')
         </main>
-        
+
         <br><br>
 
 
 
         <footer class="footer text-center">
-                All Rights Reserved by Flexy Admin. Designed and Developed by <a
-                    href="https://www.wrappixel.com">WrapPixel</a>.
-            </footer>
-            <!-- ============================================================== -->
-            <!-- End footer -->
-            <!-- ============================================================== -->
-        </div>
+            All Rights Reserved by Flexy Admin. Designed and Developed by <a
+                href="https://www.wrappixel.com">WrapPixel</a>.
+        </footer>
         <!-- ============================================================== -->
-        <!-- End Page wrapper  -->
+        <!-- End footer -->
         <!-- ============================================================== -->
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Page wrapper  -->
+    <!-- ============================================================== -->
     </div>
     <!-- ============================================================== -->
     <!-- End Wrapper -->
@@ -275,7 +299,9 @@
     <!--This page JavaScript -->
     <!--chartis chart-->
     <script src="{{ asset('flexy-bootstrap-lite') }}/assets/libs/chartist/dist/chartist.min.js"></script>
-    <script src="{{ asset('flexy-bootstrap-lite') }}/assets/libs/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.min.js"></script>
+    <script
+        src="{{ asset('flexy-bootstrap-lite') }}/assets/libs/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.min.js">
+    </script>
     <script src="{{ asset('flexy-bootstrap-lite') }}/dist/js/pages/dashboards/dashboard1.js"></script>
 
 
@@ -301,7 +327,7 @@
     <!-- <script src="datatables/jquery.dataTables.min.js"></script>
     <script src="datatables/dataTables.bootstrap4.min.js"></script> -->
     <script src="https://cdn.datatables.net/v/bs4/dt-1.13.2/datatables.min.js"></script>
-    
+
 
     <!-- Page level custom scripts -->
     <!-- <script src="demo/datatables-demo.js"></script> -->

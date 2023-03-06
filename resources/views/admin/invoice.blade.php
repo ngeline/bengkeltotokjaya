@@ -16,12 +16,7 @@
                   </nav>
                 <h1 class="mb-0 fw-bold">Basic Table</h1> 
             </div>
-            <div class="col-6">
-                <div class="text-end upgrade-btn">
-                    <a href="https://www.wrappixel.com/templates/flexy-bootstrap-admin-template/" class="btn btn-primary text-white"
-                        target="_blank">Upgrade to Pro</a>
-                </div>
-            </div>
+            
         </div>
     </div>
     <!-- ============================================================== -->
@@ -43,7 +38,7 @@
             @if(!empty($booking))
             <div class="col-md-12">
                 <center>
-                    <p style="color: #008080;"><b style="font-size: 20px;">Bengkel Mobil Delta </b><br> Jl. Bence Gang 1, Pakunden, Kec. Pesantren, Kota Kediri, Jawa Timur 64132 <br> No. HP : 0852-3577-5571
+                    <p style="color: #008080;"><b style="font-size: 20px;">Bengkel Mobil Totok Jaya </b><br> Jl. Bence Gang 1, Pakunden, Kec. Pesantren, Kota Kediri, Jawa Timur 64132 <br> No. HP : 0852-3577-5571
                     </p>
                 </center>
                 <hr>

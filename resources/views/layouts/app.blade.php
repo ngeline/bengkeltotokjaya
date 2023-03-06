@@ -152,11 +152,11 @@
                     <!-- Authentication Links -->
                     @guest
                     <li class="nav-item">
-                        <a class="btn btn-outline-primary" href="{{ route('login') }}" target="_blank">{{ __('Login') }}</a>
+                        <a class="btn btn-outline-primary" href="{{ route('login') }}" >{{ __('Login') }}</a>
                     </li>
                     @if (Route::has('register'))
                     <li class="nav-item d-none d-lg-block">
-                        <a target="_blank" class="btn btn-primary btn-icon" href="{{ route('register') }}">{{ __('Register') }}</a>
+                        <a class="btn btn-primary btn-icon" href="{{ route('register') }}">{{ __('Register') }}</a>
                     </li>
                     @endif
                     @else

@@ -11,6 +11,11 @@ use Illuminate\Support\Facades\Validator;
 
 class SparepartController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index(Request $request)
     {
         if ($request->ajax()) {
@@ -18,7 +23,7 @@ class SparepartController extends Controller
             return Datatables::of($data)
                 ->addIndexColumn()
                 ->addColumn('action', function ($data) {
-                    return '<button type="button" class="btn btn-success btn-sm" id="getEditArticleData" data-id="' . $data->id . '">Ubah</button>
+                    return '<button type="button" class="btn btn-warning btn-sm" id="getEditArticleData" data-id="' . $data->id . '">Ubah</button>
                     <button type="button" data-id="' . $data->id . '" data-toggle="modal" data-target="#DeleteArticleModal" class="btn btn-danger btn-sm" id="getDeleteId">Hapus</button>';
                 })
                 ->rawColumns(['action'])

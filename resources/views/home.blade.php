@@ -2,18 +2,8 @@
 
 @section('content')
 <div class="wrapper">
-    <div class="section section-hero section-shaped">
+    <div class="section section-hero section-shaped" style="background-image: url({{ asset('argon-design-system-master') }}/assets/img/bg.jpeg); width: 100%; " >
       <div class="shape shape-style-3 shape-default">
-        <span class="span-150"></span>
-        <span class="span-50"></span>
-        <span class="span-50"></span>
-        <span class="span-75"></span>
-        <span class="span-100"></span>
-        <span class="span-75"></span>
-        <span class="span-50"></span>
-        <span class="span-100"></span>
-        <span class="span-50"></span>
-        <span class="span-100"></span>
       </div>
       <div class="page-header">
         <div class="container shape-container d-flex align-items-center py-lg">
@@ -24,8 +14,12 @@
                 <h2 class="display-4 font-weight-normal text-white">Melayani perbaikan mobil</h2>
                 <div class="btn-wrapper mt-4">
                   <a href="https://www.creative-tim.com/product/argon-design-system" class="btn btn-warning btn-icon mt-3 mb-sm-0">
-                    <span class="btn-inner--icon"><i class="ni ni-button-play"></i></span>
+                    <span class="btn-inner--icon"><i class="ni ni-settings"></i></span>
                     <span class="btn-inner--text">BOOKING SERVICE</span>
+                  </a>
+                  <a href="https://www.creative-tim.com/product/argon-design-system" class="btn btn-warning btn-icon mt-3 mb-sm-0">
+                    <span class="btn-inner--icon"><i class="ni ni-delivery-fast"></i></span>
+                    <span class="btn-inner--text">SERVICE DARURAT</span>
                   </a>
                 </div>
               </div>

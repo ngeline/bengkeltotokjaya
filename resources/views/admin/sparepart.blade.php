@@ -12,17 +12,12 @@
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb mb-0 d-flex align-items-center">
                       <li class="breadcrumb-item"><a href="index.html" class="link"><i class="mdi mdi-home-outline fs-4"></i></a></li>
-                      <li class="breadcrumb-item active" aria-current="page">Basic Table</li>
+                      <li class="breadcrumb-item active" aria-current="page">Spareparts</li>
                     </ol>
                   </nav>
-                <h1 class="mb-0 fw-bold">Basic Table</h1> 
+                <h1 class="mb-0 fw-bold">Spareparts</h1> 
             </div>
-            <div class="col-6">
-                <div class="text-end upgrade-btn">
-                    <a href="https://www.wrappixel.com/templates/flexy-bootstrap-admin-template/" class="btn btn-primary text-white"
-                        target="_blank">Upgrade to Pro</a>
-                </div>
-            </div>
+            
         </div>
     </div>
     <!-- ============================================================== -->
@@ -88,12 +83,21 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <div class="form-group">
+                <!-- <div class="form-group">
                     <label for="catgeory_id">Merek Mobil:</label>
                     <select class="custom-select" name="category_id" id="category_id">
                         <option selected>Pilih Merek Mobil</option>
                         @foreach($categories as $category)
                         <option  value="{{ $category->id }}">{{ $category->id }} - {{ $category->name }}</option>
+                        @endforeach
+                    </select>
+                </div> -->
+                <div class="form-group">
+                    <label for="catgeory_id">Merek Mobil:</label>
+                    <select type="text" class="form-control" name="category_id" id="category_id" >
+                        <option>Pilih Merek Mobil</option>
+                        @foreach($categories as $category)
+                        <option  value="{{ $category->id }}">{{ $category->name }}</option>
                         @endforeach
                     </select>
                 </div>
@@ -198,7 +202,7 @@
             serverSide: true,
             autoWidth: false,
             pageLength: 5,
-            ajax: "{{ route('index_get_sparepart.index') }}",
+            ajax: "{{ route('spareparts.index') }}",
             columns: [{
                     data: 'DT_RowIndex',
                     name: 'DT_RowIndex',
@@ -247,7 +251,7 @@
                 }
             });
             $.ajax({
-                url: "{{ route('index_get_sparepart.store') }}",
+                url: "{{ route('spareparts.store') }}",
                 method: 'POST',
                 data: {
                     category_id: $('#category_id').val(),
@@ -270,14 +274,15 @@
                         setInterval(function() {
                             $('.alert-success').hide();
                             $('#CreateArticleModal').modal('hide');
-                            location.reload();
                         }, 100);
 
                         $('#CreateArticleModal').modal().hide(); // modal togel diganti iki
                         $("body").removeClass("modal-open"); //ditambah
                         $(".modal-backdrop").remove(); // ditambah
-                        $('#name').val('')
-                        $('#status').val('')
+                        $('#nameS').val('')
+                        $('#price').val('')
+                        $('#biayaPemasangan').val('')
+                        $('#stock').val('')
                     }
                 }
             });
@@ -294,7 +299,7 @@
             $('.alert-danger').hide();
             id = $(this).data('id');
             $.ajax({
-                url: "index_get_sparepart/" + id + "/edit",
+                url: "spareparts/" + id + "/edit",
                 method: 'GET',
                 // data: {
                 //     id: id,
@@ -316,7 +321,7 @@
                 }
             });
             $.ajax({
-                url: "index_get_sparepart/" + id,
+                url: "spareparts/" + id,
                 method: 'PUT',
                 data: {
                     nameS: $('#editTitle').val(),
@@ -358,7 +363,7 @@
                 }
             });
             $.ajax({
-                url: "index_get_sparepart/" + id,
+                url: "spareparts/" + id,
                 method: 'DELETE',
                 success: function(result) {
                         $('.yajra-datatable').DataTable().ajax.reload();
