@@ -9,22 +9,25 @@
 
 ## Installation
 
-- clone this project
-- cd arsipsmk2
+- clone this project " git clone https://github.com/ngeline/bengkeltotokjaya.git "
+- cd bengkeltotokjaya
 - composer update
 - cp .env.example .env
 - php artisan key:generate
 - setting database name in file .env
-- php artisan migrate --seed
+- import database db_bengkel
 - php artisan serve
 
 ## Login
 
-- email: admin@admin.com
-- password: admin
+- email: admin@gmail.com
+- password: 123123123
 <hr>
-- email: siswa@siswa.com
-- password: siswa
+- email: owner@gmail.com
+- password: 123123123
+- <hr>
+- email: pengguna@gmail.com
+- password: 123123123
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
