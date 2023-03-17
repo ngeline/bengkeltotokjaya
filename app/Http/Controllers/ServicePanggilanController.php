@@ -32,7 +32,7 @@ class ServicePanggilanController extends Controller
         date_default_timezone_set("Asia/Jakarta");
 
         //Panjang Data Berdasarkan Hari Ini
-        $jumlah_hari_ini = Service::where('tanggal',date('Y-m-d'))
+        $jumlah_hari_ini = ServicePanggilan::where('tanggal',date('Y-m-d'))
             ->count();
 
         //Panjang Data Hari Ini Ditambah 1
@@ -55,8 +55,8 @@ class ServicePanggilanController extends Controller
         date_default_timezone_set("Asia/Jakarta");
 
         $user = User::where('id', $id)->first();
-        $service = Service::where('user_id', $user->id)->first();
-        $service= new Service();
+        $service = ServicePanggilan::where('user_id', $user->id)->first();
+        $service= new ServicePanggilan();
         $service->user_id = $user->id;
         $service->no_antrian = $this->getNoAntrian();
         $service->tanggal = $this->getTanggal();
@@ -64,11 +64,15 @@ class ServicePanggilanController extends Controller
         $service->number_plat = $request->number_plat;
         $service->nama_mobil = $request->nama_mobil;
         $service->jenis_mobil = $request->jenis_mobil;
+        $service->montir = $request->montir;
         $service->service_date = now();
+        $service->photo = $request->photo;
+        $service->maps = $request->maps;
+        $service->address_sp = $request->address_sp;
         $service->complaint = $request->complaint;
         $service->expired_at = Carbon::now()->addDays(1); // menambah 1 hari kedepan
         $service->save();
         alert()->success('Terimakasih sudah booking kerusakan berat, harap menunggu konfirmasi dari Admin');
-        return redirect('history');
+        return redirect('historybookingpanggilan');
     }
 }

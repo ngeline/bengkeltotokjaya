@@ -1,26 +1,42 @@
-@extends('layouts.Admin')
+@extends('layouts.app')
 
 @section('content')
-<div class="page-wrapper">
+<style>
+    body {
+        background-image: url(images/mobil.jpg);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-attachment: scroll;
+    }
+
+    body::before {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 1082px;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.8);
+    }
+</style>
+<div class="container py-4">
+    <br>
+    <div class="page-wrapper">
             <!-- ============================================================== -->
             <!-- Bread crumb and right sidebar toggle -->
             <!-- ============================================================== -->
             <div class="page-breadcrumb">
                 <div class="row align-items-center">
                     <div class="col-6">
-                        <nav aria-label="breadcrumb">
+                        <!-- <nav aria-label="breadcrumb">
                             <ol class="breadcrumb mb-0 d-flex align-items-center">
                               <li class="breadcrumb-item"><a href="index.html" class="link"><i class="mdi mdi-home-outline fs-4"></i></a></li>
                               <li class="breadcrumb-item active" aria-current="page">Profile</li>
                             </ol>
-                          </nav>
-                        <h1 class="mb-0 fw-bold">Profile</h1> 
-                    </div>
-                    <div class="col-6">
-                        <div class="text-end upgrade-btn">
-                            <a href="https://www.wrappixel.com/templates/flexy-bootstrap-admin-template/" class="btn btn-primary text-white"
-                                target="_blank">Upgrade to Pro</a>
-                        </div>
+                        </nav> -->
+                        <br>
                     </div>
                 </div>
             </div>
@@ -67,7 +83,7 @@
                     <div class="col-lg-8 col-xlg-9 col-md-7">
                         <div class="card">
                             <div class="card-body">
-                                <form class="form-horizontal form-material mx-2" method="POST" action="{{ url('profileAdmin') }}">
+                            <form method="POST" action="{{ url('profile') }}">
                                 @csrf
 
                                     <div class="form-group">
@@ -96,7 +112,7 @@
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label for="phoneNumber" class="col-md-12">Phone No</label>
+                                        <label for="phoneNumber" class="col-md-12">Nomor Hp</label>
                                         <div class="col-md-12">
                                             <input type="text" id="nohp" type="text" class="form-control @error('phoneNumber') is-invalid @enderror" name="phoneNumber" value="{{ $user->phoneNumber }}" required autocomplete="nohp" autofocus>
                                                 @error('phoneNumber')
@@ -164,14 +180,15 @@
             <!-- ============================================================== -->
             <!-- footer -->
             <!-- ============================================================== -->
-            <footer class="footer text-center">
+            <!-- <footer class="footer text-center">
                 All Rights Reserved by Flexy Admin. Designed and Developed by <a
                     href="https://www.wrappixel.com">WrapPixel</a>.
-            </footer>
+            </footer> -->
             <!-- ============================================================== -->
             <!-- End footer -->
             <!-- ============================================================== -->
         </div>
     </div>
 </div>
+</div><br><br>
 @endsection

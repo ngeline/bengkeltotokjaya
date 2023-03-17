@@ -16,36 +16,44 @@
                             <form method="POST" action="{{ url('/booking') }}/{{ auth()->user()->id }}" id="contactform">
 								{{ csrf_field() }}
                                 <div class="form-group">
-                                    <input  class="form-control @error('name_stnk') is-invalid @enderror" type="text" name="name_stnk" placeholder="Masukkan nama yang tertera di STNK">
-									@error('name_stnk')
-									<span class="invalid-feedback" role="alert">
-										<strong>{{ $message }}</strong>
-									</span>
-									@enderror
+                                <label for="validationCustom00">Nomor STNK Mobil</label>
+                                    <input class="form-control @error('name_stnk') is-invalid @enderror" type="text"
+                                        name="name_stnk" placeholder="Masukkan nama yang tertera di STNK">
+                                    @error('name_stnk')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
                                 </div>
-								<div class="form-group">
-                                    <input  class="form-control @error('number_plat') is-invalid @enderror" type="text" name="number_plat" placeholder="Masukkan nomor plat Anda">
-									@error('number_plat')
-									<span class="invalid-feedback" role="alert">
-										<strong>{{ $message }}</strong>
-									</span>
-									@enderror
+                                <div class="form-group">
+                                <label for="validationCustom01">Nomor Plat Mobil</label>
+                                    <input class="form-control @error('number_plat') is-invalid @enderror" type="text"
+                                        name="number_plat" placeholder="Masukkan nomor plat Anda">
+                                    @error('number_plat')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
                                 </div>
-								<div class="form-group">
-                                    <input  class="form-control @error('nama_mobil') is-invalid @enderror" type="text" name="nama_mobil" placeholder="Masukkan nama mobil">
-									@error('nama_mobil')
-									<span class="invalid-feedback" role="alert">
-										<strong>{{ $message }}</strong>
-									</span>
-									@enderror
+                                <div class="form-group">
+                                <label for="validationCustom02">Merek Mobil</label>
+                                    <input class="form-control @error('jenis_mobil') is-invalid @enderror" type="text"
+                                        name="jenis_mobil" placeholder="Masukkan Merek Mobil">
+                                    @error('jenis_mobil')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
                                 </div>
-								<div class="form-group">
-                                    <input  class="form-control @error('jenis_mobil') is-invalid @enderror" type="text" name="jenis_mobil" placeholder="Masukkan Merek Mobil">
-									@error('jenis_mobil')
-									<span class="invalid-feedback" role="alert">
-										<strong>{{ $message }}</strong>
-									</span>
-									@enderror
+                                <div class="form-group">
+                                <label for="validationCustom02">Nama Mobil</label>
+                                    <input class="form-control @error('nama_mobil') is-invalid @enderror" type="text"
+                                        name="nama_mobil" placeholder="Masukkan nama mobil">
+                                    @error('nama_mobil')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
                                 </div>
                                 <!-- <div class="form-group">
                                     <label for="exampleFormControlSelect1">Example select</label>
@@ -58,6 +66,7 @@
                                     </select>
                                 </div> -->
                                 <div class="form-group">
+                                <label for="validationCustom07">Keluhan Mobil</label>
                                     <textarea class="form-control @error('service_complaint') is-invalid @enderror" name="complaint" rows="7" placeholder="Masukkan keluhan mobil Anda"></textarea>
 									@error('complaint')
 									<span class="invalid-feedback" role="alert">

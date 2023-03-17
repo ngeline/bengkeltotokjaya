@@ -28,6 +28,7 @@ class BookingDataController extends Controller
         ->whereIn('services.status',['Menunggu diproses','Servis diproses','Servis selesai','Menunggu pembayaran','Sudah mengirim pembayaran'])
         ->orderBy('services.created_at','desc')
         ->paginate(10);
+        // dd($services);
         return view('admin.bookingdata', compact('services'));
     }
 

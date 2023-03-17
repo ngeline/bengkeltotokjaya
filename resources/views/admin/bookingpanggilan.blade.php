@@ -86,7 +86,7 @@
                                             @endif
                                             <td>{{ $service->photo }}</td>
                                             <td>
-                                            <a href="{{ $service->maps }}" target="_blank" class="btn" style="background: #4D73DD; color: white;"><i
+                                            <a href="{{'https://maps.google.com/maps/search'}}/{{ $service->maps }}" target="_blank" class="btn" style="background: #4D73DD; color: white;"><i
                                                         class="fa fa-map"></i> Maps</a>
                                             </td>
                                             <td>

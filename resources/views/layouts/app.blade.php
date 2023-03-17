@@ -22,6 +22,9 @@
     <link href="{{ asset('argon-design-system-master') }}/assets/css/nucleo-svg.css" rel="stylesheet" />
     <!-- CSS Files -->
     <link href="{{ asset('argon-design-system-master') }}/assets/css/argon-design-system.css?v=1.2.2" rel="stylesheet" />
+
+    <!-- maps -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 
 <body class="index-page">
@@ -206,7 +209,7 @@
 
 
     <footer class="footer has-cards">
-        <div class="container container-lg">
+        <!-- <div class="container container-lg">
             <div class="row">
                 <div class="col-md-6 mb-5 mb-md-0">
                     <div class="card card-lift--hover shadow border-0">
@@ -223,7 +226,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
         <div class="container">
             <div class="row row-grid align-items-center my-md">
                 <div class="col-lg-6">

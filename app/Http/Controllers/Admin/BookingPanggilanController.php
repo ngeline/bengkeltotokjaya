@@ -23,12 +23,34 @@ class BookingPanggilanController extends Controller
 {
     public function index(){
         $services =  DB::table('servicespanggilan')
+        
         ->join('users', 'servicespanggilan.user_id', '=', 'users.id')
-        ->select('users.name', 'servicespanggilan.service_date', 'servicespanggilan.status', 'queue', 'no_antrian','montir', 'servicespanggilan.id','maps')
+        ->select('users.name', 'servicespanggilan.service_date', 'servicespanggilan.status', 'queue', 'no_antrian','montir', 'servicespanggilan.id','maps','photo')
         ->whereIn('servicespanggilan.status',['Menunggu diproses','Servis diproses','Servis selesai','Menunggu pembayaran','Sudah mengirim pembayaran'])
         ->orderBy('servicespanggilan.created_at','desc')
         ->paginate(10);
+        // dd($services);
         return view('admin.bookingpanggilan', compact('services'));
+
+        // $services = ServicePanggilan::all();
+        // return view('admin.bookingpanggilan', compact('services'));
+        // dd($services);
+
+        // $services = ServicePanggilan::all();
+        // return view('admin.bookingpanggilan', compact('services'));
+
+        // $services = DB::table('servicespanggilan')
+        // ->paginate(10);
+        // return view('admin.bookingpanggilan', compact('services'));
+
+        // $services = ServicePanggilan::join('users', 'servicespanggilan.user_id', '=', 'users.id')
+        // ->select('users.name', 'servicespanggilan.service_date', 'servicespanggilan.status', 'queue', 'no_antrian','montir', 'servicespanggilan.id','maps','photo')
+        // ->whereIn('servicespanggilan.status',['Menunggu diproses','Servis diproses','Servis selesai','Menunggu pembayaran','Sudah mengirim pembayaran'])
+        // ->orderBy('servicespanggilan.created_at','desc')
+        // ->paginate(10);
+        // dd($services);
+
+    return view('admin.bookingpanggilan', compact('services'));
     }
 
     public function detail(Request $request, $id)
@@ -265,7 +287,7 @@ class BookingPanggilanController extends Controller
         date_default_timezone_set("Asia/Jakarta");
 
         $user = User::where('id', $id)->first();
-        $service = Service::where('user_id', $user->id)->first();
+        $service = ServicePanggilan::where('user_id', $user->id)->first();
         $service= new Service();
         $service->user_id = $request->user;
         $service->no_antrian = $this->getNoAntrian();
@@ -276,6 +298,9 @@ class BookingPanggilanController extends Controller
         $service->jenis_mobil = $request->jenis_mobil;
         $service->montir = $request->montir;
         $service->service_date = now();
+        $service->photo = $request->photo;
+        $service->maps = $request->maps;
+        $service->address_sp = $request->address_sp;
         $service->complaint = $request->complaint;
         $service->expired_at = Carbon::now()->addDays(1); // menambah 1 hari kedepan
         $service->save();

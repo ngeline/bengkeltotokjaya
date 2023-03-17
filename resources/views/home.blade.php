@@ -13,11 +13,11 @@
                 <h1 class="text-white display-2">BENGKEL TOTOK JAYA</h1>
                 <h2 class="display-4 font-weight-normal text-white">Melayani perbaikan mobil</h2>
                 <div class="btn-wrapper mt-4">
-                  <a href="/booking" class="btn btn-warning btn-icon mt-3 mb-sm-0">
+                  <a href="{{url('booking')}}" class="btn btn-warning btn-icon mt-3 mb-sm-0">
                     <span class="btn-inner--icon"><i class="ni ni-settings"></i></span>
                     <span class="btn-inner--text">BOOKING SERVICE</span>
                   </a>
-                  <a href="/bookingpanggilan" class="btn btn-warning btn-icon mt-3 mb-sm-0">
+                  <a href="{{url('bookingpanggilan')}}" class="btn btn-warning btn-icon mt-3 mb-sm-0">
                     <span class="btn-inner--icon"><i class="ni ni-delivery-fast"></i></span>
                     <span class="btn-inner--text">SERVICE DARURAT</span>
                   </a>
