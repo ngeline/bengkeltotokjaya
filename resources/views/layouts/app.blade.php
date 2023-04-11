@@ -22,9 +22,6 @@
     <link href="{{ asset('argon-design-system-master') }}/assets/css/nucleo-svg.css" rel="stylesheet" />
     <!-- CSS Files -->
     <link href="{{ asset('argon-design-system-master') }}/assets/css/argon-design-system.css?v=1.2.2" rel="stylesheet" />
-
-    <!-- maps -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 
 <body class="index-page">
@@ -33,7 +30,7 @@
         class="navbar navbar-main navbar-expand-lg bg-white navbar-light position-sticky top-0 shadow py-2">
         <div class="container">
             <a class="navbar-brand mr-lg-5" href="{{ asset('argon-design-system-master') }}/index.html">
-                <img src="{{ asset('argon-design-system-master') }}/assets/img/brand/blue.png">
+                <img src="{{ asset('argon-design-system-master') }}/assets/img/brand/logo.png">
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar_global"
                 aria-controls="navbar_global" aria-expanded="false" aria-label="Toggle navigation">
@@ -67,7 +64,7 @@
                     <li class="nav-item dropdown">
                         <a href="#" class="nav-link" data-toggle="dropdown" href="#" role="button">
                             <i class="ni ni-ui-04 d-lg-none"></i>
-                            <span class="nav-link-inner--text">Components</span>
+                            <span class="nav-link-inner--text">Layanan</span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-xl">
                             <div class="dropdown-menu-inner">
@@ -121,9 +118,20 @@
                             <a href="{{ asset('argon-design-system-master') }}/examples/register.html" class="dropdown-item">Register</a> -->
                         </div>
                     </li>
+                    <!-- <li class="nav-item dropdown">
+                        <a href="#" class="nav-link" data-toggle="dropdown" href="#" role="button">
+                            <i class="ni ni-collection d-lg-none"></i>
+                            <span class="nav-link-inner--text">Service Panggilan</span>
+                        </a>
+                        <div class="dropdown-menu">
+                            <a href="{{ asset('argon-design-system-master') }}/examples/landing.html" class="dropdown-item">Status Service</a>
+                            <a href="{{ asset('argon-design-system-master') }}/examples/profile.html" class="dropdown-item">Riwayat Service</a>
+                            
+                        </div>
+                    </li> -->
                 </ul>
                 <ul class="navbar-nav align-items-lg-center ml-lg-auto">
-                    <li class="nav-item">
+                    <!-- <li class="nav-item">
                         <a class="nav-link nav-link-icon" href="https://www.facebook.com/CreativeTim/" target="_blank"
                             data-toggle="tooltip" title="Like us on Facebook">
                             <i class="fa fa-facebook-square"></i>
@@ -136,7 +144,7 @@
                             <i class="fa fa-instagram"></i>
                             <span class="nav-link-inner--text d-lg-none">Instagram</span>
                         </a>
-                    </li>
+                    </li> -->
                     <!-- <li class="nav-item">
                         <a class="btn btn-outline-primary" href="{{ asset('argon-design-system-master') }}/examples/login.html"
                             target="_blank">
@@ -164,16 +172,16 @@
                     @endif
                     @else
 
-                    <li class="nav-item dropdown">
+                    <!-- <li class="nav-item dropdown">
                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                             <img class="img-profile rounded-circle"  style="width:30px;height:30px;" src="{{ asset('images/notification.png') }}">
                             <span class="badge" style="background-color: 	#ff0000;"></span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right" id="notifikasi" aria-labelledby="navbarDropdown">
                         </div>
-                    </li>
+                    </li> -->
                     
-                    <div class="topbar-divider d-none d-sm-block"></div>
+                    <!-- <div class="topbar-divider d-none d-sm-block"></div> -->
 
                     <li class="nav-item dropdown">
                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -209,24 +217,7 @@
 
 
     <footer class="footer has-cards">
-        <!-- <div class="container container-lg">
-            <div class="row">
-                <div class="col-md-6 mb-5 mb-md-0">
-                    <div class="card card-lift--hover shadow border-0">
-                        <a href="{{ asset('argon-design-system-master') }}/examples/landing.html" title="Landing Page">
-                            <img src="{{ asset('argon-design-system-master') }}/assets/img/theme/landing.jpg" class="card-img">
-                        </a>
-                    </div>
-                </div>
-                <div class="col-md-6 mb-5 mb-lg-0">
-                    <div class="card card-lift--hover shadow border-0">
-                        <a href="{{ asset('argon-design-system-master') }}/examples/profile.html" title="Profile Page">
-                            <img src="{{ asset('argon-design-system-master') }}/assets/img/theme/profile.jpg" class="card-img">
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div> -->
+        
         <div class="container">
             <div class="row row-grid align-items-center my-md">
                 <div class="col-lg-6">

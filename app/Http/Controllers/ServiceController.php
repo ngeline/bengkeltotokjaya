@@ -11,6 +11,7 @@ use Carbon\Carbon;
 use App\Models\Service;
 use App\Models\Antrian;
 use App\Transformers\AntrianTransformer;
+use App\Models\JenisService;
 
 class ServiceController extends Controller
 {
@@ -21,8 +22,10 @@ class ServiceController extends Controller
 
     public function index()
     {
+        // $service = JenisService::latest()->get();
         return view('booking', [
-            'categories' => Category::all()
+            'categories' => Category::all(),
+            'service' => JenisService::all()
         ]);
     }
 
