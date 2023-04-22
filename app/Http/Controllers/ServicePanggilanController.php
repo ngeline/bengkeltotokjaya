@@ -8,7 +8,7 @@ use App\Models\Category;
 use Illuminate\Support\Facades\Auth;
 use Alert;
 use Carbon\Carbon;
-use App\Models\ServicePanggilan;
+use App\Models\Service;
 use App\Models\Antrian;
 use App\Transformers\AntrianTransformer;
 
@@ -32,7 +32,7 @@ class ServicePanggilanController extends Controller
         date_default_timezone_set("Asia/Jakarta");
 
         //Panjang Data Berdasarkan Hari Ini
-        $jumlah_hari_ini = ServicePanggilan::where('tanggal',date('Y-m-d'))
+        $jumlah_hari_ini = Service::where('tanggal',date('Y-m-d'))
             ->count();
 
         //Panjang Data Hari Ini Ditambah 1
@@ -55,8 +55,8 @@ class ServicePanggilanController extends Controller
         date_default_timezone_set("Asia/Jakarta");
 
         $user = User::where('id', $id)->first();
-        $service = ServicePanggilan::where('user_id', $user->id)->first();
-        $service= new ServicePanggilan();
+        $service = Service::where('user_id', $user->id)->first();
+        $service= new Service();
         $service->user_id = $user->id;
         $service->no_antrian = $this->getNoAntrian();
         $service->tanggal = $this->getTanggal();

@@ -68,6 +68,7 @@ class ServiceController extends Controller
         $service->nama_mobil = $request->nama_mobil;
         $service->jenis_mobil = $request->jenis_mobil;
         $service->service_date = now();
+        $service->status_service = 'booking service';
         $service->complaint = $request->complaint;
         $service->expired_at = Carbon::now()->addDays(1); // menambah 1 hari kedepan
         $service->save();

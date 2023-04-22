@@ -56,7 +56,7 @@
                 </div>
                 <ul class="navbar-nav navbar-nav-hover align-items-lg-center">
                     <li class="nav-item">
-                        <a href="#" class="nav-link" href="#" role="button">
+                        <a href="{{ route('home')}}" class="nav-link" href="#" role="button">
                             <i class="ni ni-collection d-lg-none"></i>
                             <span class="nav-link-inner--text">Beranda</span>
                         </a>
@@ -75,30 +75,27 @@
                                     </div>
                                     <div class="media-body ml-3">
                                         <h6 class="heading text-primary mb-md-1">Layanan Service</h6>
-                                        <p class="description d-none d-md-inline-block mb-0">Learn how to use compiling
-                                            Scss, change brand colors and more.</p>
+                                        <p class="description d-none d-md-inline-block mb-0">Tidak perlu khawatir karena Bengkel Totok Jaya recommended untuk servis mesin mobil. Mulai dari mengatasi overhaul, tune up, ganti oli, ganti aki, dan lainnya.</p>
                                     </div>
                                 </a>
-                                <a href="https://demos.creative-tim.com/argon-design-system/docs/components/alerts.html"
+                                <a href="{{ url('sparepart')}}"
                                     class="media d-flex align-items-center">
                                     <div class="icon icon-shape bg-gradient-warning rounded-circle text-white">
                                         <i class="ni ni-ui-04"></i>
                                     </div>
                                     <div class="media-body ml-3">
                                         <h5 class="heading text-warning mb-md-1">Suku Cadang</h5>
-                                        <p class="description d-none d-md-inline-block mb-0">Browse our 50 beautiful
-                                            handcrafted components offered in the Free version.</p>
+                                        <p class="description d-none d-md-inline-block mb-0">Suku cadang atau spare part mobil adalah sebuah komponen yang memiliki peran krusial dalam kondisi sebuah mobil. Selengkapnya lihat sparepart Kami.</p>
                                     </div>
                                 </a>
-                                <a href="https://demos.creative-tim.com/argon-design-system/docs/foundation/colors.html"
+                                <a href="{{ url('about') }}"
                                     class="media d-flex align-items-center">
                                     <div class="icon icon-shape bg-gradient-success rounded-circle text-white">
                                         <i class="ni ni-palette"></i>
                                     </div>
                                     <div class="media-body ml-3">
                                         <h6 class="heading text-primary mb-md-1">About Us</h6>
-                                        <p class="description d-none d-md-inline-block mb-0">Learn more about colors,
-                                            typography, icons and the grid system we used for .</p>
+                                        <p class="description d-none d-md-inline-block mb-0">Kami adalah bengkel yang berpengalaman melayani perbaikan mobil servis mobil sejak Tahun 2005 dengan keahlian khusus.</p>
                                     </div>
                                 </a>
                             </div>
@@ -106,17 +103,45 @@
                     </li>
                     <li class="nav-item dropdown">
                         <a href="#" class="nav-link" data-toggle="dropdown" href="#" role="button">
-                            <i class="ni ni-collection d-lg-none"></i>
+                            <i class="ni ni-ui-04 d-lg-none"></i>
                             <span class="nav-link-inner--text">Service</span>
                         </a>
-                        <div class="dropdown-menu">
-                            <a href="{{ asset('argon-design-system-master') }}/examples/landing.html" class="dropdown-item">Status Service</a>
-                            <a href="{{ asset('argon-design-system-master') }}/examples/profile.html" class="dropdown-item">Riwayat Service</a>
-                            <!-- <a href="{{ asset('argon-design-system-master') }}/examples/landing.html" class="dropdown-item">Landing</a>
-                            <a href="{{ asset('argon-design-system-master') }}/examples/profile.html" class="dropdown-item">Profile</a>
-                            <a href="{{ asset('argon-design-system-master') }}/examples/login.html" class="dropdown-item">Login</a>
-                            <a href="{{ asset('argon-design-system-master') }}/examples/register.html" class="dropdown-item">Register</a> -->
+                        <div class="dropdown-menu dropdown-menu-xl">
+                            <div class="dropdown-menu-inner">
+                                <a href="{{ url('history') }}"
+                                    class="media d-flex align-items-center">
+                                    <div class="icon icon-shape bg-gradient-primary rounded-circle text-white">
+                                        <i class="ni ni-settings"></i>
+                                    </div>
+                                    <div class="media-body ml-3">
+                                        <h6 class="heading text-primary mb-md-1">Status Service</h6>
+                                        <p class="description d-none d-md-inline-block mb-0">Lihat status service mobil kamu secara Online.</p>
+                                    </div>
+                                </a>
+                                <a href="{{ url('serviceHistory') }}"
+                                    class="media d-flex align-items-center">
+                                    <div class="icon icon-shape bg-gradient-warning rounded-circle text-white">
+                                        <i class="ni ni-single-copy-04"></i> 
+                                    </div>
+                                    <div class="media-body ml-3">
+                                        <h5 class="heading text-warning mb-md-1">Riwayat Service</h5>
+                                        <p class="description d-none d-md-inline-block mb-0">Cek riwayat service mobil kamu secara keseluruhan disini.</p>
+                                    </div>
+                                </a>
+                            </div>
                         </div>
+                    </li>
+                    <!-- <li class="nav-item">
+                        <a href="{{ route('sparepart')}}" class="nav-link" href="#" role="button">
+                            <i class="ni ni-collection d-lg-none"></i>
+                            <span class="nav-link-inner--text">Sparepart</span>
+                        </a>
+                    </li> -->
+                    <li class="nav-item">
+                        <a href="{{ route('contactCus')}}" class="nav-link" href="#" role="button">
+                            <i class="ni ni-collection d-lg-none"></i>
+                            <span class="nav-link-inner--text">Contact Us</span>
+                        </a>
                     </li>
                     <!-- <li class="nav-item dropdown">
                         <a href="#" class="nav-link" data-toggle="dropdown" href="#" role="button">
@@ -186,7 +211,7 @@
                     <li class="nav-item dropdown">
                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                             {{ Auth::user()->name }}
-                            <img class="img-profile rounded-circle"  style="width:40px;height:40px;" src="{{ asset('images/undraw_profile.svg') }}">
+                            <img class="img-profile rounded-circle"  style="width:40px;height:40px;" src="{{ asset('flexy-bootstrap-lite') }}/assets/images/users/user.png">
                         </a>
 
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">

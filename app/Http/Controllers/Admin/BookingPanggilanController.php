@@ -22,12 +22,13 @@ use Barryvdh\DomPDF\Facade as PDF;
 class BookingPanggilanController extends Controller
 {
     public function index(){
-        $services =  DB::table('servicespanggilan')
+        $services =  DB::table('services')
         
-        ->join('users', 'servicespanggilan.user_id', '=', 'users.id')
-        ->select('users.name', 'servicespanggilan.service_date', 'servicespanggilan.status', 'queue', 'no_antrian','montir', 'servicespanggilan.id','maps','photo')
-        ->whereIn('servicespanggilan.status',['Menunggu diproses','Servis diproses','Servis selesai','Menunggu pembayaran','Sudah mengirim pembayaran'])
-        ->orderBy('servicespanggilan.created_at','desc')
+        ->join('users', 'services.user_id', '=', 'users.id')
+        ->select('users.name', 'services.service_date', 'services.status', 'queue', 'no_antrian','montir', 'services.id','maps','photo')
+        ->whereIn('services.status',['Menunggu diproses','Servis diproses','Servis selesai','Menunggu pembayaran','Sudah mengirim pembayaran'])
+        ->whereIn('services.status_service',['service panggilan'])
+        ->orderBy('services.created_at','desc')
         ->paginate(10);
         // dd($services);
         return view('admin.bookingpanggilan', compact('services'));

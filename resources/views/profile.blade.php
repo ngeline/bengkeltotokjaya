@@ -56,7 +56,7 @@
                     <div class="col-lg-4 col-xlg-3 col-md-5">
                         <div class="card">
                             <div class="card-body">
-                                <center class="m-t-30"> <img src="{{ asset('flexy-bootstrap-lite') }}/assets/images/users/5.jpg"
+                                <center class="m-t-30"> <img src="{{ asset('flexy-bootstrap-lite') }}/assets/images/users/user.png"
                                         class="rounded-circle" width="150" />
                                     <h4 class="card-title m-t-10">{{ $user->name }}</h4>
                                     <h6 class="card-subtitle">{{ $user->email }}</h6>
@@ -133,6 +133,9 @@
                                             </span>
                                             @enderror
                                         </div>
+                                    </div><br>
+                                    <div class="form-group">
+                                        <label class="col-md-12">! Jika tidak ingin mengganti password, input password dan konfirmasi password dikosongkan.</label>
                                     </div>
                                     <div class="form-group">
                                         <label  class="col-md-12">Password</label>

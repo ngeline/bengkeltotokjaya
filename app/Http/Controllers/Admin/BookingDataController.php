@@ -26,6 +26,7 @@ class BookingDataController extends Controller
         ->join('users', 'services.user_id', '=', 'users.id')
         ->select('users.name', 'services.service_date', 'services.status', 'queue', 'no_antrian','montir', 'services.id')
         ->whereIn('services.status',['Menunggu diproses','Servis diproses','Servis selesai','Menunggu pembayaran','Sudah mengirim pembayaran'])
+        ->whereIn('services.status_service',['booking service'])
         ->orderBy('services.created_at','desc')
         ->paginate(10);
         // dd($services);

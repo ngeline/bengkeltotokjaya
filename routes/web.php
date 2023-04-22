@@ -22,6 +22,7 @@ use App\Http\Controllers\Admin\InvoiceController;
 use App\Http\Controllers\Admin\TypeServiceController;
 use App\Http\Controllers\Admin\CustomerServiceController;
 use App\Http\Controllers\Admin\BookingPanggilanController;
+// use App\Http\Controllers\Admin\ContactController;
 
 // Pemilik
 use App\Http\Controllers\Pemilik\PerkembanganController;
@@ -114,7 +115,7 @@ Route::group(['middleware' => ['web', 'auth','cekrole']], function(){      // we
         Route::resource('typeService', 'App\Http\Controllers\Admin\TypeServiceController');
         Route::resource('category', 'App\Http\Controllers\Admin\CategoryController');
         Route::resource('spareparts', 'App\Http\Controllers\Admin\SparepartController');
-        Route::resource('chat', 'App\Http\Controllers\Admin\ChatController');
+        // Route::resource('contact', 'App\Http\Controllers\Admin\ContactController');
 
         // Sif
         Route::resource('/user', CustomerController::class)->except(['destroy']);
@@ -254,9 +255,9 @@ Route::group(['middleware' => ['web', 'auth','cekrole']], function(){      // we
         Route::get('payment/{id}', [App\Http\Controllers\PaymentController::class, 'index']);
         Route::get('history/seePayment/{id}', [App\Http\Controllers\PaymentController::class, 'seePayment']);
         Route::post('payment/{id}', [App\Http\Controllers\PaymentController::class, 'save']);
-        // Route::get('/sparepart', [App\Http\Controllers\SparepartController::class, 'render'])->name('sparepart');
+        Route::get('/sparepart', [App\Http\Controllers\SparepartController::class, 'render'])->name('sparepart');
         Route::get('cari',[App\Http\Controllers\SparepartController::class, 'cari']);
-        // Route::get('/sparepart/category/{category}', [App\Http\Controllers\CategoryController::class, 'render'])->name('spareparts.category');
+        Route::get('/sparepart/category/{category}', [App\Http\Controllers\CategoryController::class, 'render'])->name('spareparts.category');
         Route::get('invoice/{id}', [App\Http\Controllers\HistoryController::class, 'invoice']);
         Route::get('/invoice/print/{id}', [App\Http\Controllers\HistoryController::class, 'cetak_pdf']);
         Route::get('/serviceHistory',  [App\Http\Controllers\HistoryController::class, 'index_service'])->name('serviceHistory');
