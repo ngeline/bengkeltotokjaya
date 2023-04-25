@@ -32,7 +32,7 @@
 <div class="col-md-12">
     <a href="{{ url('bookingdata') }}" class="btn" style=" background:  #4D73DD; color: white;"><i class="fa fa-arrow-left"></i> Kembali</a>
     @if(!empty($booking))
-    <a href="{{ url('bookingdata/invoice/print') }}/{{ $booking->id }}" class="btn" style=" background:  #8B0000; color: white;" target="_blank"><i class="fas fa-print"></i> Print PDF</a>
+    <a href="{{ url('bookingdata/invoice/print') }}/{{ $booking->id }}" class="btn" style=" background:  #1a9bfc; color: white;" target="_blank"><i class="fas fa-print"></i> Print PDF</a>
 </div>
 <div class="col-md-12">
     <div class="card mt-2">
@@ -46,7 +46,7 @@
                 <h6 style="color: gray;">No. Antrian &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;: {{ $booking->no_antrian }} <br> Nama Montir  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: {{ $booking->montir }} <br> Tanggal Servis &nbsp;: {{ $booking->service_date }} <br> Nama STNK   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: {{ $booking->name_stnk }}</h6>
                 <div class="card">
                     <div class="card-body">
-                        <h4 style="color: #8B0000;" <i class="fas fa-receipt" style="color: #8B0000;"></i> Data Servis</h4>
+                        <h4 style="color: #1a9bfc;" <i class="fas fa-receipt" style="color: #1a9bfc;"></i> Data Servis</h4>
                         <table class="table">
                             <tbody>
                                 @foreach($bookings as $booking)
@@ -72,10 +72,10 @@
                                 </tr>
                             </tbody>
                         </table>
-                        <div style="color: #8B0000; font-weight:bold; font-size: 16px">
+                        <div style="color: #1a9bfc; font-weight:bold; font-size: 16px">
                         
                         @endforeach
-                        <div style="color: #8B0000; font-weight:bold; font-size: 16px">
+                        <div style="color: #1a9bfc; font-weight:bold; font-size: 16px">
                         Datail Suku Cadang dan Tipe Servis
                         </div><br>
                         <table class="table table-striped">

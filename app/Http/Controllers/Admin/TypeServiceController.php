@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Service;
 use App\Models\JenisService;
 use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
@@ -12,7 +13,9 @@ class TypeServiceController extends Controller
 {
     public function index(Request $request)
     {
+        
         if ($request->ajax()) {
+            // $service =  Service::latest()->get();
             $data = JenisService::latest()->get();
             return Datatables::of($data)
                 ->addIndexColumn()

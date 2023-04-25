@@ -42,7 +42,7 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-body">
-                        <h4 style="color: #8B0000;"><i class="fas fa-history" style="color: #8B0000;"></i>Detail Pemesanan</h4>
+                        <h4 style="color: #1a9bfc;"><i class="fas fa-history" style="color: #1a9bfc;"></i>Detail Pemesanan</h4>
                         <table class="table">
                             <tbody>
                                 @foreach($bookings as $booking)
@@ -84,7 +84,7 @@
                         <form method="POST" action="{{ url('bookingdata/detail/input_queue') }}/{{ $booking->id }}" enctype="multipart/form-data">
                             @csrf
                             <div class="form-group row">
-                                <label for="no_antrian" class="col-md-5 col-form-label" style="color: #8B0000;">Nomor antiran</label>
+                                <label for="no_antrian" class="col-md-5 col-form-label" style="color: #1a9bfc;">Nomor antiran</label>
 
                                 <div class="col-md-7">
                                     <input placeholder="Masukkan nomor antrian..." style="background-color: #ecebeb; color: gray;" id="queue" type="text" value="{{ $booking->no_antrian }}" class="form-control @error('no_antrian') is-invalid @enderror" readonly name="no_antrian">
@@ -99,7 +99,7 @@
 
 
                             <!-- <div class="form-group row">
-                                <label for="montir" class="col-md-5 col-form-label" style="color: #8B0000;">Nama Montir</label>
+                                <label for="montir" class="col-md-5 col-form-label" style="color: #1a9bfc;">Nama Montir</label>
 
                                 <div class="col-md-7">
                                     <input placeholder="Masukkan nama montir..." style="background-color: #ecebeb; color: gray;" id="montir" type="text" value="{{ $booking->montir }}" class="form-control @error('montir') is-invalid @enderror" readonly name="montir" required>
@@ -113,7 +113,7 @@
                             </div> -->
 
                             <div class="form-group row">
-                                <label for="montir" class="col-md-5 col-form-label" style="color: #8B0000;">Nama Montir</label>
+                                <label for="montir" class="col-md-5 col-form-label" style="color: #1a9bfc;">Nama Montir</label>
                                 <div class="col-md-7">
                                     <select style="width: 100%;  padding: 12px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box;  resize: vertical; color: gray;" id="montir" type="text"   name="montir" required>
                                         <option value="{{ $booking->montir }}">{{ $booking->montir }}</option>
@@ -125,7 +125,7 @@
                             </div>
                             
                             <div class="form-group row">
-                                <label for="status" class="col-md-5 col-form-label" style="color: #8B0000;">Status</label>
+                                <label for="status" class="col-md-5 col-form-label" style="color: #1a9bfc;">Status</label>
 
                                 <div class="col-md-7">
                                     <select style="width: 100%;  padding: 12px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box;  resize: vertical; color: gray;" name="status" required>

@@ -34,18 +34,42 @@
                     <div class="card-body">
                         <form action="{{ route('acari') }}" method="GET">
                             <div class="row mb-3">
-                                <div class="col-2">
+                                <div class="col-md-2">
                                     <input type="date" class="form-control" id="tgl_awal" name="start_date" required>
                                 </div>
-                                <p class="mt-2">Sampai</p>
-                                <div class="col-2">
+                                <div class="col-md-1">
+                                        <p class="mt-2">Sampai</p>
+                                    </div>
+                                    <div class="col-md-2">
                                     <input type="date" class="form-control" id="tgl_akhir" name="end_date" required>
                                 </div>
-                                <div class="col-4">
+                                <div class="col-md-6">
                                     <button id="filtercari" class="btn btn-primary"><i class="fa fa-filter"></i> Filter </button>
                                     <a href="/laporantransaksiadmin" class="btn btn-primary"><i class="fa fa-refresh"></i> Refresh </a>
                                 </div>
-                        </form>
+                            
+
+                            <!-- <div class="row mb-3">
+                                    <div class="col-md-2">
+                                        <input type="date" class="form-control" id="tgl_awal" name="start_date"
+                                            required>
+                                    </div>
+                                    <div class="col-md-1">
+                                        <p class="mt-2">Sampai</p>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <input type="date" class="form-control" id="tgl_akhir" name="end_date" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <button id="filtercari" class="btn btn-primary"><i class="fa fa-filter"></i>
+                                            Filter </button>
+                                        <a href="/bookingdata" class="btn btn-primary"><i class="fa fa-refresh"></i>
+                                            Refresh </a>
+                                        <a href="tambahbookingservice" class="btn btn-primary"><i class="fa fa-plus"
+                                                type="button"></i> Tambah Servis</a>
+                                    </div>
+                                </div> -->
+                            </form>
                             <div class="col-6">
                             <!-- isset() untuk mengecek apakah variable tersebut ada atau tidak -->
                             <!-- jika $start_date dan $end_date tidak ada maka parameter semua data -->

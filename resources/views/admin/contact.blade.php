@@ -31,13 +31,6 @@
     <div class="row">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header py-3">
-                    <div class="card-header py-3">
-                        <div class="col-md-12">
-                            <h6 class="m-0 font-weight-bold" style="color: 	#8B0000;"> <i class="far fa-address-book"></i> Contact Me</h6>
-                        </div>
-                    </div>
-                </div>
                 <div class="card-body">
                     <table class="table table-striped">
                         <thead>

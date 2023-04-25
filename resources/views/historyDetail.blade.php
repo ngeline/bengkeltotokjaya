@@ -24,7 +24,7 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-body">
-                                <h4 style="color: #8B0000;"><i class="fas fa-history" style="color: #8B0000;"></i> Detail Booking</h4>
+                                <h4 style="color: #1a9bfc;"><i class="fas fa-history" style="color: #1a9bfc;"></i> Detail Booking</h4>
                                 <table class="table">
                                     <tbody>
                                         @foreach($bookings as $booking)

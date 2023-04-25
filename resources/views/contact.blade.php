@@ -90,9 +90,9 @@
 										</tr>
 										<tr>
 											@if($contact->reply == null)
-											<td style="color:#8B0000; font-size: 13px;">Belum ada balasan</td>	
+											<td style="color:#1a9bfc; font-size: 13px;">Belum ada balasan</td>	
 											@else
-											<td style="color:#8B0000; font-size: 13px;">Admin Reply : {{ $contact->reply }}</td>
+											<td style="color:#1a9bfc; font-size: 13px;">Admin Reply : {{ $contact->reply }}</td>
 											@endif
 										</tr>
 										@endforeach

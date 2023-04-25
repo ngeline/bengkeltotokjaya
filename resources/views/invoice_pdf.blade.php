@@ -14,7 +14,7 @@
     </center>
     <hr style="color: gray;">
     <h6 style="color: gray;">No. Antrian &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: {{ $booking->no_antrian }} <br> Nama Montir  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: {{ $booking->montir }} <br> Tanggal Servis &nbsp;&nbsp;&nbsp;&nbsp;: {{ $booking->service_date }} <br> Nama STNK   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: {{ $booking->name_stnk }}</h6>
-    <h4 style="color:  #8B0000;"> Invoice</h4>
+    <h4 style="color:  #1a9bfc;"> Invoice</h4>
     <table class="table">
         <tbody style="color: gray;">
             @foreach($bookings as $booking)
@@ -41,7 +41,7 @@
         </tbody>
     </table>
     @endforeach
-    <div style="color: #8B0000; font-weight:bold; font-size: 16px">
+    <div style="color: #1a9bfc; font-weight:bold; font-size: 16px">
                         Datail Suku Cadang dan Tipe Servis
                         </div><br>
                         <table class="table table-striped">

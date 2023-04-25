@@ -14,7 +14,7 @@
                             <input type="text" name="name" placeholder="Cari..." class="form-control bg-light" style="color: black;" >
                         </form>
                             <div class="input-group-prepend">
-                                <span class="input-group-text"  style="background-color: #8B0000;" id="basic-addon1">
+                                <span class="input-group-text"  style="background-color: #1a9bfc;" id="basic-addon1">
                                     <i class="fas fa-search" style="color: white;"></i>
                                 </span>
                             </div>

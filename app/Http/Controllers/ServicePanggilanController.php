@@ -66,6 +66,7 @@ class ServicePanggilanController extends Controller
         $service->jenis_mobil = $request->jenis_mobil;
         $service->montir = $request->montir;
         $service->service_date = now();
+        $service->status_service = 'service panggilan';
         $service->photo = $request->photo;
         $service->maps = $request->maps;
         $service->address_sp = $request->address_sp;
@@ -73,6 +74,6 @@ class ServicePanggilanController extends Controller
         $service->expired_at = Carbon::now()->addDays(1); // menambah 1 hari kedepan
         $service->save();
         alert()->success('Terimakasih sudah booking kerusakan berat, harap menunggu konfirmasi dari Admin');
-        return redirect('historybookingpanggilan');
+        return redirect('history');
     }
 }

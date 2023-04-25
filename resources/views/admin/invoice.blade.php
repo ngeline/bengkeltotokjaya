@@ -7,7 +7,7 @@
     <!-- ============================================================== -->
     <div class="page-breadcrumb">
         <div class="row align-items-center">
-            <div class="col-6">
+            <!-- <div class="col-6">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb mb-0 d-flex align-items-center">
                       <li class="breadcrumb-item"><a href="index.html" class="link"><i class="mdi mdi-home-outline fs-4"></i></a></li>
@@ -15,7 +15,7 @@
                     </ol>
                   </nav>
                 <h1 class="mb-0 fw-bold">Basic Table</h1> 
-            </div>
+            </div> -->
             
         </div>
     </div>
@@ -43,9 +43,10 @@
                 </center>
                 <hr>
                 <h6 style="color: gray;">No. Antrian &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;: {{ $booking->no_antrian }} <br> Nama Montir  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: {{ $booking->montir }} <br> Tanggal Servis &nbsp;: {{ $booking->service_date }} <br> Nama STNK   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: {{ $booking->name_stnk }}</h6>
+                <br>
                 <div class="card">
                     <div class="card-body">
-                        <h4 style="color: #8B0000;" <i class="fas fa-receipt" style="color: #8B0000; font-weight:bold"></i> Data Servis</h4>
+                        <h4 style="color:;" <i class="fas fa-receipt" style="color:; font-weight:bold"></i> Data Servis</h4>
                         <table class="table">
                             <tbody>
                                 @foreach($bookings as $booking)

@@ -11,7 +11,8 @@ class ContactController extends Controller
 {
     public function render()
     {
-        $contacts = Contact::all();
+        // $contacts = Contact::all();
+        $contacts = Contact::orderBy('created_at', 'desc')->get();
         return view('admin.contact', compact('contacts'));
     }
 

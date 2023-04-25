@@ -7,7 +7,7 @@
     <!-- ============================================================== -->
     <div class="page-breadcrumb">
         <div class="row align-items-center">
-            <div class="col-6">
+            <!-- <div class="col-6">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb mb-0 d-flex align-items-center">
                         <li class="breadcrumb-item"><a href="index.html" class="link"><i
@@ -16,7 +16,7 @@
                     </ol>
                 </nav>
                 <h1 class="mb-0 fw-bold">Basic Table</h1>
-            </div>
+            </div> -->
             
         </div>
     </div>
@@ -36,9 +36,8 @@
                         <div class="col-md-12">
                             <div class="card">
                                 <div class="card-body">
-                                    <div class="card-header py-3">
                                         <h6 class="m-0 font-weight-bold" style="color: 	#1E1E2D;">Data Suku Cadang</h6>
-                                    </div>
+
                                     <div class="card-body">
                                         <form action="{{ route('addscari') }}" method="GET">
                                             <div class="row mb-3">
@@ -50,7 +49,7 @@
                                                     <button class="btn btn-primary" type="submit"><i
                                                             class="fa fa-search" aria-hidden="true"></i> Search</button>
                                                     <a href="/addSparepart" class="btn btn-primary"><i
-                                                            class="fa fa-refresh"></i> </a>
+                                                            class="fa fa-refresh"></i> Refresh </a>
                                                 </div>
                                         </form>
                                     </div>
