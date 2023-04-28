@@ -1,8 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<header class="item1 header margin-top-0" style="background-image: url(images/mobil.jpg);  width: 100%;
-    height: 500px; " id="section-home" data-stellar-background-ratio="0.5">
+{{-- <header class="item1 header margin-top-0" style="background-image: url(images/mobil.jpg);  width: 100%;" id="section-home" data-stellar-background-ratio="0.5">
 	<div class="wrapper">
 		<div class="container">
 			<div class="row intro-text align-items-center justify-content-center">
@@ -20,15 +19,37 @@
 			</div>
 		</div>
 	</div>
-</header>
+</header> --}}
+
+<div class="section section-hero section-shaped"
+        style="background-image: url({{ asset('images/mobil.jpg') }}); width: 100%">
+        <div class="shape shape-style-3 shape-default">
+        </div>
+        <div class="page-header">
+            <div class="container shape-container d-flex align-items-center py-lg">
+                <div class="col">
+                    <div class="row align-items-center justify-content-center">
+                        <div class="col-lg-12 text-center">
+                            <h1 class="site-heading site-animate" style="font-size: 47px;">
+                                <strong class="d-block" data-scrollreveal="enter top over 1.5s after 0.1s">Hubungi kami</strong>
+                            </h1>
+
+                            <h3 style="font-size: 18px; font-family: system-ui; font-weight: normal; color: white"> Terima kasih telah mengunjungi situs web kami, jika Anda memiliki pertanyaan, Anda dapat. Terima kasih telah mengunjungi situs web kami, jika Anda memiliki pertanyaan, Anda dapat
+                                hubungi kami di nomor telepon 0852-3577-5571 atau isi form berikut: </h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 <!-- CONTENT =============================-->
 <section class="item content">
 	<div class="container toparea">
 		<div class="underlined-title">
-			<div class="editContent">
+			<div class="editContent mt-5">
 				<h1 class="text-center latestitems">Kirim disini</h1>
 			</div>
-			<div class="wow-hr type_short">
+			<div class="wow-hr type_short mt-3">
 				<span class="wow-hr-h">
 					<i class="fa fa-star"></i>
 					<i class="fa fa-star"></i>
@@ -37,7 +58,7 @@
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-md-12 mt-2">
+			<div class="col-md-12 mt-3">
 				<form method="POST" action="{{ url('contact') }}/{{ auth()->user()->id }}" id="contactform">
 					{{ csrf_field() }}
 					<div class="form">
@@ -57,15 +78,15 @@
 							</span>
 							@enderror
 						</div>
-						<div class="col">
-							<textarea class="place @error('pesan') is-invalid @enderror" name="pesan" rows="7" placeholder="Pesan..."></textarea>
+						<div class="col-md-12">
+							<textarea class="place form-control @error('pesan') is-invalid @enderror" name="pesan" rows="7" placeholder="Pesan..."></textarea>
 							@error('pesan')
 							<span class="invalid-feedback" role="alert">
 								<strong>{{ $message }}</strong>
 							</span>
 							@enderror
+                            <input type="submit" id="submit" class="clearfix btn btn-info mt-3" value="Kirim">
 						</div>
-						<input type="submit" id="submit" class="clearfix btn" value="Kirim">
 					</div>
 				</form>
 				<br>
@@ -90,7 +111,7 @@
 										</tr>
 										<tr>
 											@if($contact->reply == null)
-											<td style="color:#1a9bfc; font-size: 13px;">Belum ada balasan</td>	
+											<td style="color:#1a9bfc; font-size: 13px;">Belum ada balasan</td>
 											@else
 											<td style="color:#1a9bfc; font-size: 13px;">Admin Reply : {{ $contact->reply }}</td>
 											@endif
