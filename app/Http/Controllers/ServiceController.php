@@ -15,6 +15,8 @@ use App\Models\JenisService;
 
 class ServiceController extends Controller
 {
+    protected $status_service = "booking service";
+
     public function __construct()
     {
         $this->middleware('auth');
@@ -30,23 +32,26 @@ class ServiceController extends Controller
     }
 
 
-    private function getNoAntrian(){
+    private function getNoAntrian()
+    {
         //Set Default Tanggal Sekarang (Indonesia)
         date_default_timezone_set("Asia/Jakarta");
 
         //Panjang Data Berdasarkan Hari Ini
-        $jumlah_hari_ini = Service::where('tanggal',date('Y-m-d'))
+        $jumlah_hari_ini = Service::where('tanggal', date('Y-m-d'))
+            ->where('status_service', $this->status_service)
             ->count();
 
         //Panjang Data Hari Ini Ditambah 1
         $noAntrian = $jumlah_hari_ini + 1;
         $rubahTipe = strval($noAntrian);
-        $hasil = "A $rubahTipe";    
+        $hasil = "A $rubahTipe";
 
         return $hasil;
     }
 
-    private function getTanggal(){
+    private function getTanggal()
+    {
         date_default_timezone_set("Asia/Jakarta");
         $tanggal = date('Y-m-d');
 
@@ -59,7 +64,7 @@ class ServiceController extends Controller
 
         $user = User::where('id', $id)->first();
         $service = Service::where('user_id', $user->id)->first();
-        $service= new Service();
+        $service = new Service();
         $service->user_id = $user->id;
         $service->no_antrian = $this->getNoAntrian();
         $service->tanggal = $this->getTanggal();
@@ -68,7 +73,7 @@ class ServiceController extends Controller
         $service->nama_mobil = $request->nama_mobil;
         $service->jenis_mobil = $request->jenis_mobil;
         $service->service_date = now();
-        $service->status_service = 'booking service';
+        $service->status_service = $this->status_service;
         $service->complaint = $request->complaint;
         $service->expired_at = Carbon::now()->addDays(1); // menambah 1 hari kedepan
         $service->save();

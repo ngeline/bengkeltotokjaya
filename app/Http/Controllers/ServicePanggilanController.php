@@ -14,6 +14,8 @@ use App\Transformers\AntrianTransformer;
 
 class ServicePanggilanController extends Controller
 {
+    protected $status_service = "service panggilan";
+
     public function __construct()
     {
         $this->middleware('auth');
@@ -27,23 +29,26 @@ class ServicePanggilanController extends Controller
     }
 
 
-    private function getNoAntrian(){
+    private function getNoAntrian()
+    {
         //Set Default Tanggal Sekarang (Indonesia)
         date_default_timezone_set("Asia/Jakarta");
 
         //Panjang Data Berdasarkan Hari Ini
-        $jumlah_hari_ini = Service::where('tanggal',date('Y-m-d'))
+        $jumlah_hari_ini = Service::where('tanggal', date('Y-m-d'))
+            ->where('status_service', $this->status_service)
             ->count();
 
         //Panjang Data Hari Ini Ditambah 1
         $noAntrian = $jumlah_hari_ini + 1;
         $rubahTipe = strval($noAntrian);
-        $hasil = "B $rubahTipe";    
+        $hasil = "B $rubahTipe";
 
         return $hasil;
     }
 
-    private function getTanggal(){
+    private function getTanggal()
+    {
         date_default_timezone_set("Asia/Jakarta");
         $tanggal = date('Y-m-d');
 
@@ -56,7 +61,7 @@ class ServicePanggilanController extends Controller
 
         $user = User::where('id', $id)->first();
         $service = Service::where('user_id', $user->id)->first();
-        $service= new Service();
+        $service = new Service();
         $service->user_id = $user->id;
         $service->no_antrian = $this->getNoAntrian();
         $service->tanggal = $this->getTanggal();
@@ -66,7 +71,7 @@ class ServicePanggilanController extends Controller
         $service->jenis_mobil = $request->jenis_mobil;
         $service->montir = $request->montir;
         $service->service_date = now();
-        $service->status_service = 'service panggilan';
+        $service->status_service = $this->status_service;
         $service->photo = $request->photo;
         $service->maps = $request->maps;
         $service->address_sp = $request->address_sp;
