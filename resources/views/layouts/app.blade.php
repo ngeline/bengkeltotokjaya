@@ -22,6 +22,8 @@
     <link href="{{ asset('argon-design-system-master') }}/assets/css/nucleo-svg.css" rel="stylesheet" />
     <!-- CSS Files -->
     <link href="{{ asset('argon-design-system-master') }}/assets/css/argon-design-system.css?v=1.2.2" rel="stylesheet" />
+    <link href="{{ asset('assets/datatable') }}/datatables.min.css" rel="stylesheet" />
+    <link href="{{ asset('assets') }}/custom.css" rel="stylesheet" />
 </head>
 
 <body class="index-page">
@@ -68,7 +70,7 @@
                         </a>
                         <div class="dropdown-menu dropdown-menu-xl">
                             <div class="dropdown-menu-inner">
-                                <a href="https://demos.creative-tim.com/argon-design-system/docs/getting-started/overview.html"
+                                <a href="{{ route('layanan') }}"
                                     class="media d-flex align-items-center">
                                     <div class="icon icon-shape bg-gradient-primary rounded-circle text-white">
                                         <i class="ni ni-spaceship"></i>
@@ -121,7 +123,7 @@
                                 <a href="{{ url('serviceHistory') }}"
                                     class="media d-flex align-items-center">
                                     <div class="icon icon-shape bg-gradient-warning rounded-circle text-white">
-                                        <i class="ni ni-single-copy-04"></i> 
+                                        <i class="ni ni-single-copy-04"></i>
                                     </div>
                                     <div class="media-body ml-3">
                                         <h5 class="heading text-warning mb-md-1">Riwayat Service</h5>
@@ -151,7 +153,7 @@
                         <div class="dropdown-menu">
                             <a href="{{ asset('argon-design-system-master') }}/examples/landing.html" class="dropdown-item">Status Service</a>
                             <a href="{{ asset('argon-design-system-master') }}/examples/profile.html" class="dropdown-item">Riwayat Service</a>
-                            
+
                         </div>
                     </li> -->
                 </ul>
@@ -205,7 +207,7 @@
                         <div class="dropdown-menu dropdown-menu-right" id="notifikasi" aria-labelledby="navbarDropdown">
                         </div>
                     </li> -->
-                    
+
                     <!-- <div class="topbar-divider d-none d-sm-block"></div> -->
 
                     <li class="nav-item dropdown">
@@ -242,7 +244,7 @@
 
 
     <footer class="footer has-cards">
-        
+
         <div class="container">
             <div class="row row-grid align-items-center my-md">
                 <div class="col-lg-6">
@@ -276,23 +278,23 @@
             <div class="row align-items-center justify-content-md-between">
                 <div class="col-md-6">
                     <div class="copyright">
-                        &copy; 2020 <a href="" target="_blank">Creative Tim</a>.
+                        &copy; 2023 <a href="javascript:void(0)">Auto Service</a>.
                     </div>
                 </div>
                 <div class="col-md-6">
                     <ul class="nav nav-footer justify-content-end">
                         <li class="nav-item">
-                            <a href="" class="nav-link" target="_blank">Creative Tim</a>
+                            <a href="{{ route('home') }}" class="nav-link" target="_blank">Auto Service</a>
                         </li>
                         <li class="nav-item">
-                            <a href="" class="nav-link" target="_blank">About Us</a>
+                            <a href="{{ route('about') }}" class="nav-link" target="_blank">About Us</a>
                         </li>
-                        <li class="nav-item">
+                        {{-- <li class="nav-item">
                             <a href="" class="nav-link" target="_blank">Blog</a>
                         </li>
                         <li class="nav-item">
                             <a href="" class="nav-link" target="_blank">License</a>
-                        </li>
+                        </li> --}}
                     </ul>
                 </div>
             </div>
@@ -312,10 +314,12 @@
     <script src="{{ asset('argon-design-system-master') }}/assets/js/plugins/moment.min.js"></script>
     <script src="{{ asset('argon-design-system-master') }}/assets/js/plugins/datetimepicker.js" type="text/javascript"></script>
     <script src="{{ asset('argon-design-system-master') }}/assets/js/plugins/bootstrap-datepicker.min.js"></script>
+    <script src="{{ asset('assets/datatable') }}/datatables.min.js"></script>
     <!-- Control Center for Argon UI Kit: parallax effects, scripts for the example pages etc -->
     <!--  Google Maps Plugin    -->
     <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
     <script src="{{ asset('argon-design-system-master') }}/assets/js/argon-design-system.min.js?v=1.2.2" type="text/javascript"></script>
+    @stack('js')
     <script>
         function scrollToDownload() {
 

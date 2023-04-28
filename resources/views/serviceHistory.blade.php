@@ -1,29 +1,33 @@
 @extends('layouts.app')
 
 @section('content')
-<header class="item1 header margin-top-0" style="background-image: url(images/mobil.jpg);  width: 100%;
-    height: 500px; " id="section-home" data-stellar-background-ratio="0.5">
-    <div class="wrapper">
-        <div class="container">
-            <div class="row intro-text align-items-center justify-content-center">
-                <div class="col-md-10 animated tada">
-                    <center>
-                        <h1 class="site-heading site-animate" style="font-size: 47px;">
-                            <strong class="d-block" data-scrollreveal="enter top over 1.5s after 0.1s">Riwayat Servis</strong>
-                        </h1><br><br><br><br><br><br><br>
-                    </center>
+<div class="section section-hero section-shaped"
+        style="background-image: url({{ asset('images/mobil.jpg') }}); width: 100%">
+        <div class="shape shape-style-3 shape-default">
+        </div>
+        <div class="page-header">
+            <div class="container shape-container d-flex align-items-center py-lg">
+                <div class="col">
+                    <div class="row align-items-center justify-content-center">
+                        <div class="col-lg-12 text-center">
+                            <h1 class="site-heading site-animate" style="font-size: 47px;">
+                                <strong class="d-block" data-scrollreveal="enter top over 1.5s after 0.1s">Riwayat Service</strong>
+                            </h1>
+
+                            <h3 style="font-size: 18px; font-family: system-ui; font-weight: normal; color: white"> Anda dapat melihat riwayat service yang sudah terselesaikan pada halaman ini. </h3>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</header>
+</div>
 <section class="item content">
     <div class="container toparea1">
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-body">
-                        <table class="table table-striped">
+                        <table class="table table-striped" id="datatable">
                             <thead>
                                 <tr class="text-center">
                                     <th>No</th>
@@ -43,7 +47,7 @@
                                     <td style="color: #444;">{{ $booking->status }}</td>
                                     <td style="color: #444;">
                                         <!-- <a href="{{ url('invoice') }}/{{ $booking->id }}" class="btn btn-primary"><i class="fa fa-info"></i> Detail </a> -->
-                                        <a href="{{ url('serviceHistory') }}/{{ $booking->id }}" class="btn btn-primary"><i class="fa fa-info"></i> Detail Riwayat Servis </a>
+                                        <a href="{{ url('serviceHistory') }}/{{ $booking->id }}" class="btn btn-primary btn-sm"><i class="fa fa-info"></i> Detail Riwayat Servis </a>
                                     </td>
                                 </tr>
                                 @endforeach
@@ -56,3 +60,10 @@
     </div>
 </section><br><br>
 @endsection
+@push('js')
+    <script>
+        $('#datatable').DataTable({
+            responsive: true
+        });
+    </script>
+@endpush

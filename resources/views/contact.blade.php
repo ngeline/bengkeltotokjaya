@@ -41,7 +41,7 @@
                 </div>
             </div>
         </div>
-    </div>
+</div>
 <!-- CONTENT =============================-->
 <section class="item content">
 	<div class="container toparea">

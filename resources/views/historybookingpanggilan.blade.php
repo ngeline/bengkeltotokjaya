@@ -23,7 +23,7 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-body">
-                        <table class="table table-striped">
+                        <table class="table table-striped" id="datatable">
                             <thead>
                                 <tr class="text-center">
                                     <th>No</th>
@@ -75,3 +75,10 @@
     </div>
 </section><br><br>
 @endsection
+@push('js')
+    <script>
+        $('#datatable').DataTable({
+            responsive: true
+        });
+    </script>
+@endpush
