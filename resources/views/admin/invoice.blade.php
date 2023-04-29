@@ -14,9 +14,9 @@
                       <li class="breadcrumb-item active" aria-current="page">Basic Table</li>
                     </ol>
                   </nav>
-                <h1 class="mb-0 fw-bold">Basic Table</h1> 
+                <h1 class="mb-0 fw-bold">Basic Table</h1>
             </div> -->
-            
+
         </div>
     </div>
     <!-- ============================================================== -->
@@ -25,7 +25,7 @@
     <!-- ============================================================== -->
     <!-- Container fluid  -->
     <!-- ============================================================== -->
-    
+
 
     <div class="container-fluid">
         <div class="row">
@@ -78,10 +78,10 @@
             <div class="col-md-12">
                 <div class="form-group row mb-0 mt-0">
                     <div class="col-md-12 offset-md-0">
-                        <a href="/addSparepart" class="btn" style=" width: 200px;font-weight: bold; font-size: 16px; background:  #1E1E2D; color: white;">
+                        <a href="/addSparepart/{{ $booking->id }}" class="btn" style=" width: 200px;font-weight: bold; font-size: 16px; background:  #1E1E2D; color: white;">
                             Suku Cadang
                         </a>
-                        <a href="/addTypeService" class="btn" style=" width: 200px;font-weight: bold; font-size: 16px; background: #1E1E2D; color: white;">
+                        <a href="/addTypeService/{{ $booking->id }}" class="btn" style=" width: 200px;font-weight: bold; font-size: 16px; background: #1E1E2D; color: white;">
                             Tipe Servis
                         </a>
                     </div>

@@ -152,12 +152,14 @@ Route::group(['middleware' => ['web', 'auth', 'cekrole']], function () { // web 
         Route::post('bookingdata', [App\Http\Controllers\Admin\BookingDataController::class, 'update']);
 
         // Booking Service dan Invoice
-        Route::get('/addSparepart', [App\Http\Controllers\Admin\InvoiceController::class, 'render']);
-        Route::get('/addTypeService', [App\Http\Controllers\Admin\InvoiceController::class, 'renderService']);
-        Route::post('/sparepart/need/{id}', [App\Http\Controllers\Admin\InvoiceController::class, 'order']);
-        Route::post('/TypeService/{id}', [App\Http\Controllers\Admin\InvoiceController::class, 'addService']);
+        Route::get('/addSparepart/{idService}', [App\Http\Controllers\Admin\InvoiceController::class, 'render']);
+        Route::get('/addTypeService/{idService}', [App\Http\Controllers\Admin\InvoiceController::class, 'renderService']);
+        Route::post('/sparepart/need/{idSparepart}/{idService}', [App\Http\Controllers\Admin\InvoiceController::class, 'order']);
+        Route::post('/TypeService/{idJenisService}/{idService}', [App\Http\Controllers\Admin\InvoiceController::class, 'addService']);
+
         Route::delete('sparepartDelete/{id}', [App\Http\Controllers\Admin\InvoiceController::class, 'delete']);
         Route::delete('serviceDelete/{id}', [App\Http\Controllers\Admin\InvoiceController::class, 'deleteJenis']);
+
         Route::post('InvoiceCompleted/{id}', [App\Http\Controllers\Admin\InvoiceController::class, 'konfirmasi']);
 
         //  Pesan

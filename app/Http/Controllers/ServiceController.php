@@ -10,8 +10,11 @@ use Alert;
 use Carbon\Carbon;
 use App\Models\Service;
 use App\Models\Antrian;
+use App\Models\DetailJenisService;
+use App\Models\DetailService;
 use App\Transformers\AntrianTransformer;
 use App\Models\JenisService;
+use App\Models\Sparepart;
 
 class ServiceController extends Controller
 {
@@ -77,6 +80,30 @@ class ServiceController extends Controller
         $service->complaint = $request->complaint;
         $service->expired_at = Carbon::now()->addDays(1); // menambah 1 hari kedepan
         $service->save();
+
+        $jenisServices = JenisService::where('id', $request->service)->first();
+
+        //cek Servicedetail
+        $check_jenisService_detail = DetailJenisService::where('jenisService_id', $jenisServices->id)
+            ->where('service_id', $service->id)
+            ->first();
+
+        if (empty($check_jenisService_detail)) {
+            $service_detail = new DetailJenisService();
+            $service_detail->service_id = $service->id;
+            $service_detail->jenisService_id = $jenisServices->id;
+            $service_detail->serviceName = $jenisServices->name;
+            $service_detail->price = $jenisServices->price;
+            $service_detail->save();
+
+        }
+
+        //jumlah total
+        $service = Service::where('id', $service->id)->first();
+        $service->priceService = $service->priceService + $jenisServices->price;
+        $service->total_price = $service->total_price + $jenisServices->price;
+        $service->update();
+
         alert()->success('Terimakasih sudah booking');
         return redirect('history');
     }

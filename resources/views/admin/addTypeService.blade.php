@@ -14,7 +14,7 @@
                       <li class="breadcrumb-item active" aria-current="page">Basic Table</li>
                     </ol>
                   </nav>
-                <h1 class="mb-0 fw-bold">Basic Table</h1> 
+                <h1 class="mb-0 fw-bold">Basic Table</h1>
             </div> -->
 
         </div>
@@ -31,10 +31,6 @@
         <div class="row">
             <section class="item content mb-5">
                 <div class="container toparea1">
-                    <!-- <div class="col-md-12">
-                        <a href="{{ url('bookingdata/invoice') }}/{{ $service->id }}" class="btn"
-                            style=" background:  #4D73DD; color: white;"><i class="fa fa-arrow-left"></i> Kembali</a>
-                    </div> -->
                     <br>
                     <div class="row">
                         <div class="col-md-12">
@@ -60,7 +56,7 @@
                                                 </td>
                                                 <td>
                                                     <form method="post"
-                                                        action="{{ url('/TypeService') }}/{{ $jenisService->id }}">
+                                                        action="{{ url('/TypeService') }}/{{ $jenisService->id }}/{{ $id_service }}">
                                                         @csrf
                                                         <button type="submit" class="btn" align="left"
                                                             style="background: #8B0000; color: white;">Add</button>

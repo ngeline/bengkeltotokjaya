@@ -21,6 +21,8 @@ use Barryvdh\DomPDF\Facade as PDF;
 
 class BookingDataController extends Controller
 {
+    protected $status_service = "booking service";
+
     public function index(){
         $services =  DB::table('services')
         ->join('users', 'services.user_id', '=', 'users.id')
@@ -109,11 +111,11 @@ class BookingDataController extends Controller
     	return view('admin.seePayment', compact('service', 'payments','booking'));
     }
 
-    
+
     // cari booking data
     public function bookingcari(Request $request)
     {
-      
+
         if (empty($request->all())) {
             $services =  DB::table('services')
             ->join('users', 'services.user_id', '=', 'users.id')
@@ -176,11 +178,11 @@ class BookingDataController extends Controller
             $service = Service::where('id', $id)->update(['status'=> 'Pembayaran diverifikasi']);
         }
         return redirect ('bookingdata');
-    
+
     }
 
     public function savePayment(Request $request, $id){
-        
+
         $service = Service::where('id', $id)->first();
         $service->status = $request->status;
         $service->update();
@@ -245,12 +247,13 @@ class BookingDataController extends Controller
 
         //Panjang Data Berdasarkan Hari Ini
         $jumlah_hari_ini = Service::where('tanggal',date('Y-m-d'))
+            ->where('status_service', $this->status_service)
             ->count();
 
         //Panjang Data Hari Ini Ditambah 1
         $noAntrian = $jumlah_hari_ini + 1;
         $rubahTipe = strval($noAntrian);
-        $hasil = "A $rubahTipe";    
+        $hasil = "A $rubahTipe";
 
         return $hasil;
     }
@@ -277,6 +280,7 @@ class BookingDataController extends Controller
         $service->nama_mobil = $request->nama_mobil;
         $service->jenis_mobil = $request->jenis_mobil;
         $service->montir = $request->montir;
+        $service->status_service = 'booking service';
         $service->service_date = now();
         $service->complaint = $request->complaint;
         $service->expired_at = Carbon::now()->addDays(1); // menambah 1 hari kedepan
