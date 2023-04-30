@@ -49,17 +49,52 @@
 			<div class="editContent mt-5">
 				<h1 class="text-center latestitems">Kirim disini</h1>
 			</div>
-			<div class="wow-hr type_short mt-3">
+			<!-- <div class="wow-hr type_short mt-3">
 				<span class="wow-hr-h">
 					<i class="fa fa-star"></i>
 					<i class="fa fa-star"></i>
 					<i class="fa fa-star"></i>
 				</span>
-			</div>
+			</div> -->
 		</div>
 		<div class="row">
 			<div class="col-md-12 mt-3">
-				<form method="POST" action="{{ url('contact') }}/{{ auth()->user()->id }}" id="contactform">
+				
+				<br>
+				<br>
+
+
+				<div class="row">
+
+					<!-- Content Column -->
+					<div class="col-lg-12 mb-4">
+
+						<!-- Project Card Example -->
+						<div class="card shadow mb-4">
+							<div class="card-header py-3 " style="background-color: #333">
+								<h6 class="m-0 font-weight-bold" style="color: 	#fff;">Riwayat chat</h6>
+							</div>
+							<div class="card-body">
+								<table class="table">
+									<tbody>
+										@foreach($contacts as $contact)
+										<tr>
+											<td style="font-size: 13px; color: #444;">{{ $contact->pesan }}</td>
+											<td style="font-size: 13px; color: #444; text-align:right;">{{ $contact->created_at }}</td>
+										</tr>
+										<tr>
+											@if($contact->reply == null)
+											<td style="color:#1a9bfc; font-size: 13px;">Belum ada balasan</td>
+											@else
+											<td style="color:#1a9bfc; font-size: 13px;">Admin Reply : {{ $contact->reply }}</td>
+											@endif
+										</tr>
+										@endforeach
+									</tbody>
+								</table>
+							<!--  -->
+							</div>
+							<form method="POST" action="{{ url('contact') }}/{{ auth()->user()->id }}" id="contactform">
 					{{ csrf_field() }}
 					<div class="form">
 						<div class="col">
@@ -90,44 +125,12 @@
 					</div>
 				</form>
 				<br>
-				<br>
-				<div class="row">
-
-					<!-- Content Column -->
-					<div class="col-lg-6 mb-4">
-
-						<!-- Project Card Example -->
-						<div class="card shadow mb-4">
-							<div class="card-header py-3 " style="background-color: #333">
-								<h6 class="m-0 font-weight-bold" style="color: 	#fff;">Riwayat chat</h6>
-							</div>
-							<div class="card-body">
-								<table class="table">
-									<tbody>
-										@foreach($contacts as $contact)
-										<tr>
-											<td style="font-size: 13px; color: #444;">{{ $contact->pesan }}</td>
-											<td style="font-size: 13px; color: #444; text-align:right;">{{ $contact->created_at }}</td>
-										</tr>
-										<tr>
-											@if($contact->reply == null)
-											<td style="color:#1a9bfc; font-size: 13px;">Belum ada balasan</td>
-											@else
-											<td style="color:#1a9bfc; font-size: 13px;">Admin Reply : {{ $contact->reply }}</td>
-											@endif
-										</tr>
-										@endforeach
-									</tbody>
-								</table>
-							<!--  -->
-							</div>
 						</div>
 
 					</div>
 
-					<div class="col-lg-6 mb-4">
+					<!-- <div class="col-lg-6 mb-4">
 
-						<!-- Illustrations -->
 						<div class="card shadow mb-4">
 							<div class="card-header py-3" style="background-color: 	#333;">
 								<h6 class="m-0 font-weight-bold" style="color: 	#fff;">Tentang bengkel delta</h6>
@@ -143,7 +146,7 @@
 								</p>
 							</div>
 						</div>
-					</div>
+					</div> -->
 				</div>
 			</div>
 		</div>

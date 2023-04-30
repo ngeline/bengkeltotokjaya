@@ -17,7 +17,7 @@
     <link rel="canonical" href="https://www.wrappixel.com/templates/Flexy-admin-lite/" />
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16"
-        href="{{ asset('flexy-bootstrap-lite') }}/assets/images/favicon.png">
+        href="{{ asset('argon-design-system-master') }}/assets/img/brand/logo.png">
     <!-- Custom CSS -->
     <link href="{{ asset('flexy-bootstrap-lite') }}/assets/libs/chartist/dist/chartist.min.css" rel="stylesheet">
     <link

@@ -25,8 +25,8 @@
   <!-- Navbar -->
   <nav id="navbar-main" class="navbar navbar-main navbar-expand-lg navbar-transparent navbar-light py-2">
     <div class="container">
-      <a class="navbar-brand mr-lg-5" href="{{ asset('argon-design-system-master') }}/index.html">
-        <img src="{{ asset('argon-design-system-master') }}/assets/img/brand/white.png">
+      <a class="navbar-brand mr-lg-5" href="/home">
+        <img src="{{ asset('argon-design-system-master') }}/assets/img/brand/logo.png">
       </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar_global" aria-controls="navbar_global" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -49,7 +49,7 @@
         </div>
         <ul class="navbar-nav navbar-nav-hover align-items-lg-center">
             <li class="nav-item">
-                        <a href="#" class="nav-link" href="#" role="button">
+                        <a href="/home" class="nav-link" href="/home" role="button">
                             <i class="ni ni-collection d-lg-none"></i>
                             <span class="nav-link-inner--text">Beranda</span>
                         </a>
@@ -89,7 +89,7 @@
             </div> --}}
             <div class="card-body px-lg-5 py-lg-5">
               <div class="text-center text-muted mb-4">
-                <small>Or sign in with credentials</small>
+                <h2>LOGIN</h2>
               </div>
               <form role="form" method="POST" action="{{ route('login') }}">
                 @csrf
@@ -131,7 +131,7 @@
           </div>
           <div class="row mt-3">
             <div class="col-6">
-              <a href="#" class="text-light"><small>Lupa Password?</small></a>
+              <!-- <a href="#" class="text-light"><small>Lupa Password?</small></a> -->
             </div>
             <div class="col-6 text-right">
               <a href="{{ route('register') }}" class="text-light"><small>Buat akun baru</small></a>
@@ -143,26 +143,6 @@
   </section>
   <footer class="footer">
     <div class="container">
-      <div class="row row-grid align-items-center mb-5">
-        <div class="col-lg-6">
-          <h3 class="text-primary font-weight-light mb-2">Thank you for supporting us!</h3>
-          <h4 class="mb-0 font-weight-light">Let's get in touch on any of these platforms.</h4>
-        </div>
-        <div class="col-lg-6 text-lg-center btn-wrapper">
-          <button target="_blank" href="https://twitter.com/creativetim" rel="nofollow" class="btn btn-icon-only btn-twitter rounded-circle" data-toggle="tooltip" data-original-title="Follow us">
-            <span class="btn-inner--icon"><i class="fa fa-twitter"></i></span>
-          </button>
-          <button target="_blank" href="https://www.facebook.com/CreativeTim/" rel="nofollow" class="btn-icon-only rounded-circle btn btn-facebook" data-toggle="tooltip" data-original-title="Like us">
-            <span class="btn-inner--icon"><i class="fab fa-facebook"></i></span>
-          </button>
-          <button target="_blank" href="https://dribbble.com/creativetim" rel="nofollow" class="btn btn-icon-only btn-dribbble rounded-circle" data-toggle="tooltip" data-original-title="Follow us">
-            <span class="btn-inner--icon"><i class="fa fa-dribbble"></i></span>
-          </button>
-          <button target="_blank" href="https://github.com/creativetimofficial" rel="nofollow" class="btn btn-icon-only btn-github rounded-circle" data-toggle="tooltip" data-original-title="Star on Github">
-            <span class="btn-inner--icon"><i class="fa fa-github"></i></span>
-          </button>
-        </div>
-      </div>
       <hr>
       <div class="row align-items-center justify-content-md-between">
         <div class="col-md-6">

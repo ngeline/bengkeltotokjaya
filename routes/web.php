@@ -69,7 +69,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/beranda', [HomeController::class, 'beranda']);
-
+Route::get('/home', [HomeController::class, 'home']);
 //login
 Route::get('/login', [LoginController::class, 'login'])->name('Login');
 
