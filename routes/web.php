@@ -232,6 +232,9 @@ Route::group(['middleware' => ['web', 'auth', 'cekrole']], function () { // web 
         // Cari
         Route::get('/carilaporantransaksipemilik', [App\Http\Controllers\Pemilik\LaporanTransaksiController::class, 'transaksi'])->name('pcari');
 
+        // Cari laporan transaksi pemilik
+        Route::post('laporantransaksi', [App\Http\Controllers\Pemilik\LaporanServiceController::class, 'index'])->name('carilaptran');
+
         // cetak excel pemilik
         Route::get('/exportexcelpemilik/{start_date}/{end_date}', [App\Http\Controllers\Pemilik\LaporanTransaksiController::class, 'laporan_excelpemilik'])->name('exportexcelpemilik');
         Route::resource('daterange', 'DateRangeController');
