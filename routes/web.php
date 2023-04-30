@@ -177,6 +177,7 @@ Route::group(['middleware' => ['web', 'auth', 'cekrole']], function () { // web 
 
         // verfikasi pembayaran bayar langsung
         Route::get('/bookingdata/update/{id}', [App\Http\Controllers\Admin\BookingDataController::class, 'bayarlangsung'])->name('bookingdata.update');
+        Route::get('/bookingpanggilan/update/{id}', [App\Http\Controllers\Admin\BookingDataController::class, 'bayarlangsungpanggilan'])->name('bookingpanggilan.update');
 
 
         // Customer Service Admin

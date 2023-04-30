@@ -21,45 +21,25 @@ use Barryvdh\DomPDF\Facade as PDF;
 
 class BookingPanggilanController extends Controller
 {
-    public function index(){
-        $services =  DB::table('services')
-        
-        ->join('users', 'services.user_id', '=', 'users.id')
-        ->select('users.name', 'services.service_date', 'services.status', 'queue', 'no_antrian','montir', 'services.id','maps','photo')
-        ->whereIn('services.status',['Menunggu diproses','Servis diproses','Servis selesai','Menunggu pembayaran','Sudah mengirim pembayaran'])
-        ->whereIn('services.status_service',['service panggilan'])
-        ->orderBy('services.created_at','desc')
-        ->paginate(10);
-        // dd($services);
+    public function index()
+    {
+        $services = DB::table('services')
+            ->join('users', 'services.user_id', '=', 'users.id')
+            ->select('users.name', 'services.service_date', 'services.status', 'queue', 'no_antrian', 'montir', 'services.id', 'maps', 'photo')
+            ->whereIn('services.status', ['Menunggu diproses', 'Servis diproses', 'Servis selesai', 'Menunggu pembayaran', 'Sudah mengirim pembayaran'])
+            ->whereIn('services.status_service', ['service panggilan'])
+            ->orderBy('services.created_at', 'desc')
+            ->paginate(10);
+
         return view('admin.bookingpanggilan', compact('services'));
-
-        // $services = ServicePanggilan::all();
-        // return view('admin.bookingpanggilan', compact('services'));
-        // dd($services);
-
-        // $services = ServicePanggilan::all();
-        // return view('admin.bookingpanggilan', compact('services'));
-
-        // $services = DB::table('servicespanggilan')
-        // ->paginate(10);
-        // return view('admin.bookingpanggilan', compact('services'));
-
-        // $services = ServicePanggilan::join('users', 'servicespanggilan.user_id', '=', 'users.id')
-        // ->select('users.name', 'servicespanggilan.service_date', 'servicespanggilan.status', 'queue', 'no_antrian','montir', 'servicespanggilan.id','maps','photo')
-        // ->whereIn('servicespanggilan.status',['Menunggu diproses','Servis diproses','Servis selesai','Menunggu pembayaran','Sudah mengirim pembayaran'])
-        // ->orderBy('servicespanggilan.created_at','desc')
-        // ->paginate(10);
-        // dd($services);
-
-    return view('admin.bookingpanggilan', compact('services'));
     }
 
     public function detail(Request $request, $id)
     {
-    	$booking = Service::where('id', $id)->first();
+        $booking = Service::where('id', $id)->first();
         $bookings = Service::where('id', $booking->id)->get();
-        $datamt = Montir::whereIn('status',['aktif'])->get();
-     	return view('admin.bookingdetail', compact('booking', 'bookings','datamt'));
+        $datamt = Montir::whereIn('status', ['aktif'])->get();
+        return view('admin.bookingdetail', compact('booking', 'bookings', 'datamt'));
     }
 
     public function edit($id)
@@ -67,9 +47,9 @@ class BookingPanggilanController extends Controller
         $booking = Service::where('id', $id)->first();
         $bookings = Service::where('id', $booking->id)->get();
         $categories = Category::all();
-        $datamt = Montir::whereIn('status',['aktif'])->get();
+        $datamt = Montir::whereIn('status', ['aktif'])->get();
 
-        return view('admin.editbookingdata', compact('bookings', 'booking', 'categories','datamt'));
+        return view('admin.editbookingdata', compact('bookings', 'booking', 'categories', 'datamt'));
     }
 
     public function update1(Request $request, $id)
@@ -106,52 +86,54 @@ class BookingPanggilanController extends Controller
         return redirect('bookingdata');
     }
 
-    public function save(Request $request, $id){
+    public function save(Request $request, $id)
+    {
 
         if ($request->status == "Servis diproses") {
-            $service = Montir::where('name', $request->montir)->update(['status'=> 'Bekerja']);
+            $service = Montir::where('name', $request->montir)->update(['status' => 'Bekerja']);
         } elseif ($request->status == "Servis selesai") {
-            $service = Montir::where('name', $request->montir)->update(['status'=> 'Aktif']);
+            $service = Montir::where('name', $request->montir)->update(['status' => 'Aktif']);
         }
         $service = Service::where('id', $id)->first();
         $service->status = $request->status;
-        $service->queue= $request->queue;
-        $service->montir= $request->montir;
+        $service->queue = $request->queue;
+        $service->montir = $request->montir;
         // dd($request, $id);
         $service->update();
         alert()->success('Input data is successfull');
         return redirect('bookingdata');
     }
 
-    public function seePayment($id){
+    public function seePayment($id)
+    {
         $service = Service::where('id', $id)->first();
         $payments = Payment::where('service_id', $service->id)->first();
         $booking = Service::where('id', $id)->first();
-    	return view('admin.seePayment', compact('service', 'payments','booking'));
+        return view('admin.seePayment', compact('service', 'payments', 'booking'));
     }
 
-    
+
     // cari booking data
     public function bookingpanggilancari(Request $request)
     {
-      
+
         if (empty($request->all())) {
-            $services =  DB::table('services')
-            ->join('users', 'services.user_id', '=', 'users.id')
-            ->select('users.name', 'services.service_date', 'services.status', 'no_antrian' ,'queue', 'montir' , 'nama_mobil', 'number_plat','services.id','total_price','photo','maps')
-            ->whereIn('services.status', ['Menunggu diproses','Servis diproses','Servis selesai','Menunggu pembayaran','Sudah mengirim pembayaran'])
-            ->orderBy('services.created_at','desc')
-            ->paginate(10);
+            $services = DB::table('services')
+                ->join('users', 'services.user_id', '=', 'users.id')
+                ->select('users.name', 'services.service_date', 'services.status', 'no_antrian', 'queue', 'montir', 'nama_mobil', 'number_plat', 'services.id', 'total_price', 'photo', 'maps')
+                ->whereIn('services.status', ['Menunggu diproses', 'Servis diproses', 'Servis selesai', 'Menunggu pembayaran', 'Sudah mengirim pembayaran'])
+                ->orderBy('services.created_at', 'desc')
+                ->paginate(10);
 
             return view('admin.bookingpanggilan', ['services' => $services]);
         } else {
-            $services =  DB::table('services')
-            ->join('users', 'services.user_id', '=', 'users.id')
-            ->select('users.name', 'services.service_date', 'services.status', 'no_antrian' , 'queue', 'montir' , 'nama_mobil', 'number_plat','services.id','total_price','photo','maps')
-            ->whereIn('services.status', ['Menunggu diproses','Servis diproses','Servis selesai','Menunggu pembayaran','Sudah mengirim pembayaran'])
-            ->whereBetween('services.tanggal', [$request->start_date, $request->end_date])
-            ->orderBy('services.created_at','desc')
-            ->paginate(10);
+            $services = DB::table('services')
+                ->join('users', 'services.user_id', '=', 'users.id')
+                ->select('users.name', 'services.service_date', 'services.status', 'no_antrian', 'queue', 'montir', 'nama_mobil', 'number_plat', 'services.id', 'total_price', 'photo', 'maps')
+                ->whereIn('services.status', ['Menunggu diproses', 'Servis diproses', 'Servis selesai', 'Menunggu pembayaran', 'Sudah mengirim pembayaran'])
+                ->whereBetween('services.tanggal', [$request->start_date, $request->end_date])
+                ->orderBy('services.created_at', 'desc')
+                ->paginate(10);
             return view('admin.bookingpanggilan', ['services' => $services, 'start_date' => $request->start_date, 'end_date' => $request->end_date]);
         }
     }
@@ -162,18 +144,18 @@ class BookingPanggilanController extends Controller
     {
         $detailservice = Service::where('id', $id)->first();
         // dd ($detailservice);
-        $payment = Payment::create(['service_id'=> $id , 'namaRek'=> Auth::user()->name, 'bank'=> '-' , 'total'=> $detailservice->total_price, 'order_date'=> Carbon::now(), 'pembayaran' => 'Pembayaran ditempat']);
+        $payment = Payment::create(['service_id' => $id, 'namaRek' => Auth::user()->name, 'bank' => '-', 'total' => $detailservice->total_price, 'order_date' => Carbon::now(), 'pembayaran' => 'Pembayaran ditempat']);
         $service = Service::where('id', $id)->first();
         // dd($service);
-        $service-> status= 'Pembayaran diverifikasi' ;
+        $service->status = 'Pembayaran diverifikasi';
         $service->update();
 
         // dd($service);
 
         // Proses notif
         // $a = Service::where('user_id', $service->user_id)->id;
-        $totalservice = Service::where('user_id', $service->user_id)->whereIn('status',['Pembayaran diverifikasi'])->get();
-        if (count($totalservice)>=10){
+        $totalservice = Service::where('user_id', $service->user_id)->whereIn('status', ['Pembayaran diverifikasi'])->get();
+        if (count($totalservice) >= 10) {
             $customerservice = new CustomerService();
             $customerservice->user_id = $service->user_id;
             $customerservice->keterangan = 'Gratis 1x layanan servis (Tune Up)';
@@ -188,20 +170,21 @@ class BookingPanggilanController extends Controller
     public function verifikasipembayaran(Request $request, $id)
     {
         if ($request->status == "Menunggu Pembayaran") {
-            $service = Service::where('id', $id)->update(['status'=> 'Menunggu pembayaran','keterangan'=> 'Transaksi Anda tidak dapat diselesaikan. Harap mengirim ulang bukti bayar asli']);
+            $service = Service::where('id', $id)->update(['status' => 'Menunggu pembayaran', 'keterangan' => 'Transaksi Anda tidak dapat diselesaikan. Harap mengirim ulang bukti bayar asli']);
             $service = Payment::where('service_id', $id)->delete();
             // $service-> keterangan = 'Transaksi Anda tidak dapat diselesaikan. Harap upload ulang bukti bayar asli' ;
             // $service = Service::create(['keterangan' => 'Transaksi Anda tidak dapat diselesaikan. Harap upload ulang bukti bayar asli']);
         } elseif ($request->status == "Sudah mengirim pembayaran") {
             $service = 'Pembayaran diverifikasi';
-            $service = Service::where('id', $id)->update(['status'=> 'Pembayaran diverifikasi']);
+            $service = Service::where('id', $id)->update(['status' => 'Pembayaran diverifikasi']);
         }
-        return redirect ('bookingdata');
-    
+        return redirect('bookingdata');
+
     }
 
-    public function savePayment(Request $request, $id){
-        
+    public function savePayment(Request $request, $id)
+    {
+
         $service = Service::where('id', $id)->first();
         $service->status = $request->status;
         $service->update();
@@ -230,12 +213,11 @@ class BookingPanggilanController extends Controller
             $service_details = DetailService::where('service_id', $booking->id)->get();
         }
         $detailJenis = [];
-        if(!empty($booking))
-        {
-            $detailJenis  = DetailJenisService::where('service_id', $booking->id)->get();
+        if (!empty($booking)) {
+            $detailJenis = DetailJenisService::where('service_id', $booking->id)->get();
 
         }
-        $pdf = PDF::loadview('invoice_pdf', ['booking' => $booking, 'bookings' => $bookings, 'jenisServices' => $jenisServices, 'categories'=>$categories, 'service_details'=>$service_details, 'detailJenis'=>$detailJenis])->setPaper('a4', 'portrait');
+        $pdf = PDF::loadview('invoice_pdf', ['booking' => $booking, 'bookings' => $bookings, 'jenisServices' => $jenisServices, 'categories' => $categories, 'service_details' => $service_details, 'detailJenis' => $detailJenis])->setPaper('a4', 'portrait');
         return $pdf->stream();
     }
 
@@ -245,7 +227,7 @@ class BookingPanggilanController extends Controller
         $service = Service::where('id', $id)->first();
         $service->delete();
 
-        return redirect()->back()->with('success', 'Berhasil Menghapus data laporan atas nama '.$service->user_id);
+        return redirect()->back()->with('success', 'Berhasil Menghapus data laporan atas nama ' . $service->user_id);
     }
 
 
@@ -254,29 +236,31 @@ class BookingPanggilanController extends Controller
 
     public function tambahdatabooking()
     {
-        $user = User::whereIn('role_id',['pelanggan','non-aktif'])->get();
-        $datamt = Montir::whereIn('status',['aktif'])->get();
+        $user = User::whereIn('role_id', ['pelanggan', 'non-aktif'])->get();
+        $datamt = Montir::whereIn('status', ['aktif'])->get();
 
-        return view('admin.tambahbookingservice', ['categories' => Category::all(),'datamt'=> $datamt, 'user' => $user]);
+        return view('admin.tambahbookingservice', ['categories' => Category::all(), 'datamt' => $datamt, 'user' => $user]);
     }
 
-    private function getNoAntrian(){
+    private function getNoAntrian()
+    {
         //Set Default Tanggal Sekarang (Indonesia)
         date_default_timezone_set("Asia/Jakarta");
 
         //Panjang Data Berdasarkan Hari Ini
-        $jumlah_hari_ini = Service::where('tanggal',date('Y-m-d'))
+        $jumlah_hari_ini = Service::where('tanggal', date('Y-m-d'))
             ->count();
 
         //Panjang Data Hari Ini Ditambah 1
         $noAntrian = $jumlah_hari_ini + 1;
         $rubahTipe = strval($noAntrian);
-        $hasil = "B $rubahTipe";    
+        $hasil = "B $rubahTipe";
 
         return $hasil;
     }
 
-    private function getTanggal(){
+    private function getTanggal()
+    {
         date_default_timezone_set("Asia/Jakarta");
         $tanggal = date('Y-m-d');
 
@@ -289,7 +273,7 @@ class BookingPanggilanController extends Controller
 
         $user = User::where('id', $id)->first();
         $service = ServicePanggilan::where('user_id', $user->id)->first();
-        $service= new Service();
+        $service = new Service();
         $service->user_id = $request->user;
         $service->no_antrian = $this->getNoAntrian();
         $service->tanggal = $this->getTanggal();
@@ -307,7 +291,7 @@ class BookingPanggilanController extends Controller
         $service->save();
 
 
-        Montir::where('name', $request->montir)->update(['status'=> 'Bekerja']);
+        Montir::where('name', $request->montir)->update(['status' => 'Bekerja']);
         alert()->success('Tambah Data Service Berhasil!!!');
         return redirect('bookingdata');
     }

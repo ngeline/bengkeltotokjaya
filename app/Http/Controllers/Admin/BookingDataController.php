@@ -98,10 +98,9 @@ class BookingDataController extends Controller
         $service->status = $request->status;
         $service->queue= $request->queue;
         $service->montir= $request->montir;
-        // dd($request, $id);
         $service->update();
         alert()->success('Input data is successfull');
-        return redirect('bookingdata');
+        return redirect('bookingpanggilanadmin');
     }
 
     public function seePayment($id){
@@ -164,6 +163,33 @@ class BookingDataController extends Controller
 
         alert()->success('Bayar langsung sukses!');
         return redirect('bookingdata');
+    }
+
+    public function bayarlangsungpanggilan(Request $request, $id)
+    {
+        $detailservice = Service::where('id', $id)->first();
+        // dd ($detailservice);
+        $payment = Payment::create(['service_id'=> $id , 'namaRek'=> Auth::user()->name, 'bank'=> '-' , 'total'=> $detailservice->total_price, 'order_date'=> Carbon::now(), 'pembayaran' => 'Pembayaran ditempat']);
+        $service = Service::where('id', $id)->first();
+        // dd($service);
+        $service-> status= 'Pembayaran diverifikasi' ;
+        $service->update();
+
+        // dd($service);
+
+        // Proses notif
+        // $a = Service::where('user_id', $service->user_id)->id;
+        $totalservice = Service::where('user_id', $service->user_id)->whereIn('status',['Pembayaran diverifikasi'])->get();
+        if (count($totalservice)>=10){
+            $customerservice = new CustomerService();
+            $customerservice->user_id = $service->user_id;
+            $customerservice->keterangan = 'Gratis 1x layanan servis (Tune Up)';
+            $customerservice->expired_at = Carbon::now()->addDays(180); // menambah 180 hari kedepan
+            $customerservice->save();
+        }
+
+        alert()->success('Bayar langsung sukses!');
+        return redirect('bookingpanggilanadmin');
     }
 
     public function verifikasipembayaran(Request $request, $id)

@@ -70,18 +70,13 @@ class User extends Authenticatable
         return static::find($id)->update($input);
     }
 
-    
-
-
-
-
     // Relation
     public function role()
     {
         return $this->belongsTo(Role::class);
     }
 
-    
+
     // Check Role
     private function getUserRole()  // digunakan untuk mendapatkan role_id
     {
@@ -96,7 +91,7 @@ class User extends Authenticatable
     public function hasRole($roles)     // action penentuan apakah bisa diakses atau forbidden
     {
         $this->have_role = $this->getUserRole();    // ambil role_id user
-        
+
         if (is_array($roles)) {     // jika role dalam bentuk array (memiliki lebih dari 1 level user)
             foreach ($roles as $need_role) {
                 if ($this->checkRole($need_role)) {
