@@ -52,6 +52,7 @@
                                                 <option value="{{ $categorie->name }}">
                                                     {{ $categorie->name }}</option>
                                             @endforeach
+                                            <option value="Lainnya">Lainnya</option>
                                         </select>
                                         @error('jenis_mobil')
                                             <span class="invalid-feedback" role="alert">

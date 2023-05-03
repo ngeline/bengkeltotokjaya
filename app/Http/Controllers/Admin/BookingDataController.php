@@ -37,6 +37,7 @@ class BookingDataController extends Controller
 
     public function detail(Request $request, $id)
     {
+        // $booking = Service::where('id', $id)->get()->load('id');
     	$booking = Service::where('id', $id)->first();
         $bookings = Service::where('id', $booking->id)->get();
         $datamt = Montir::whereIn('status',['aktif'])->get();
@@ -100,7 +101,7 @@ class BookingDataController extends Controller
         $service->montir= $request->montir;
         $service->update();
         alert()->success('Input data is successfull');
-        return redirect('bookingpanggilanadmin');
+        return redirect('bookingdata');
     }
 
     public function seePayment($id){
@@ -189,7 +190,7 @@ class BookingDataController extends Controller
         }
 
         alert()->success('Bayar langsung sukses!');
-        return redirect('bookingpanggilanadmin');
+        return redirect('bookingdata');
     }
 
     public function verifikasipembayaran(Request $request, $id)

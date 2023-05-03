@@ -5,7 +5,7 @@
     <!-- ============================================================== -->
     <!-- Bread crumb and right sidebar toggle -->
     <!-- ============================================================== -->
-    <div class="page-breadcrumb">
+    <!-- <div class="page-breadcrumb">
         <div class="row align-items-center">
             <div class="col-6">
                 <nav aria-label="breadcrumb">
@@ -19,7 +19,7 @@
             </div>
 
         </div>
-    </div>
+    </div> -->
     <!-- ============================================================== -->
     <!-- End Bread crumb and right sidebar toggle -->
     <!-- ============================================================== -->
@@ -44,7 +44,7 @@
                         <div class="col-md-12">
                             <center>
                                 <p style="color: #008080;"><b style="font-size: 20px;">Bengkel Mobil Totok Jaya </b><br>
-                                    Jl. Bence Gang 1, Pakunden, Kec. Pesantren, Kota Kediri, Jawa Timur 64132 <br> No.
+                                Jalan Raya, Jombok, Ngoro, Jombang Regency, East Java 61473 <br> No.
                                     HP : 0852-3577-5571
                                 </p>
                             </center>
@@ -74,6 +74,11 @@
                                                 <td>Nomor Plat Mobil</td>
                                                 <td>:</td>
                                                 <td>{{ $booking->number_plat }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Service</td>
+                                                <td>:</td>
+                                                <td>{{ $booking->id }}</td>
                                             </tr>
                                             <tr>
                                                 <td>Keluhan</td>

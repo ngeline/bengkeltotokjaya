@@ -49,7 +49,7 @@
                                     <div class="col-md-6">
                                         <button id="filtercari" class="btn btn-primary"><i class="fa fa-filter"></i>
                                             Filter </button>
-                                        <a href="/bookingpanggilan" class="btn btn-primary"><i class="fa fa-refresh"></i>
+                                        <a href="/bookingpanggilanadmin" class="btn btn-primary"><i class="fa fa-refresh"></i>
                                             Refresh </a>
                                     </div>
                                 </div>

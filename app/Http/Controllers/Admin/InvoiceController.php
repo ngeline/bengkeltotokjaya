@@ -241,7 +241,7 @@ class InvoiceController extends Controller
         }
 
         alert()->success('Invoice Berhasil disimpan. Tolong, beri tahu pelanggan untuk melakukan pemembayaran!');
-        return redirect('bookingpanggilanadmin');
+        return redirect('bookingdata');
     }
 
     public function invoice($id)

@@ -1,8 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="section section-hero section-shaped"
-        style="background-image: url({{ asset('images/mobil.jpg') }}); width: 100%">
+    <div class="section section-hero section-shaped">
         <div class="shape shape-style-3 shape-default">
         </div>
         <div class="page-header">
@@ -23,6 +22,7 @@
             </div>
         </div>
     </div>
+    <br><br>
     <section class="item content">
         <div class="container toparea1">
             <div class="row">
@@ -33,6 +33,7 @@
                                 <thead>
                                     <tr class="text-center">
                                         <th>No</th>
+                                        <th>Layanan</th>
                                         <th>Nama Mobil</th>
                                         <th>Nomor Antrian</th>
                                         <th>Tanggal Servis</th>
@@ -48,6 +49,7 @@
                                     @foreach ($bookings as $booking)
                                         <tr class="text-center">
                                             <td>{{ $no++ }}</td>
+                                            <td>{{ $booking->status_service }}</td>
                                             <td>{{ $booking->nama_mobil }}</td>
                                             <td>No : {{ $booking->no_antrian }}</td>
                                             <td>{{ $booking->service_date }}</td>

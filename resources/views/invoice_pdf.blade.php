@@ -2,14 +2,14 @@
 <html>
 
 <head>
-    <title>Bengkel Mobil Delta</title>
+    <title>Bengkel Mobil Totok Jaya</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 
 <body>
     @if(!empty($booking))
     <center>
-        <p style="color: #008080;"><b style="font-size: 24px;">Bengkel Mobil Delta </b><br> Jl. Bence Gang 1, Pakunden, Kec. Pesantren, Kota Kediri, Jawa Timur 64132 <br> No. HP : 0852-3577-5571
+        <p style="color: #008080;"><b style="font-size: 24px;">Bengkel Mobil Totok Jaya </b><br> Jalan Raya, Jombok, Ngoro, Jombang Regency, East Java 61473 <br> No. HP : 0852-3577-5571
         </p>
     </center>
     <hr style="color: gray;">
@@ -88,7 +88,7 @@
     @endif
     <h3 style="font-size: 16px; text-align: center; color: gray;"><b>Hormat Kami,</b></h3>
     <br><br><br>
-    <h4 style="font-size: 14px; text-align: center; color: gray;">Admin Bengkel Delta</h4>
+    <h4 style="font-size: 14px; text-align: center; color: gray;">Admin Bengkel Totok Jaya</h4>
 </body>
 
 </html>

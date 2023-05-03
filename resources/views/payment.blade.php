@@ -24,7 +24,7 @@
                         <img class="mr-3" src="{{ url('images/bri.png') }}" alt="Bank BRI" width="60">
                         <div class="media-body">
                             <h5 class="mt-0" style="color: black;">BANK BRI</h5>
-                            transfer ke rekening dibawah ini : Rekening 025190-002-842 atas nama <strong>Bengkel Mobil Delta</strong>
+                            transfer ke rekening dibawah ini : Rekening 025190-002-842 atas nama <strong>Bengkel Mobil Totok Jaya</strong>
                         </div>
                     </div>
                 </div>

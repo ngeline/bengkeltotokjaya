@@ -1,8 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="section section-hero section-shaped"
-        style="background-image: url({{ asset('images/mobil.jpg') }}); width: 100%">
+<div class="section section-hero section-shaped">
         <div class="shape shape-style-3 shape-default">
         </div>
         <div class="page-header">
@@ -20,7 +19,8 @@
                 </div>
             </div>
         </div>
-</div>
+    </div>
+    <br><br>
 <section class="item content">
     <div class="container toparea1">
         <div class="row">
@@ -31,6 +31,7 @@
                             <thead>
                                 <tr class="text-center">
                                     <th>No</th>
+                                    <th>Layanan</th>
                                     <th>Nama Mobil</th>
                                     <th>Tanggal Servis</th>
                                     <th>Status</th>
@@ -42,12 +43,15 @@
                                 @foreach($bookings as $booking)
                                 <tr class="text-center">
                                     <td style="color: #444;">{{ $no++ }}</td>
+                                    <td style="color: #444;">{{ $booking->service_status }}</td>
                                     <td style="color: #444;">{{ $booking->nama_mobil }}</td>
                                     <td style="color: #444;">{{ $booking->service_date }}</td>
                                     <td style="color: #444;">{{ $booking->status }}</td>
                                     <td style="color: #444;">
                                         <!-- <a href="{{ url('invoice') }}/{{ $booking->id }}" class="btn btn-primary"><i class="fa fa-info"></i> Detail </a> -->
-                                        <a href="{{ url('serviceHistory') }}/{{ $booking->id }}" class="btn btn-primary btn-sm"><i class="fa fa-info"></i> Detail Riwayat Servis </a>
+                                        <a href="{{ url('serviceHistory') }}/{{ $booking->id }}"
+                                            class="btn btn-primary btn-sm"><i class="fa fa-info"></i> Detail Riwayat
+                                            Servis </a>
                                     </td>
                                 </tr>
                                 @endforeach
@@ -61,9 +65,10 @@
 </section><br><br>
 @endsection
 @push('js')
-    <script>
-        $('#datatable').DataTable({
-            responsive: true
-        });
-    </script>
+<script>
+    $('#datatable').DataTable({
+        responsive: true
+    });
+
+</script>
 @endpush

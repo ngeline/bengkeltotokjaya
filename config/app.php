@@ -184,6 +184,7 @@ return [
         // UxWeb\SweetAlert\SweetAlertServiceProvider::class,
         RealRashid\SweetAlert\SweetAlertServiceProvider::class,
         Yajra\DataTables\DataTablesServiceProvider::class,
+        Barryvdh\DomPDF\ServiceProvider::class,
         // Collective\Html\HtmlServiceProvider::class,
         // Barryvdh\DomPDF\ServiceProvider::class,
         // ConsoleTVs\Charts\ChartsServiceProvider::class,
@@ -259,10 +260,11 @@ return [
         'DataTables' => Yajra\DataTables\Facades\DataTables::class,
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
+        // 'PDF' => Barryvdh\DomPDF\Facade::class,
         'PDF' => Barryvdh\DomPDF\Facade::class,
         'Charts' => ConsoleTVs\Charts\Facades\Charts::class,
         'Alert' => RealRashid\SweetAlert\Facades\Alert::class,
-        // 'Excel' => Maatwebsite\Excel\Facades\Excel::class,
+        'Excel' => Maatwebsite\Excel\Facades\Excel::class,
     ])->toArray(),
 
 ];

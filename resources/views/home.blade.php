@@ -23,7 +23,7 @@
                                 </a>
                                 <a href="/bookingpanggilan" class="btn btn-warning btn-icon mt-3 mb-sm-0">
                                     <span class="btn-inner--icon"><i class="ni ni-delivery-fast"></i></span>
-                                    <span class="btn-inner--text">SERVICE DARURAT</span>
+                                    <span class="btn-inner--text">SERVICE PANGGILAN</span>
                                 </a>
                             </div>
                         </div>
@@ -43,8 +43,8 @@
             <div class="row">
                 <div class="col-md-8 mx-auto text-center">
                     <!-- <span class="badge badge-primary badge-pill mb-3">Insight</span> -->
-                    <h3 class="display-3">Bagaimana Kerja Kami ?</h3>
-                    <p class="lead">Memperbaiki mobil Anda seharusnya mudah.</p><br>
+                    <h3 class="display-3">Bagaimana Kerja Kami ?</h3><br>
+                    <!-- <p class="lead">Memperbaiki mobil Anda seharusnya mudah.</p><br> -->
                 </div>
             </div>
             <div class="row">
@@ -94,7 +94,8 @@
                             <i class="ni ni-settings-gear-65"></i>
                         </div>
                         <h6 class="info-title text-uppercase text-primary">Penjadwalan</h6>
-                        <p class="description opacity-8">Silakan tentukan waktu dan lokasi yang anda inginkan kepada mekanik kami.</p>
+                        <p class="description opacity-8">Silakan tentukan waktu dan lokasi yang anda inginkan kepada
+                            mekanik kami.</p>
                         <!-- <a href="javascript:;" class="text-primary">More about us
                             <i class="ni ni-bold-right text-primary"></i>
                         </a> -->
@@ -106,35 +107,53 @@
     <div class="section features-6">
         <div class="container">
             <div class="row align-items-center">
+
                 <div class="col-lg-6">
                     <div class="info info-horizontal info-hover-primary">
+                        <div class="col-md-12 mx-auto text-center">
+                            <h2 class="display-5"> <span class="text-primary">Manfaat service mobil secara rutin</span></h2>
+                        </div>
                         <div class="description pl-4">
-                            <h5 class="title">For Developers</h5>
-                            <p>The time is now for it to be okay to be great. People in this world shun people for being
-                                great. For being a bright color. For standing out. But the time is now.</p>
-                            <a href="#" class="text-info">Learn more</a>
+                            <h5 class="title">Mobil Tetap Prima</h5>
+                            <p>Servis yang rutin sesuai aturan membuat kinerja mobil tetap cemerlang dan bisa melaju
+                                dengan prima.</p>
                         </div>
                     </div>
                     <div class="info info-horizontal info-hover-primary mt-5">
                         <div class="description pl-4">
-                            <h5 class="title">For Designers</h5>
-                            <p>There’s nothing I really wanted to do in life that I wasn’t able to get good at. That’s
-                                my skill. I’m not really specifically talented at anything except for the ability to
-                                learn.</p>
-                            <a href="#" class="text-info">Learn more</a>
+                            <h5 class="title">Berkendara Semakin Nyaman Dan Aman</h5>
+                            <p>Servis mobil secara berkala memberi peluang bagi Anda dan pihak bengkel mengetahui
+                                komponen mana saja yang sudah perlu diganti atau diperbaiki.</p>
+                        </div>
+                    </div>
+                    <!-- <div class="info info-horizontal info-hover-primary mt-5">
+                        <div class="description pl-4">
+                            <h5 class="title">Hemat Biaya</h5>
+                            <p>Jangan lupa kalau servis kendaraan secara berkala mengurangi risiko kantong Anda boros di masa yang akan datang.</p>
                         </div>
                     </div>
                     <div class="info info-horizontal info-hover-primary mt-5">
                         <div class="description pl-4">
-                            <h5 class="title">For Beginners</h5>
-                            <p>That’s what I do. That’s what I’m here for. Don’t be afraid to be wrong because you can’t
-                                learn anything from a compliment. If everything I did failed - which it doesn't.</p>
-                            <a href="#" class="text-info">Learn more</a>
+                            <h5 class="title">Manfaatkan Promo Dan Paket Servis</h5>
+                            <p>Pada kesempatan tertentu, biasanya bengkel mobil akan melakukan promo dalam rangka perayaan hari besar tertentu.</p>
+                        </div>
+                    </div> -->
+                    <div class="info info-horizontal info-hover-primary mt-5">
+                        <div class="description pl-4">
+                            <h5 class="title">Umur Kendaraan Lebih Lama</h5>
+                            <p>Mobil yang diberi jatah servis berkala memiliki usia yang relatif lebih lama.</p>
+                        </div>
+                    </div>
+                    <div class="info info-horizontal info-hover-primary mt-5">
+                        <div class="description pl-4">
+                            <h5 class="title">Nilai Jual Kendaraan Stabil</h5>
+                            <p>Performa mobil yang baik dan terjaga serta jaminan kenyamanan dan keamanan yang tetap
+                                ada, membuat nilai jual mobil lebih stabil.</p>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-6 col-10 mx-md-auto">
-                    <img class="ml-lg-5" src="{{ asset('argon-design-system-master') }}/assets/img/ill/ill.png"
+                    <img class="ml-lg-5" src="{{ asset('argon-design-system-master') }}/assets/img/manfaat.png"
                         width="100%">
                 </div>
             </div>
@@ -145,22 +164,20 @@
     <div class="container">
         <div class="row row-grid justify-content-center">
             <div class="col-lg-8 text-center">
-                <h2 class="display-3">Do you love this awesome <span class="text-success">Design System for Bootstrap
-                        4?</span></h2>
-                <p class="lead">Cause if you do, it can be yours for FREE. Hit the button below to navigate to Creative
-                    Tim where you can find the Design System in HTML. Start a new project or give an old Bootstrap
-                    project a new look!</p>
+                <h2 class="display-3">Alasan Servis Rutin Lebih Baik <span class="text-success">di Bengkel Mobil Totok
+                        Jaya</span></h2>
+                <p class="lead">Teknisi yang sudah terlatih, Mempertahankan garansi mobil, Spare part yang digunakan
+                    terjamin,Menggunakan peralatan yang lengkap,Riwayat servis lengkap, Terdapat customer service, Bisa
+                    Booking Service dan Service Panggilan!</p>
                 <div class="btn-wrapper">
-                    <a href="https://www.creative-tim.com/product/argon-design-system"
-                        class="btn btn-primary mb-3 mb-sm-0">Download HTML</a>
-                    <a href="https://www.creative-tim.com/product/argon-design-system" class="btn btn-default">Download
-                        PSD/Sketch</a>
+                    <a href="/booking" class="btn btn-primary mb-3 mb-sm-0">BOOKING SERVICE</a>
+                    <a href="/bookingpanggilan" class="btn btn-default">SERVICE PANGGILAN</a>
                 </div>
             </div>
         </div>
     </div>
 </section>
-<div class="section" style="background-image: url({{ asset('argon-design-system-master') }}/assets/img/ill/1.svg');">
+<div class="section" style="background-image: url({{ asset('argon-design-system-master') }}/assets/img/bookingservis.png');">
     <div class="container py-md">
         <div class="row justify-content-between align-items-center">
             <div class="col-lg-6 mb-lg-auto">
@@ -173,13 +190,13 @@
                         </ol>
                         <div class="carousel-inner">
                             <div class="carousel-item active">
-                                <img class="img-fluid" src="./assets/img/theme/img-1-1200x1000.jpg" alt="First slide">
+                                <img class="img-fluid" src="{{ asset('argon-design-system-master') }}/assets/img/bookingservis.png" alt="First slide">
                             </div>
                             <div class="carousel-item">
-                                <img class="img-fluid" src="./assets/img/theme/img-2-1200x1000.jpg" alt="Second slide">
+                                <img class="img-fluid" src="{{ asset('argon-design-system-master') }}/assets/img/bookingservis2.jpg" alt="Second slide">
                             </div>
                             <div class="carousel-item">
-                                <img class="img-fluid" src="./assets/img/theme/img-1-1200x1000.jpg" alt="Third slide">
+                                <img class="img-fluid" src="{{ asset('argon-design-system-master') }}/assets/img/bookingservis3.jpg" alt="Third slide">
                             </div>
                         </div>
                         <a class="carousel-control-prev" href="#carousel_example" role="button" data-slide="prev">
@@ -195,10 +212,9 @@
             </div>
             <div class="col-lg-5 mb-5 mb-lg-0">
                 <h1 class="font-weight-light">Booking Service</h1>
-                <p class="lead mt-4">Argon Design System comes with four pre-built pages to help you get started faster.
-                    You can change the text and images and you're good to go.</p>
-                <a href="https://demos.creative-tim.com/argon-design-system/docs/components/carousel.html"
-                    class="btn btn-white mt-4">See all components</a>
+                <p class="lead mt-4">Untuk melakukan booking servis kendaraan Anda, silakan klik button dibawah ini serta mengisi form. Admin Bengkel Totok Jaya akan memproses data Anda.</p>
+                <a href="/booking"
+                    class="btn btn-white mt-4">MULAI</a>
             </div>
         </div>
     </div>
@@ -208,10 +224,9 @@
         <div class="row justify-content-between align-items-center">
             <div class="col-lg-5 mb-5 mb-lg-0">
                 <h1 class="font-weight-light">Service Panggilan</h1>
-                <p class="lead mt-4">Argon Design System comes with four pre-built pages to help you get started faster.
-                    You can change the text and images and you're good to go.</p>
-                <a href="https://demos.creative-tim.com/argon-design-system/docs/components/carousel.html"
-                    class="btn btn-white mt-4">See all components</a>
+                <p class="lead mt-4">Untuk melakukan servis kendaraan Anda, silakan klik button dibawah ini serta mengisi form. Admin Bengkel Totok Jaya akan menghubungi Anda segera.</p>
+                <a href="/bookingpanggilan"
+                    class="btn btn-white mt-4">MULAI</a>
             </div>
             <div class="col-lg-6 mb-lg-auto">
                 <div class="rounded overflow-hidden transform-perspective-left">
@@ -223,13 +238,13 @@
                         </ol>
                         <div class="carousel-inner">
                             <div class="carousel-item active">
-                                <img class="img-fluid" src="./assets/img/theme/img-1-1200x1000.jpg" alt="First slide">
+                                <img class="img-fluid" src="{{ asset('argon-design-system-master') }}/assets/img/servispanggilan.jpg" alt="First slide">
                             </div>
                             <div class="carousel-item">
-                                <img class="img-fluid" src="./assets/img/theme/img-2-1200x1000.jpg" alt="Second slide">
+                                <img class="img-fluid" src="{{ asset('argon-design-system-master') }}/assets/img/servispanggilan2.jpg" alt="Second slide">
                             </div>
                             <div class="carousel-item">
-                                <img class="img-fluid" src="./assets/img/theme/img-1-1200x1000.jpg" alt="Third slide">
+                                <img class="img-fluid" src="{{ asset('argon-design-system-master') }}/assets/img/servispanggilan3.jpg" alt="Third slide">
                             </div>
                         </div>
                         <a class="carousel-control-prev" href="#carousel_example" role="button" data-slide="prev">
@@ -308,22 +323,22 @@
         </div>
     </div>
 </section>
-<div class="container container-lg">
-            <div class="row">
-                <div class="col-md-6 mb-5 mb-md-0">
-                    <div class="card card-lift--hover shadow border-0">
-                        <a href="{{ asset('argon-design-system-master') }}/examples/landing.html" title="Landing Page">
-                            <img src="{{ asset('argon-design-system-master') }}/assets/img/theme/landing.jpg" class="card-img">
-                        </a>
-                    </div>
-                </div>
-                <div class="col-md-6 mb-5 mb-lg-0">
-                    <div class="card card-lift--hover shadow border-0">
-                        <a href="{{ asset('argon-design-system-master') }}/examples/profile.html" title="Profile Page">
-                            <img src="{{ asset('argon-design-system-master') }}/assets/img/theme/profile.jpg" class="card-img">
-                        </a>
-                    </div>
-                </div>
+<!-- <div class="container container-lg">
+    <div class="row">
+        <div class="col-md-6 mb-5 mb-md-0">
+            <div class="card card-lift--hover shadow border-0">
+                <a href="{{ asset('argon-design-system-master') }}/examples/landing.html" title="Landing Page">
+                    <img src="{{ asset('argon-design-system-master') }}/assets/img/theme/landing.jpg" class="card-img">
+                </a>
             </div>
         </div>
+        <div class="col-md-6 mb-5 mb-lg-0">
+            <div class="card card-lift--hover shadow border-0">
+                <a href="{{ asset('argon-design-system-master') }}/examples/profile.html" title="Profile Page">
+                    <img src="{{ asset('argon-design-system-master') }}/assets/img/theme/profile.jpg" class="card-img">
+                </a>
+            </div>
+        </div>
+    </div>
+</div> -->
 @endsection

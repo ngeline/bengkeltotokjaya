@@ -19,12 +19,13 @@
             <div class="card mt-2">
                 <div class="card-body" style="color: black;">
                     @if(!empty($booking))
-                    <p  style="color: #008080">Status booking {{ $booking->status }} / A.n {{ $booking->name_stnk }} </p>
-                    <p >No. Booking : {{ $booking->no_antrian }} / Tanggal Booking : {{ $booking->service_date }}</p><br>
+                    <p style="color: #008080">Status booking {{ $booking->status }} / A.n {{ $booking->name_stnk }} </p>
+                    <p>No. Booking : {{ $booking->no_antrian }} / Tanggal Booking : {{ $booking->service_date }}</p><br>
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-body">
-                                <h4 style="color: #1a9bfc;"><i class="fas fa-history" style="color: #1a9bfc;"></i> Detail Booking</h4>
+                                <h4 style="color: #1a9bfc;"><i class="fas fa-history" style="color: #1a9bfc;"></i>
+                                    Detail Booking</h4>
                                 <table class="table">
                                     <tbody>
                                         @foreach($bookings as $booking)

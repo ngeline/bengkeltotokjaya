@@ -25,7 +25,7 @@
         <div class="card-body" style="color: black;">
             <div class="col-md-12">
                 <center>
-                    <p style="color: #008080;"><b style="font-size: 20px;">Bengkel Mobil Delta </b><br> Jl. Bence Gang 1, Pakunden, Kec. Pesantren, Kota Kediri, Jawa Timur 64132 <br> No. HP : 0852-3577-5571
+                    <p style="color: #008080;"><b style="font-size: 20px;">Bengkel Mobil Totok Jaya </b><br> Jalan Raya, Jombok, Ngoro, Jombang Regency, East Java 61473 <br> No. HP : 0852-3577-5571
                     </p>
                 </center>
                 <hr>
@@ -107,7 +107,7 @@
                         @endif
                         <h3 style="font-size: 16px; text-align: center; color: gray;"><b>Hormat Kami,</b></h3>
                         <br><br><br><br>
-                        <h4 style="font-size: 14px; text-align: center; color: gray;">Admin Bengkel Delta</h4>
+                        <h4 style="font-size: 14px; text-align: center; color: gray;">Admin Bengkel Totok Jaya</h4>
                     </div>
                 </div>
             </div>

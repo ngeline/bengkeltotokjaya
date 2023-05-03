@@ -29,7 +29,6 @@
                                             <th>Merek</th>
                                             <th>Harga</th>
                                             <th>Biaya Instalasi</th>
-                                            <th>Stok</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -42,7 +41,6 @@
                                                 <td style="color: #444;">Rp. {{ number_format($sparepart->price) }}</td>
                                                 <td style="color: #444;">Rp.
                                                     {{ number_format($sparepart->biayaPemasangan) }}</td>
-                                                <td style="color: #444;">{{ $sparepart->stock }} pcs</td>
                                             </tr>
                                         @endforeach
                                     </tbody>

@@ -133,7 +133,7 @@
 
 						<div class="card shadow mb-4">
 							<div class="card-header py-3" style="background-color: 	#333;">
-								<h6 class="m-0 font-weight-bold" style="color: 	#fff;">Tentang bengkel delta</h6>
+								<h6 class="m-0 font-weight-bold" style="color: 	#fff;">Tentang bengkel Totok Jaya</h6>
 							</div>
 							<div class="card-body">
 								<div class="text-center">
@@ -141,7 +141,7 @@
 								</div>
 								<p style="font-size: 13px; color: #444; text-align:justify;"> Mobil merupakan aset berharga di masyarakat karena mobil dapat menjadi alat transportasi, hobi dan gaya hidup.
 										Oleh karena itu perlu dilakukan perbaikan secara berkala agar tidak rusak.
-										Bengkel Mobil Delta menyediakan bengkel yang menjamin kualitas pelayanan prima, cepat dan terjangkau.
+										Bengkel Mobil Totok Jaya menyediakan bengkel yang menjamin kualitas pelayanan prima, cepat dan terjangkau.
 									<a target="_blank" rel="nofollow" href="{{ url('booking') }}">Booking sekarang...</a>
 								</p>
 							</div>

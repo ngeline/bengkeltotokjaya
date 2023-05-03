@@ -216,7 +216,7 @@
             text: 'Perkembangan Trend Stok Terlaris'
         },
         subtitle: {
-            text: 'Source: Bengkel Mobil Delta'
+            text: 'Source: Bengkel Mobil Totok Jaya'
         },
         xAxis: {
             categories: ns
@@ -274,7 +274,7 @@
             text: 'Stok Terbanyak & Sedikit'
         },
         subtitle: {
-            text: 'Source: Bengkel Mobil Delta'
+            text: 'Source: Bengkel Mobil Totok Jaya'
         },
         xAxis: {
             categories: nss
@@ -332,7 +332,7 @@
             text: 'Pertumbuhan Pengguna Baru'
         },
         subtitle: {
-            text: 'Source: Bengkel Mobil Delta'
+            text: 'Source: Bengkel Mobil Totok Jaya'
         },
         xAxis: {
             categories: [ 'Apr','May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec', 'Jan', 'Feb', 'Mar', ]

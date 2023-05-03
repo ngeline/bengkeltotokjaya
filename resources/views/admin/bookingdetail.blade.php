@@ -13,10 +13,10 @@
                     <ol class="breadcrumb mb-0 d-flex align-items-center">
                         <li class="breadcrumb-item"><a href="index.html" class="link"><i
                                     class="mdi mdi-home-outline fs-4"></i></a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Basic Table</li>
+                        <li class="breadcrumb-item active" aria-current="page">Booking detail</li>
                     </ol>
                 </nav>
-                <h1 class="mb-0 fw-bold">Basic Table</h1>
+                <h1 class="mb-0 fw-bold">Booking detail</h1>
             </div>
 
         </div>
@@ -70,6 +70,11 @@
                                                 <td>Nomor Plat Mobil</td>
                                                 <td>:</td>
                                                 <td>{{ $booking->number_plat }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Service</td>
+                                                <td>:</td>
+                                                <td>{{ $booking->service_id }}</td>
                                             </tr>
                                             <tr>
                                                 <td>Keluhan</td>
