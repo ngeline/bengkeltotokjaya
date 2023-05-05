@@ -21,11 +21,11 @@
                         <div class="card bg-secondary shadow border-0">
                             <div class="card-body ">
                                 <form method="POST" action="{{ url('/bookingpanggilan') }}/{{ auth()->user()->id }}"
-                                    id="contactform">
+                                    id="contactform" enctype="multipart/form-data">
                                     {{ csrf_field() }}
                                     <div class="form-group">
                                         <label for="validationCustom00">Nama STNK</label>
-                                        <input class="form-control @error('name_stnk') is-invalid @enderror" type="text"
+                                        <input required class="form-control @error('name_stnk') is-invalid @enderror" type="text"
                                             name="name_stnk" placeholder="Masukkan Nama STNK">
                                         @error('name_stnk')
                                             <span class="invalid-feedback" role="alert">
@@ -35,7 +35,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="validationCustom01">Nomor Polisi</label>
-                                        <input class="form-control @error('number_plat') is-invalid @enderror"
+                                        <input required class="form-control @error('number_plat') is-invalid @enderror"
                                             type="text" name="number_plat" placeholder="Masukkan Nomor Polisi di STNK">
                                         @error('number_plat')
                                             <span class="invalid-feedback" role="alert">
@@ -62,7 +62,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="validationCustom02">Nama Mobil</label>
-                                        <input class="form-control @error('nama_mobil') is-invalid @enderror" type="text"
+                                        <input required class="form-control @error('nama_mobil') is-invalid @enderror" type="text"
                                             name="nama_mobil" placeholder="Masukkan Nama Mobil">
                                         @error('nama_mobil')
                                             <span class="invalid-feedback" role="alert">
@@ -73,7 +73,7 @@
                                     <!-- <div class="form-group">
                                         <label for="dokumen" class="form-label">Upload Dokumen <span
                                                 class="text-danger">*</span></label>
-                                        <input class="form-control @error('dokumen') is-invalid @enderror"
+                                        <input required class="form-control @error('dokumen') is-invalid @enderror"
                                             type="file" id="dokumen" name="dokumen" accept=".pdf,.doc">
                                         @error('dokumen')
         <div class="text-danger">{{ $message }}</div>
@@ -82,7 +82,7 @@
                                     <div class="form-row">
                                         <div class="col-md-5 mb-3">
                                             <label for="validationCustom03">Map</label>
-                                            <input type="text" class="form-control" id="validationCustom03"
+                                            <input required type="text" class="form-control" id="validationCustom03"
                                                 name="maps" placeholder="Masukkan link Maps" required>
                                             <p id="demo"></p>
                                             <div class="invalid-feedback">
@@ -99,7 +99,7 @@
                                         </div>
                                         <div class="col-md-3 mb-3">
                                             <label for="validationCustom04">Jalan</label>
-                                            <input type="text" class="form-control" id="validationCustom04"
+                                            <input required type="text" class="form-control" id="validationCustom04"
                                                 name="address_sp" placeholder="Jalan" required>
                                             <div class="invalid-feedback">
                                                 Please provide a valid state.
@@ -107,7 +107,7 @@
                                         </div>
                                         <!-- <div class="col-md-3 mb-3">
                                             <label for="validationCustom05">Foto</label>
-                                            <input type="file" class="form-control-file" id="exampleFormControlFile1" required>
+                                            <input required type="file" class="form-control-file" id="exampleFormControlFile1" required>
                                             <div class="invalid-feedback">
                                                 Please provide a valid zip.
                                             </div>
@@ -115,7 +115,7 @@
                                         <div class="col-md-3 mb-3">
                                             <label for="dokumen" class="form-label">Upload Foto<span
                                                     class="text-danger">* </span></label> (Jpg,Jpeg)
-                                            <input class="form-control @error('dokumen') is-invalid @enderror"
+                                            <input required class="form-control @error('dokumen') is-invalid @enderror"
                                                 name="photo" type="file" id="dokumen" name="dokumen"
                                                 accept=".jpg,.jpeg">
                                             @error('dokumen')

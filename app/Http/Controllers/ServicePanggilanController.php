@@ -78,13 +78,12 @@ class ServicePanggilanController extends Controller
             $request->validate([
                 'photo' => 'required|mimes:jpg,jpeg,png'
             ]);
-    
-            $getDokumen = $request->file('photo');
-            $nameFile = str_replace(['/', ' '], '-', $getDokumen->getClientOriginalName());
-            $getDokumen->move(public_path('upload/photo'), $nameFile);
-            $service->photo = 'upload/photo/' . $nameFile;
-        }
 
+            $getDokumen = $request->file('photo');
+            $nameFile = random_int(1111,9999).'.'. $getDokumen->getClientOriginalExtension();
+            $getDokumen->move(public_path('upload/photo'), $nameFile);
+            $service->photo = $nameFile;
+        }
 
         $service->maps = $request->maps;
         $service->address_sp = $request->address_sp;

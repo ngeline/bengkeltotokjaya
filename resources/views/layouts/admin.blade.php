@@ -333,6 +333,7 @@
     <!-- <script src="demo/datatables-demo.js"></script> -->
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     @include('sweetalert::alert')
+    @stack('js')
 
 
 
