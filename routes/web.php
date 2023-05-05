@@ -130,15 +130,7 @@ Route::group(['middleware' => ['web', 'auth', 'cekrole']], function () { // web 
         Route::get('bookingdata/invoiceDone/{id}', [App\Http\Controllers\Admin\InvoiceController::class, 'invoice']);
 
         //
-        // Booking Data
-        Route::get('bookingpanggilanadmin', [App\Http\Controllers\Admin\BookingPanggilanController::class, 'index'])->name('bookingpanggilanadmin');
-        Route::get('bookingpanggilanadmin/invoice/print/{id}', [App\Http\Controllers\Admin\BookingPanggilanController::class, 'cetak_pdf']);
-        Route::get('bookingpanggilanadmin/detail/{id}', [App\Http\Controllers\Admin\BookingPanggilanController::class, 'detail']);
-        Route::get('bookingpanggilanadmin/edit/{id}', [App\Http\Controllers\Admin\BookingPanggilanController::class, 'edit']);
-        Route::post('/bookingpanggilanadmin/{id}', [App\Http\Controllers\Admin\BookingPanggilanController::class, 'update']);
-        Route::post('bookingpanggilanadmin/detail/input_queue/{id}', [App\Http\Controllers\Admin\BookingPanggilanController::class, 'save']);
-        Route::get('bookingpanggilanadmin/invoice/{id}', [App\Http\Controllers\Admin\InvoiceController::class, 'detail']);
-        Route::get('bookingpanggilanadmin/invoiceDone/{id}', [App\Http\Controllers\Admin\InvoiceController::class, 'invoice']);
+        
 
         // Cari Booking Data Admin
         Route::get('seePaymentTransaksi/{id}', [App\Http\Controllers\Admin\LaporanTransaksiController::class, 'seePaymentTransaksi']);
@@ -211,6 +203,36 @@ Route::group(['middleware' => ['web', 'auth', 'cekrole']], function () { // web 
         Route::post('addSparepart', [App\Http\Controllers\Admin\InvoiceController::class, 'render'])->name('addscari');
 
 
+
+
+        // BOOKING PANGGILAN ADMIN
+
+
+
+        // Booking Panggilan
+        Route::get('bookingpanggilanadmin', [App\Http\Controllers\Admin\BookingPanggilanController::class, 'index'])->name('bookingpanggilanadmin');
+        Route::get('bookingpanggilanadmin/invoice/print/{id}', [App\Http\Controllers\Admin\BookingPanggilanController::class, 'cetak_pdf']);
+        Route::get('bookingpanggilanadmin/detail/{id}', [App\Http\Controllers\Admin\BookingPanggilanController::class, 'detail']);
+        Route::get('bookingpanggilanadmin/edit/{id}', [App\Http\Controllers\Admin\BookingPanggilanController::class, 'edit']);
+        Route::post('/bookingpanggilanadmin/{id}', [App\Http\Controllers\Admin\BookingPanggilanController::class, 'update']);
+        Route::post('bookingpanggilanadmin/detail/input_queue/{id}', [App\Http\Controllers\Admin\BookingPanggilanController::class, 'save']);
+        Route::get('bookingpanggilanadmin/invoice/{id}', [App\Http\Controllers\Admin\InvoiceController::class, 'detail']);
+        Route::get('bookingpanggilanadmin/invoiceDone/{id}', [App\Http\Controllers\Admin\InvoiceController::class, 'invoice']);
+        // Hapus Booking Servie
+        Route::get('/bookingpanggilanadmin/destroy/{id}', [App\Http\Controllers\Admin\BookingPanggilanController::class, 'destroy'])->name('bookingpanggilanadmin.destroy');
+        
+
+        // Route::post('seePayment/{id}',[App\Http\Controllers\Admin\BookingDataController::class, 'savePayment']);
+        Route::get('seePayment/{id}', [App\Http\Controllers\Admin\BookingDataController::class, 'seePayment']);
+        Route::post('bookingpanggilanadmin', [App\Http\Controllers\Admin\BookingDataController::class, 'update']);
+        Route::post('/seePayment/update/{id}', [App\Http\Controllers\Admin\BookingDataController::class, 'verifikasipembayaran'])->name('seePayment.update');
+
+        // verifikasi pembayaran
+        Route::post('/sparepart/need/{id}', [App\Http\Controllers\Admin\InvoiceController::class, 'order']);
+
+        // verfikasi pembayaran bayar langsung
+        Route::get('/bookingpanggilanadmin/update/{id}', [App\Http\Controllers\Admin\BookingPanggilanController::class, 'bayarlangsung'])->name('bookingpanggilanadmin.update');
+        Route::get('/bookingpanggilanadmin/update/{id}', [App\Http\Controllers\Admin\BookingPanggilanController::class, 'bayarlangsungpanggilan'])->name('bookingpanggilanadmin.update');
 
         // gratiservice
 //         });

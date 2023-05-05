@@ -104,24 +104,24 @@
                                                 <a href="{{ url('bookingpanggilanadmin/detail') }}/{{ $service->id }}" class="btn"
                                                     style="background: #8B0000; color: white;"><i
                                                         class="fa fa-info"></i> Detail</a>
-                                                <a href="{{ url('bookingdata/edit') }}/{{ $service->id }}"
+                                                <a href="{{ url('bookingpanggilanadmin/edit') }}/{{ $service->id }}"
                                                     class="btn btn-warning"
                                                     style="background: #FF7000; color: white;"><i
                                                         class="fa fa-edit"></i>Ubah </a>
-                                                <a href="{{ route('bookingdata.destroy', $service->id) }}"
+                                                <a href="{{ route('bookingpanggilanadmin.destroy', $service->id) }}"
                                                     onclick="return confirm('Apakah anda ingin menghapus data servis?')"
                                                     class="btn btn-warning"
                                                     style="background: #D50600; color: white;"><i
                                                         class="fa fa-trash"></i> Hapus</a>
                                                 @elseif($service->status == 'Servis selesai')
-                                                <a href="{{ url('bookingdata/invoice') }}/{{ $service->id }}"
+                                                <a href="{{ url('bookingpanggilanadmin/invoice') }}/{{ $service->id }}"
                                                     class="btn" style="background: #FF7F00; color: white;"><i
                                                         class="fa fa-info"></i> Kelola Pembayaran</a>
                                                 @elseif($service->status == 'Menunggu pembayaran')
-                                                <a href="{{ url('bookingdata/invoiceDone') }}/{{ $service->id }}"
+                                                <a href="{{ url('bookingpanggilanadmin/invoiceDone') }}/{{ $service->id }}"
                                                     class="btn" style="background: #4D73DD; color: white;"><i
                                                         class="fa fa-clipboard"></i> Data Servis</a>
-                                                <a href="{{ route('bookingdata.update', $service->id) }}" class="btn"
+                                                <a href="{{ route('bookingpanggilanadmin.update', $service->id) }}" class="btn"
                                                     onclick="return confirm('Ingin melakukan pembayaran langsung?')"
                                                     style="background: #008000; color: white;"><i class="fa fa-usd"></i>
                                                     Bayar Langsung</a>
@@ -131,7 +131,7 @@
                                                 <a href="{{ url('seePayment') }}/{{ $service->id }}" class="btn"
                                                     style="background: #008000; color: white;"><i
                                                         class="fa fa-info"></i> Bukti Pembayaran</a>
-                                                <a href="{{ url('bookingdata/invoiceDone') }}/{{ $service->id }}"
+                                                <a href="{{ url('bookingpanggilanadmin/invoiceDone') }}/{{ $service->id }}"
                                                     class="btn" style="background: #4D73DD; color: white;"><i
                                                         class="fa fa-clipboard"></i> Data Servis</a>
                                                 @endif

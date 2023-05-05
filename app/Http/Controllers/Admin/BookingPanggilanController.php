@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\admin;
+namespace App\Http\Controllers\Admin;
 
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\ServicePanggilan;
+use App\Models\Service;
 use App\Models\CustomerService;
 use Alert;
 use App\Models\Category;
@@ -49,7 +49,7 @@ class BookingPanggilanController extends Controller
         $categories = Category::all();
         $datamt = Montir::whereIn('status', ['aktif'])->get();
 
-        return view('admin.editbookingdata', compact('bookings', 'booking', 'categories', 'datamt'));
+        return view('admin.editbookingpanggilan', compact('bookings', 'booking', 'categories', 'datamt'));
     }
 
     public function update1(Request $request, $id)
