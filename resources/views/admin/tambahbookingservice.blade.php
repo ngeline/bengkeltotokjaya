@@ -165,6 +165,25 @@
                                                             @enderror
                                                         </div>
                                                     </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label for="exampleInputUsername1"> Service</label>
+                                                            <select
+                                                                class="user form-control @error('jenis_service') is-invalid @enderror"
+                                                                id="jenis_service" type="text" name="jenis_service" required>
+                                                                <option value="">Jenis Service</option>
+                                                                @foreach ($jenis_services as $jenis_service)
+                                                                    <option value="{{ $jenis_service->name }}">
+                                                                        {{ $jenis_service->name }}</option>
+                                                                @endforeach
+                                                            </select>
+                                                            @error('jenis_service')
+                                                                <span class="invalid-feedback" role="alert">
+                                                                    <strong>{{ $message }}</strong>
+                                                                </span>
+                                                            @enderror
+                                                        </div>
+                                                    </div>
                                                 </div>
 
                                                 <div class="modal-footer">

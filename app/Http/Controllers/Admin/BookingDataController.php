@@ -264,8 +264,9 @@ class BookingDataController extends Controller
     {
         $user = User::whereIn('role_id',['pelanggan','non-aktif'])->get();
         $datamt = Montir::whereIn('status',['aktif'])->get();
+        $jenis_service = JenisService::all();
 
-        return view('admin.tambahbookingservice', ['categories' => Category::all(),'datamt'=> $datamt, 'user' => $user]);
+        return view('admin.tambahbookingservice', ['categories' => Category::all(),'datamt'=> $datamt, 'user' => $user, 'jenis_services' => $jenis_service]);
     }
 
     private function getNoAntrian(){
@@ -312,6 +313,28 @@ class BookingDataController extends Controller
         $service->complaint = $request->complaint;
         $service->expired_at = Carbon::now()->addDays(1); // menambah 1 hari kedepan
         $service->save();
+
+        $jenisServices = JenisService::where('name', $request->jenis_service)->first();
+
+        //cek Servicedetail
+        $check_jenisService_detail = DetailJenisService::where('jenisService_id', $jenisServices->id)
+            ->where('service_id', $service->id)
+            ->first();
+
+        if (empty($check_jenisService_detail)) {
+            $service_detail = new DetailJenisService();
+            $service_detail->service_id = $service->id;
+            $service_detail->jenisService_id = $jenisServices->id;
+            $service_detail->serviceName = $jenisServices->name;
+            $service_detail->price = $jenisServices->price;
+            $service_detail->save();
+        }
+
+        //jumlah total
+        $service = Service::where('id', $service->id)->first();
+        $service->priceService = $service->priceService + $jenisServices->price;
+        $service->total_price = $service->total_price + $jenisServices->price;
+        $service->update();
 
 
         Montir::where('name', $request->montir)->update(['status'=> 'Bekerja']);
