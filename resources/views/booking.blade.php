@@ -43,15 +43,22 @@
                                     @enderror
                                 </div>
                                 <div class="form-group">
-                                <label for="validationCustom02">Merek Mobil</label>
-                                    <input class="form-control @error('jenis_mobil') is-invalid @enderror" type="text"
-                                        name="jenis_mobil" placeholder="Masukkan Merek Mobil">
-                                    @error('jenis_mobil')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                    @enderror
-                                </div>
+                                        <label for="validationCustom02">Merek Mobil</label>
+                                        <select class="user form-control @error('jenis_mobil') is-invalid @enderror"
+                                            id="jenis_mobil" type="text" name="jenis_mobil" required>
+                                            <option value="">Merek Mobil</option>
+                                            @foreach ($categories as $categorie)
+                                                <option value="{{ $categorie->name }}">
+                                                    {{ $categorie->name }}</option>
+                                            @endforeach
+                                            <option value="Lainnya">Lainnya</option>
+                                        </select>
+                                        @error('jenis_mobil')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
                                 <div class="form-group">
                                 <label for="validationCustom02">Nama Mobil</label>
                                     <input class="form-control @error('nama_mobil') is-invalid @enderror" type="text"

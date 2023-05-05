@@ -43,7 +43,7 @@
                                 @foreach($bookings as $booking)
                                 <tr class="text-center">
                                     <td style="color: #444;">{{ $no++ }}</td>
-                                    <td style="color: #444;">{{ $booking->service_status }}</td>
+                                    <td style="color: #444;">{{ $booking->status_service }}</td>
                                     <td style="color: #444;">{{ $booking->nama_mobil }}</td>
                                     <td style="color: #444;">{{ $booking->service_date }}</td>
                                     <td style="color: #444;">{{ $booking->status }}</td>

@@ -21,7 +21,7 @@ use App\Http\Controllers\Admin\CustomerController;
 use App\Http\Controllers\Admin\InvoiceController;
 use App\Http\Controllers\Admin\TypeServiceController;
 use App\Http\Controllers\Admin\CustomerServiceController;
-use App\Http\Controllers\Admin\BookingPanggilanController;
+// use App\Http\Controllers\Admin\BookingPanggilanController;
 // use App\Http\Controllers\Admin\ContactController;
 
 // Pemilik
@@ -129,6 +129,17 @@ Route::group(['middleware' => ['web', 'auth', 'cekrole']], function () { // web 
         Route::get('bookingdata/invoice/{id}', [App\Http\Controllers\Admin\InvoiceController::class, 'detail']);
         Route::get('bookingdata/invoiceDone/{id}', [App\Http\Controllers\Admin\InvoiceController::class, 'invoice']);
 
+        //
+        // Booking Data
+        Route::get('bookingpanggilanadmin', [App\Http\Controllers\Admin\BookingPanggilanController::class, 'index'])->name('bookingpanggilanadmin');
+        Route::get('bookingpanggilanadmin/invoice/print/{id}', [App\Http\Controllers\Admin\BookingPanggilanController::class, 'cetak_pdf']);
+        Route::get('bookingpanggilanadmin/detail/{id}', [App\Http\Controllers\Admin\BookingPanggilanController::class, 'detail']);
+        Route::get('bookingpanggilanadmin/edit/{id}', [App\Http\Controllers\Admin\BookingPanggilanController::class, 'edit']);
+        Route::post('/bookingpanggilanadmin/{id}', [App\Http\Controllers\Admin\BookingPanggilanController::class, 'update']);
+        Route::post('bookingpanggilanadmin/detail/input_queue/{id}', [App\Http\Controllers\Admin\BookingPanggilanController::class, 'save']);
+        Route::get('bookingpanggilanadmin/invoice/{id}', [App\Http\Controllers\Admin\InvoiceController::class, 'detail']);
+        Route::get('bookingpanggilanadmin/invoiceDone/{id}', [App\Http\Controllers\Admin\InvoiceController::class, 'invoice']);
+
         // Cari Booking Data Admin
         Route::get('seePaymentTransaksi/{id}', [App\Http\Controllers\Admin\LaporanTransaksiController::class, 'seePaymentTransaksi']);
         Route::get('/caribookingdataadmin', [App\Http\Controllers\Admin\BookingDataController::class, 'bookingcari'])->name('abcari');
@@ -200,7 +211,6 @@ Route::group(['middleware' => ['web', 'auth', 'cekrole']], function () { // web 
         Route::post('addSparepart', [App\Http\Controllers\Admin\InvoiceController::class, 'render'])->name('addscari');
 
 
-        Route::get('bookingpanggilanadmin', [App\Http\Controllers\Admin\BookingPanggilanController::class, 'index'])->name('bookingpanggilanadmin');
 
         // gratiservice
 //         });

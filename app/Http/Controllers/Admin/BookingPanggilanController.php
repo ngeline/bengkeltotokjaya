@@ -39,7 +39,7 @@ class BookingPanggilanController extends Controller
         $booking = Service::where('id', $id)->first();
         $bookings = Service::where('id', $booking->id)->get();
         $datamt = Montir::whereIn('status', ['aktif'])->get();
-        return view('admin.bookingdetail', compact('booking', 'bookings', 'datamt'));
+        return view('admin.bookingpanggilandetail', compact('booking', 'bookings', 'datamt'));
     }
 
     public function edit($id)

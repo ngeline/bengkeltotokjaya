@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-{{-- <header class="item1 header margin-top-0" style="background-image: url(images/mobil.jpg);  width: 100%;" id="section-home" data-stellar-background-ratio="0.5">
+<!-- {{-- <header class="item1 header margin-top-0" style="background-image: url({{ asset('argon-design-system-master') }}/assets/img/bgabout2.jpg); id="section-home" data-stellar-background-ratio="0.5">
 	<div class="wrapper">
 		<div class="container">
 			<div class="row intro-text align-items-center justify-content-center">
@@ -19,10 +19,10 @@
 			</div>
 		</div>
 	</div>
-</header> --}}
+</header> --}} -->
 
 <div class="section section-hero section-shaped"
-        style="background-image: url({{ asset('images/mobil.jpg') }}); width: 100%">
+style="background-image: url({{ asset('argon-design-system-master') }}/assets/img/bgabout2.jpg);; width: 100%">
         <div class="shape shape-style-3 shape-default">
         </div>
         <div class="page-header">
@@ -30,7 +30,7 @@
                 <div class="col">
                     <div class="row align-items-center justify-content-center">
                         <div class="col-lg-12 text-center">
-                            <h1 class="site-heading site-animate" style="font-size: 47px;">
+                            <h1 class="site-heading site-animate" style="font-size: 47px; color: white">
                                 <strong class="d-block" data-scrollreveal="enter top over 1.5s after 0.1s">Hubungi kami</strong>
                             </h1>
 

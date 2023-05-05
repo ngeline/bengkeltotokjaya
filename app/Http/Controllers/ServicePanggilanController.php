@@ -72,7 +72,20 @@ class ServicePanggilanController extends Controller
         $service->montir = $request->montir;
         $service->service_date = now();
         $service->status_service = $this->status_service;
-        $service->photo = $request->photo;
+        // $service->photo = $request->photo;
+
+        if ($request->hasFile('photo')) {
+            $request->validate([
+                'photo' => 'required|mimes:jpg,jpeg,png'
+            ]);
+    
+            $getDokumen = $request->file('photo');
+            $nameFile = str_replace(['/', ' '], '-', $getDokumen->getClientOriginalName());
+            $getDokumen->move(public_path('upload/photo'), $nameFile);
+            $service->photo = 'upload/photo/' . $nameFile;
+        }
+
+
         $service->maps = $request->maps;
         $service->address_sp = $request->address_sp;
         $service->complaint = $request->complaint;

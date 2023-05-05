@@ -17,7 +17,7 @@
                 </nav>
                 <h1 class="mb-0 fw-bold">Booking Panggilan</h1>
             </div>
-            
+
         </div>
     </div>
     <!-- ============================================================== -->
@@ -49,7 +49,8 @@
                                     <div class="col-md-6">
                                         <button id="filtercari" class="btn btn-primary"><i class="fa fa-filter"></i>
                                             Filter </button>
-                                        <a href="/bookingpanggilanadmin" class="btn btn-primary"><i class="fa fa-refresh"></i>
+                                        <a href="/bookingpanggilanadmin" class="btn btn-primary"><i
+                                                class="fa fa-refresh"></i>
                                             Refresh </a>
                                     </div>
                                 </div>
@@ -84,15 +85,23 @@
                                                 @if($service->queue != null)
                                             </td>
                                             @endif
-                                            <td>{{ $service->photo }}</td>
                                             <td>
-                                            <a href="{{'https://maps.google.com/maps/search'}}/{{ $service->maps }}" target="_blank" class="btn" style="background: #4D73DD; color: white;"><i
-                                                        class="fa fa-map"></i> Maps</a>
+                                                @include('admin.modaldokumen')
+                                                <button type="button" class="btn btn-primary"
+                                                    onclick="dokumenModal({{ $service->id }})">
+                                                    Tampilkan
+                                                </button>
+                                            </td>
+                                            <td>
+                                                <a href="{{'https://maps.google.com/maps/search'}}/{{ $service->maps }}"
+                                                    target="_blank" class="btn"
+                                                    style="background: #4D73DD; color: white;"><i class="fa fa-map"></i>
+                                                    Maps</a>
                                             </td>
                                             <td>
                                                 @if($service->status == 'Menunggu diproses' || $service->status ==
                                                 'Servis diproses' || $service->status == 'Queue available')
-                                                <a href="{{ url('bookingdata/detail') }}/{{ $service->id }}" class="btn"
+                                                <a href="{{ url('bookingpanggilanadmin/detail') }}/{{ $service->id }}" class="btn"
                                                     style="background: #8B0000; color: white;"><i
                                                         class="fa fa-info"></i> Detail</a>
                                                 <a href="{{ url('bookingdata/edit') }}/{{ $service->id }}"
@@ -156,6 +165,41 @@
                 var table = $('.yajra-datatable').DataTable({});
             });
             @endsection
+
         </script>
     </div>
 </div>
+
+@push('js')
+    <script>
+        $(document).ready(function() {
+            $('#tabel-data-masuk').DataTable({
+                responsive: true
+            });
+
+            $('#tabel-data-keluar').DataTable({
+                responsive: true
+            });
+
+            $('#buttonexampleModal').click(function() {
+                $('#exampleModal').modal('toggle')
+            });
+
+            $('#buttoncloseexampleModal').click(function() {
+                $('#exampleModal').modal('hide')
+            });
+
+            $('#btnCloseEdit').click(function() {
+                $('#exampleModal').modal('hide')
+            });
+        });
+
+        function editModal(id) {
+            $('#modal-edit' + id).modal('toggle');
+        }
+
+        function dokumenModal(id) {
+            $('#modal-dokumen' + id).modal('toggle');
+        }
+    </script>
+@endpush
