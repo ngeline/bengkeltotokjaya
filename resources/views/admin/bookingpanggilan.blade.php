@@ -28,137 +28,127 @@
         <!-- ============================================================== -->
 
 
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="card">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-body">
                         <div class="card-body">
-                            <div class="card-body">
-                                <form action="{{ route('abpcari') }}" method="GET">
-                                    <div class="row mb-3">
-                                        <div class="col-md-2">
-                                            <input type="date" class="form-control" id="tgl_awal" name="start_date"
-                                                required>
-                                        </div>
-                                        <div class="col-md-1">
-                                            <p class="mt-2">Sampai</p>
-                                        </div>
-                                        <div class="col-md-2">
-                                            <input type="date" class="form-control" id="tgl_akhir" name="end_date"
-                                                required>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <button id="filtercari" class="btn btn-primary"><i class="fa fa-filter"></i>
-                                                Filter </button>
-                                            <a href="/bookingpanggilanadmin" class="btn btn-primary"><i
-                                                    class="fa fa-refresh"></i>
-                                                Refresh </a>
-                                        </div>
+                            <form action="{{ route('abpcari') }}" method="GET">
+                                <div class="row mb-3">
+                                    <div class="col-md-2">
+                                        <input type="date" class="form-control" id="tgl_awal" name="start_date"
+                                            required>
                                     </div>
-                                </form>
-                                <div class="card-body table-responsive p-0 mt-5">
-                                    <table class="table table-striped table-hover yajra-datatable" id="datatable">
-                                        <thead>
-                                            <tr>
-                                                <th>No</th>
-                                                <th>Nama Akun</th>
-                                                <th>Nomor Antrian</th>
-                                                <th>Nama Montir</th>
-                                                <th>Tanggal</th>
-                                                <th>Status Pemesanan</th>
-                                                <th>Foto</th>
-                                                <th>Maps</th>
-                                                <th>Aksi</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <?php $no = 1; ?>
-                                            @foreach ($services as $service)
-                                                <tr>
-                                                    <td>{{ $no++ }}</td>
-                                                    <td>{{ $service->name }}</td>
-                                                    <td>{{ $service->no_antrian }}</td>
-                                                    <td>{{ $service->montir }}</td>
-                                                    <td>{{ $service->service_date }}</td>
-                                                    <td>
-                                                        {{ $service->status }}
-                                                        <br>
-                                                        @if ($service->queue != null)
-                                                        @endif
-                                                    </td>
-                                                    <td>
-                                                        <button type="button" class="btn btn-primary"
-                                                            onclick="dokumenModal({{ $service->id }})">
-                                                            Tampilkan
-                                                        </button>
-                                                    </td>
-                                                    <td>
-                                                        <a href="{{ 'https://maps.google.com/maps/search' }}/{{ $service->maps }}"
-                                                            target="_blank" class="btn"
-                                                            style="background: #4D73DD; color: white;"><i
-                                                                class="fa fa-map"></i>
-                                                            Maps</a>
-                                                    </td>
-                                                    <td>
-                                                        @if (
-                                                            $service->status == 'Menunggu diproses' ||
-                                                                $service->status == 'Servis diproses' ||
-                                                                $service->status == 'Queue available')
-                                                            <a href="{{ url('bookingpanggilanadmin/detail') }}/{{ $service->id }}"
-                                                                class="btn" style="background: #8B0000; color: white;"><i
-                                                                    class="fa fa-info"></i> Detail</a>
-                                                            <a href="{{ url('bookingdata/edit') }}/{{ $service->id }}"
-                                                                class="btn btn-warning"
-                                                                style="background: #FF7000; color: white;"><i
-                                                                    class="fa fa-edit"></i>Ubah </a>
-                                                            <a href="{{ route('bookingdata.destroy', $service->id) }}"
-                                                                onclick="return confirm('Apakah anda ingin menghapus data servis?')"
-                                                                class="btn btn-warning"
-                                                                style="background: #D50600; color: white;"><i
-                                                                    class="fa fa-trash"></i> Hapus</a>
-                                                        @elseif($service->status == 'Servis selesai')
-                                                            <a href="{{ url('bookingdata/invoice') }}/{{ $service->id }}"
-                                                                class="btn" style="background: #FF7F00; color: white;"><i
-                                                                    class="fa fa-info"></i> Kelola Pembayaran</a>
-                                                        @elseif($service->status == 'Menunggu pembayaran')
-                                                            <a href="{{ url('bookingdata/invoiceDone') }}/{{ $service->id }}"
-                                                                class="btn" style="background: #4D73DD; color: white;"><i
-                                                                    class="fa fa-clipboard"></i> Data Servis</a>
-                                                            <a href="{{ route('bookingdata.update', $service->id) }}"
-                                                                class="btn"
-                                                                onclick="return confirm('Ingin melakukan pembayaran langsung?')"
-                                                                style="background: #008000; color: white;"><i
-                                                                    class="fa fa-usd"></i>
-                                                                Bayar Langsung</a>
-                                                        @elseif(
-                                                            $service->status == 'Sudah mengirim pembayaran' ||
-                                                                $service->status == 'Menunggu pembayaran' ||
-                                                                $service->status == 'Pembayaran diverifikasi')
-                                                            <a href="{{ url('seePayment') }}/{{ $service->id }}"
-                                                                class="btn" style="background: #008000; color: white;"><i
-                                                                    class="fa fa-info"></i> Bukti Pembayaran</a>
-                                                            <a href="{{ url('bookingdata/invoiceDone') }}/{{ $service->id }}"
-                                                                class="btn" style="background: #4D73DD; color: white;"><i
-                                                                    class="fa fa-clipboard"></i> Data Servis</a>
-                                                        @endif
-                                                    </td>
-                                                </tr>
-                                                @include('admin.modaldokumen')
-                                            @endforeach
-                                        </tbody>
-                                    </table>
+                                    <div class="col-md-1">
+                                        <p class="mt-2">Sampai</p>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <input type="date" class="form-control" id="tgl_akhir" name="end_date" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <button id="filtercari" class="btn btn-primary"><i class="fa fa-filter"></i>
+                                            Filter </button>
+                                        <a href="/bookingpanggilanadmin" class="btn btn-primary"><i
+                                                class="fa fa-refresh"></i>
+                                            Refresh </a>
+                                    </div>
                                 </div>
+                            </form>
+                            <div class="card-body table-responsive p-0 mt-5">
+                                <table class="table table-striped table-hover yajra-datatable" id="datatable">
+                                    <thead>
+                                        <tr>
+                                            <th>No</th>
+                                            <th>Nama Akun</th>
+                                            <th>Nomor Antrian</th>
+                                            <th>Nama Montir</th>
+                                            <th>Tanggal</th>
+                                            <th>Status Pemesanan</th>
+                                            <th>Foto</th>
+                                            <th>Maps</th>
+                                            <th>Aksi</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php $no = 1; ?>
+                                        @foreach ($services as $service)
+                                        <tr>
+                                            <td>{{ $no++ }}</td>
+                                            <td>{{ $service->name }}</td>
+                                            <td>{{ $service->no_antrian }}</td>
+                                            <td>{{ $service->montir }}</td>
+                                            <td>{{ $service->service_date }}</td>
+                                            <td>
+                                                {{ $service->status }}
+                                                <br>
+                                                @if($service->queue != null)
+                                            </td>
+                                            @endif
+                                            <td>
+                                                @include('admin.modaldokumen')
+                                                <button type="button" class="btn btn-primary"
+                                                    onclick="dokumenModal({{ $service->id }})">
+                                                    Tampilkan
+                                                </button>
+                                            </td>
+                                            <td>
+                                                <a href="{{'https://maps.google.com/maps/search'}}/{{ $service->maps }}"
+                                                    target="_blank" class="btn"
+                                                    style="background: #4D73DD; color: white;"><i class="fa fa-map"></i>
+                                                    Maps</a>
+                                            </td>
+                                            <td>
+                                                @if($service->status == 'Menunggu diproses' || $service->status ==
+                                                'Servis diproses' || $service->status == 'Queue available')
+                                                <a href="{{ url('bookingpanggilanadmin/detail') }}/{{ $service->id }}" class="btn"
+                                                    style="background: #8B0000; color: white;"><i
+                                                        class="fa fa-info"></i> Detail</a>
+                                                <a href="{{ url('bookingdata/edit') }}/{{ $service->id }}"
+                                                    class="btn btn-warning"
+                                                    style="background: #FF7000; color: white;"><i
+                                                        class="fa fa-edit"></i>Ubah </a>
+                                                <a href="{{ route('bookingdata.destroy', $service->id) }}"
+                                                    onclick="return confirm('Apakah anda ingin menghapus data servis?')"
+                                                    class="btn btn-warning"
+                                                    style="background: #D50600; color: white;"><i
+                                                        class="fa fa-trash"></i> Hapus</a>
+                                                @elseif($service->status == 'Servis selesai')
+                                                <a href="{{ url('bookingdata/invoice') }}/{{ $service->id }}"
+                                                    class="btn" style="background: #FF7F00; color: white;"><i
+                                                        class="fa fa-info"></i> Kelola Pembayaran</a>
+                                                @elseif($service->status == 'Menunggu pembayaran')
+                                                <a href="{{ url('bookingdata/invoiceDone') }}/{{ $service->id }}"
+                                                    class="btn" style="background: #4D73DD; color: white;"><i
+                                                        class="fa fa-clipboard"></i> Data Servis</a>
+                                                <a href="{{ route('bookingdata.update', $service->id) }}" class="btn"
+                                                    onclick="return confirm('Ingin melakukan pembayaran langsung?')"
+                                                    style="background: #008000; color: white;"><i class="fa fa-usd"></i>
+                                                    Bayar Langsung</a>
+                                                @elseif($service->status == 'Sudah mengirim pembayaran'||
+                                                $service->status == 'Menunggu pembayaran' || $service->status ==
+                                                'Pembayaran diverifikasi')
+                                                <a href="{{ url('seePayment') }}/{{ $service->id }}" class="btn"
+                                                    style="background: #008000; color: white;"><i
+                                                        class="fa fa-info"></i> Bukti Pembayaran</a>
+                                                <a href="{{ url('bookingdata/invoiceDone') }}/{{ $service->id }}"
+                                                    class="btn" style="background: #4D73DD; color: white;"><i
+                                                        class="fa fa-clipboard"></i> Data Servis</a>
+                                                @endif
+                                            </td>
+                                        </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
-                        <div style="float: right">
-                            {{ $services->links('vendor.pagination.bootstrap-4') }}
-                        </div>
+                    </div>
+                    <div style="float: right">
+                        {{ $services->links('vendor.pagination.bootstrap-4') }}
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-@endsection
 
 @push('js')
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>

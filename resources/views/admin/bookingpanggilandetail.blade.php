@@ -32,7 +32,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
-                <a href="{{ url('bookingpanggilan') }}" class="btn" style=" background:  #4D73DD; color: white;"><i
+                <a href="{{ url('bookingpanggilanadmin') }}" class="btn" style=" background:  #4D73DD; color: white;"><i
                         class="fa fa-arrow-left"></i> Kembali</a>
             </div>
             <div class="col-md-12">
