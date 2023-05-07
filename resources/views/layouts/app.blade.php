@@ -31,7 +31,7 @@
     <nav id="navbar-main"
         class="navbar navbar-main navbar-expand-lg bg-white navbar-light position-sticky top-0 shadow py-2">
         <div class="container">
-            <a class="navbar-brand mr-lg-5" href="{{ asset('argon-design-system-master') }}/index.html">
+            <a class="navbar-brand mr-lg-5" href="{{ route('home')}}">
                 <img src="{{ asset('argon-design-system-master') }}/assets/img/brand/logo.png">
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar_global"
