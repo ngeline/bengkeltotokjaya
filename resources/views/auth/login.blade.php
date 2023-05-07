@@ -18,6 +18,26 @@
   <link href="{{ asset('argon-design-system-master') }}/assets/css/nucleo-svg.css" rel="stylesheet" />
   <!-- CSS Files -->
   <link href="{{ asset('argon-design-system-master') }}/assets/css/argon-design-system.css?v=1.2.2" rel="stylesheet" />
+
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.23.0/themes/prism.css">
+    <link href="css/examples.css" rel="stylesheet">
+    <!-- Global site tag (gtag.js) - Google Analytics-->
+    <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-118965717-3"></script>
+  <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+        // Shared ID
+        gtag('config', 'UA-118965717-3');
+        // Bootstrap ID
+        gtag('config', 'UA-118965717-5');
+    </script>
+
+    
 </head>
 
 
@@ -74,7 +94,7 @@
       <div class="row justify-content-center">
         <div class="col-lg-5">
           <div class="card bg-secondary shadow border-0">
-            {{-- <div class="card-header bg-white pb-5">
+            <!-- {{-- <div class="card-header bg-white pb-5">
               <div class="text-muted text-center mb-3"><small>Sign in with</small></div>
               <div class="btn-wrapper text-center">
                 <a href="#" class="btn btn-neutral btn-icon">
@@ -86,13 +106,14 @@
                   <span class="btn-inner--text">Google</span>
                 </a>
               </div>
-            </div> --}}
+            </div> --}} -->
             <div class="card-body px-lg-5 py-lg-5">
               <div class="text-center text-muted mb-4">
                 <h2>LOGIN</h2>
               </div>
               <form role="form" method="POST" action="{{ route('login') }}">
                 @csrf
+                @include('flash-message')
                 <div class="form-group mb-3">
                   <div class="input-group input-group-alternative">
                     <div class="input-group-prepend">
@@ -111,7 +132,7 @@
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
                     </div>
-                    <input class="form-control" type="password" name="password" placeholder="Password">
+                    <input class="form-control" type="password" name="password" placeholder="Password" id="password">
                     @error('password')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
@@ -193,6 +214,17 @@
         application: "argon-design-system-pro"
       });
   </script>
+  <script>
+        function togglePassword() {
+            let x = document.getElementById('password');
+
+            if (x.type === 'password') {
+                x.type = 'text';
+            } else {
+                x.type = 'password';
+            }
+        }
+    </script>
 </body>
 
 </html>

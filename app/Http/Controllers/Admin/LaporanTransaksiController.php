@@ -18,7 +18,6 @@ use Barryvdh\DomPDF\Facade as PDF;
 use App\User;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Excel;
-use App\Exports\LaporanTransaksiExport;
 
 class LaporanTransaksiController extends Controller
 {

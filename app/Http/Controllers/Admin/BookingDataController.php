@@ -17,7 +17,8 @@ use App\Models\JenisService;
 use Carbon\Carbon;
 use App\Models\User;
 use Auth;
-use Barryvdh\DomPDF\Facade as PDF;
+// use Barryvdh\DomPDF\Facade as PDF;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class BookingDataController extends Controller
 {
@@ -244,7 +245,8 @@ class BookingDataController extends Controller
 
         }
         $pdf = PDF::loadview('invoice_pdf', ['booking' => $booking, 'bookings' => $bookings, 'jenisServices' => $jenisServices, 'categories'=>$categories, 'service_details'=>$service_details, 'detailJenis'=>$detailJenis])->setPaper('a4', 'portrait');
-        return $pdf->stream();
+        // return $pdf->stream();
+        return $pdf->download('invoice.pdf');
     }
 
 

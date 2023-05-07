@@ -11,7 +11,10 @@ use Alert;
 use App\Models\DetailJenisService;
 use App\Models\DetailService;
 use App\Models\JenisService;
-use Barryvdh\DomPDF\Facade as PDF;
+// use Barryvdh\DomPDF\Facade as PDF;
+use Barryvdh\DomPDF\Facade\Pdf;
+// use PDF;
+// use Barryvdh\DomPDF\Facade\Pdf;
 
 class HistoryController extends Controller
 {
@@ -134,6 +137,7 @@ class HistoryController extends Controller
 
         }
         $pdf = PDF::loadview('invoice_pdf', ['booking' => $booking, 'bookings' => $bookings, 'jenisServices' => $jenisServices, 'categories'=>$categories, 'service_details'=>$service_details, 'detailJenis'=>$detailJenis])->setPaper('a4', 'portrait');
-        return $pdf->stream();
+        // return $pdf->stream();
+        return $pdf->download('invoice.pdf');
     }
 }

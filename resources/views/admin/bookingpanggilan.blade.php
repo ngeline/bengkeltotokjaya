@@ -1,31 +1,31 @@
 @extends('layouts.admin')
 
 @section('content')
-    <div class="page-wrapper">
-        <!-- ============================================================== -->
-        <!-- Bread crumb and right sidebar toggle -->
-        <!-- ============================================================== -->
-        <div class="page-breadcrumb">
-            <div class="row align-items-center">
-                <div class="col-6">
-                    <nav aria-label="breadcrumb">
-                        <ol class="breadcrumb mb-0 d-flex align-items-center">
-                            <li class="breadcrumb-item"><a href="index.html" class="link"><i
-                                        class="mdi mdi-home-outline fs-4"></i></a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Booking Panggilan</li>
-                        </ol>
-                    </nav>
-                    <h1 class="mb-0 fw-bold">Booking Panggilan</h1>
-                </div>
-
+<div class="page-wrapper">
+    <!-- ============================================================== -->
+    <!-- Bread crumb and right sidebar toggle -->
+    <!-- ============================================================== -->
+    <div class="page-breadcrumb">
+        <div class="row align-items-center">
+            <div class="col-6">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb mb-0 d-flex align-items-center">
+                        <li class="breadcrumb-item"><a href="index.html" class="link"><i
+                                    class="mdi mdi-home-outline fs-4"></i></a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Booking Panggilan</li>
+                    </ol>
+                </nav>
+                <h1 class="mb-0 fw-bold">Booking Panggilan</h1>
             </div>
+
         </div>
-        <!-- ============================================================== -->
-        <!-- End Bread crumb and right sidebar toggle -->
-        <!-- ============================================================== -->
-        <!-- ============================================================== -->
-        <!-- Container fluid  -->
-        <!-- ============================================================== -->
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Bread crumb and right sidebar toggle -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- Container fluid  -->
+    <!-- ============================================================== -->
 
 
     <div class="container-fluid">
@@ -101,27 +101,27 @@
                                             <td>
                                                 @if($service->status == 'Menunggu diproses' || $service->status ==
                                                 'Servis diproses' || $service->status == 'Queue available')
-                                                <a href="{{ url('bookingpanggilanadmin/detail') }}/{{ $service->id }}" class="btn"
-                                                    style="background: #8B0000; color: white;"><i
+                                                <a href="{{ url('bookingpanggilanadmin/detail') }}/{{ $service->id }}"
+                                                    class="btn" style="background: #8B0000; color: white;"><i
                                                         class="fa fa-info"></i> Detail</a>
-                                                <a href="{{ url('bookingdata/edit') }}/{{ $service->id }}"
+                                                <a href="{{ url('bookingpanggilanadmin/edit') }}/{{ $service->id }}"
                                                     class="btn btn-warning"
                                                     style="background: #FF7000; color: white;"><i
                                                         class="fa fa-edit"></i>Ubah </a>
-                                                <a href="{{ route('bookingdata.destroy', $service->id) }}"
+                                                <a href="{{ route('bookingpanggilanadmin.destroy', $service->id) }}"
                                                     onclick="return confirm('Apakah anda ingin menghapus data servis?')"
                                                     class="btn btn-warning"
                                                     style="background: #D50600; color: white;"><i
                                                         class="fa fa-trash"></i> Hapus</a>
                                                 @elseif($service->status == 'Servis selesai')
-                                                <a href="{{ url('bookingdata/invoice') }}/{{ $service->id }}"
+                                                <a href="{{ url('bookingpanggilanadmin/invoice') }}/{{ $service->id }}"
                                                     class="btn" style="background: #FF7F00; color: white;"><i
                                                         class="fa fa-info"></i> Kelola Pembayaran</a>
                                                 @elseif($service->status == 'Menunggu pembayaran')
-                                                <a href="{{ url('bookingdata/invoiceDone') }}/{{ $service->id }}"
+                                                <a href="{{ url('bookingpanggilanadmin/invoiceDone') }}/{{ $service->id }}"
                                                     class="btn" style="background: #4D73DD; color: white;"><i
                                                         class="fa fa-clipboard"></i> Data Servis</a>
-                                                <a href="{{ route('bookingdata.update', $service->id) }}" class="btn"
+                                                <a href="{{ route('bookingpanggilanadmin.update', $service->id) }}" class="btn"
                                                     onclick="return confirm('Ingin melakukan pembayaran langsung?')"
                                                     style="background: #008000; color: white;"><i class="fa fa-usd"></i>
                                                     Bayar Langsung</a>
@@ -131,7 +131,7 @@
                                                 <a href="{{ url('seePayment') }}/{{ $service->id }}" class="btn"
                                                     style="background: #008000; color: white;"><i
                                                         class="fa fa-info"></i> Bukti Pembayaran</a>
-                                                <a href="{{ url('bookingdata/invoiceDone') }}/{{ $service->id }}"
+                                                <a href="{{ url('bookingpanggilanadmin/invoiceDone') }}/{{ $service->id }}"
                                                     class="btn" style="background: #4D73DD; color: white;"><i
                                                         class="fa fa-clipboard"></i> Data Servis</a>
                                                 @endif
@@ -150,50 +150,54 @@
             </div>
         </div>
 
-@push('js')
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.js"></script>
-    <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
-    <script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
+        @push('js')
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.js"></script>
+        <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+        <script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
 
-    <script src="https://cdn.datatables.net/v/bs5/dt-1.13.2/datatables.min.js"></script>
+        <script src="https://cdn.datatables.net/v/bs5/dt-1.13.2/datatables.min.js"></script>
 
-    <script type="text/javascript">
-        $(function() {
+        <script type="text/javascript">
+            $(function () {
 
-            var table = $('.yajra-datatable').DataTable({});
-        });
-    </script>
-    <script>
-        $(document).ready(function() {
-            $('#tabel-data-masuk').DataTable({
-                responsive: true
+                var table = $('.yajra-datatable').DataTable({});
             });
 
-            $('#tabel-data-keluar').DataTable({
-                responsive: true
+        </script>
+        <script>
+            $(document).ready(function () {
+                $('#tabel-data-masuk').DataTable({
+                    responsive: true
+                });
+
+                $('#tabel-data-keluar').DataTable({
+                    responsive: true
+                });
+
+                $('#buttonexampleModal').click(function () {
+                    $('#exampleModal').modal('toggle')
+                });
+
+                $('#buttoncloseexampleModal').click(function () {
+                    $('#exampleModal').modal('hide')
+                });
+
+                $('#btnCloseEdit').click(function () {
+                    $('#exampleModal').modal('hide')
+                });
             });
 
-            $('#buttonexampleModal').click(function() {
-                $('#exampleModal').modal('toggle')
-            });
+            function editModal(id) {
+                $('#modal-edit' + id).modal('toggle');
+            }
 
-            $('#buttoncloseexampleModal').click(function() {
-                $('#exampleModal').modal('hide')
-            });
+            function dokumenModal(id) {
+                $('#modal-dokumen-' + id).modal('toggle');
+            }
 
-            $('#btnCloseEdit').click(function() {
-                $('#exampleModal').modal('hide')
-            });
-        });
+        </script>
+        @endpush
 
-        function editModal(id) {
-            $('#modal-edit' + id).modal('toggle');
-        }
-
-        function dokumenModal(id) {
-            $('#modal-dokumen-' + id).modal('toggle');
-        }
-    </script>
-@endpush
+        @endsection

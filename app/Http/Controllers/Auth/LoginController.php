@@ -74,6 +74,7 @@ class LoginController extends Controller
 
     public function login(Request $request)
     {
+        
         if (Auth::attempt([
             'email' => $request->email,
             'password' => $request->password,
@@ -98,7 +99,10 @@ class LoginController extends Controller
     	}
     	else{
     		//jika gagal login
-    		return redirect()->route('login')->with('error', "email dan password salah");
+    		// return redirect()->route('login')->with('error', "email dan password salah");
+            return back()->withErrors([
+                'errors' => "Email atau Password anda salah."
+            ]);
     	}
     }
 

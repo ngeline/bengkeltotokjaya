@@ -11,7 +11,8 @@ use App\Models\DetailJenisService;
 use App\Models\Payment;
 use App\Models\DetailService;
 use App\Models\JenisService;
-use Barryvdh\DomPDF\Facade as PDF;
+// use Barryvdh\DomPDF\Facade as PDF;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 
 class LaporanServiceController extends Controller
