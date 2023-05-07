@@ -103,36 +103,39 @@
                             </div>
                         </div>
                     </li>
-                    <li class="nav-item dropdown">
-                        <a href="#" class="nav-link" data-toggle="dropdown" href="#" role="button">
-                            <i class="ni ni-ui-04 d-lg-none"></i>
-                            <span class="nav-link-inner--text">Service</span>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-xl">
-                            <div class="dropdown-menu-inner">
-                                <a href="{{ url('history') }}"
-                                    class="media d-flex align-items-center">
-                                    <div class="icon icon-shape bg-gradient-primary rounded-circle text-white">
-                                        <i class="ni ni-settings"></i>
-                                    </div>
-                                    <div class="media-body ml-3">
-                                        <h6 class="heading text-primary mb-md-1">Status Service</h6>
-                                        <p class="description d-none d-md-inline-block mb-0">Lihat status service mobil kamu secara Online.</p>
-                                    </div>
-                                </a>
-                                <a href="{{ url('serviceHistory') }}"
-                                    class="media d-flex align-items-center">
-                                    <div class="icon icon-shape bg-gradient-warning rounded-circle text-white">
-                                        <i class="ni ni-single-copy-04"></i>
-                                    </div>
-                                    <div class="media-body ml-3">
-                                        <h5 class="heading text-warning mb-md-1">Riwayat Service</h5>
-                                        <p class="description d-none d-md-inline-block mb-0">Cek riwayat service mobil kamu secara keseluruhan disini.</p>
-                                    </div>
-                                </a>
+                    @if (isset(auth()->user()->role_id) && auth()->user()->role_id == 0)
+                        <li class="nav-item dropdown">
+                            <a href="#" class="nav-link" data-toggle="dropdown" href="#" role="button">
+                                <i class="ni ni-ui-04 d-lg-none"></i>
+                                <span class="nav-link-inner--text">Service</span>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-xl">
+                                <div class="dropdown-menu-inner">
+                                    <a href="{{ url('history') }}"
+                                        class="media d-flex align-items-center">
+                                        <div class="icon icon-shape bg-gradient-primary rounded-circle text-white">
+                                            <i class="ni ni-settings"></i>
+                                        </div>
+                                        <div class="media-body ml-3">
+                                            <h6 class="heading text-primary mb-md-1">Status Service</h6>
+                                            <p class="description d-none d-md-inline-block mb-0">Lihat status service mobil kamu secara Online.</p>
+                                        </div>
+                                    </a>
+                                    <a href="{{ url('serviceHistory') }}"
+                                        class="media d-flex align-items-center">
+                                        <div class="icon icon-shape bg-gradient-warning rounded-circle text-white">
+                                            <i class="ni ni-single-copy-04"></i>
+                                        </div>
+                                        <div class="media-body ml-3">
+                                            <h5 class="heading text-warning mb-md-1">Riwayat Service</h5>
+                                            <p class="description d-none d-md-inline-block mb-0">Cek riwayat service mobil kamu secara keseluruhan disini.</p>
+                                        </div>
+                                    </a>
+                                </div>
                             </div>
-                        </div>
-                    </li>
+                        </li>
+                    @endif
+
                     <!-- <li class="nav-item">
                         <a href="{{ route('sparepart')}}" class="nav-link" href="#" role="button">
                             <i class="ni ni-collection d-lg-none"></i>

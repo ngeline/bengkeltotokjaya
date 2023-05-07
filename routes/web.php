@@ -66,10 +66,12 @@ Route::get('/', function () {
     ]);
 });
 
-Auth::routes();
 
-Route::get('/beranda', [HomeController::class, 'beranda']);
-Route::get('/home', [HomeController::class, 'home']);
+// Route::get('/beranda', [HomeController::class, 'beranda']);
+// Route::get('/home', [HomeController::class, 'home']);
+
+Route::get('/beranda', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
 //login
 Route::get('/login', [LoginController::class, 'login'])->name('Login');
 
@@ -89,6 +91,7 @@ Route::get('/reject', [LoginController::class, 'reject'])->name('reject');
 Route::get('/rejectrole', [LoginController::class, 'rejectrole'])->name('rejectrole');
 Route::auth();
 
+// Auth::routes();
 
 // Route::group(['middleware' => ['web', 'auth','cekrole']], function(){      // web untuk koneksi ke web, auth untuk authentication check, cekrole untuk cek level user
 //     Route::group(['cekrole' => 'admin'], function(){   // jika rolenya superadmin
@@ -102,10 +105,10 @@ Route::auth();
 //             Route::resource('sparepart', 'App\Http\Controllers\Admin\SparepartController');
 
 
-Route::group(['middleware' => ['web', 'auth', 'cekrole']], function () { // web untuk koneksi ke web, auth untuk authentication check, cekrole untuk cek level user
+// Route::group(['middleware' => ['web', 'auth', 'cekrole']], function () { // web untuk koneksi ke web, auth untuk authentication check, cekrole untuk cek level user
 
 
-    Route::group(['cekrole' => 'admin'], function () { // jika rolenya superadmin
+    Route::group(['cekrole' => 'admin', 'middleware' => 'auth'], function () { // jika rolenya superadmin
 
         Route::get('/admin/home', [App\Http\Controllers\HomeController::class, 'adminHome'])->name('admin.home');
         Route::resource('user', 'App\Http\Controllers\Admin\CustomerController');
@@ -130,7 +133,7 @@ Route::group(['middleware' => ['web', 'auth', 'cekrole']], function () { // web 
         Route::get('bookingdata/invoiceDone/{id}', [App\Http\Controllers\Admin\InvoiceController::class, 'invoice']);
 
         //
-        
+
 
         // Cari Booking Data Admin
         Route::get('seePaymentTransaksi/{id}', [App\Http\Controllers\Admin\LaporanTransaksiController::class, 'seePaymentTransaksi']);
@@ -220,7 +223,7 @@ Route::group(['middleware' => ['web', 'auth', 'cekrole']], function () { // web 
         Route::get('bookingpanggilanadmin/invoiceDone/{id}', [App\Http\Controllers\Admin\InvoiceController::class, 'invoice']);
         // Hapus Booking Servie
         Route::get('/bookingpanggilanadmin/destroy/{id}', [App\Http\Controllers\Admin\BookingPanggilanController::class, 'destroy'])->name('bookingpanggilanadmin.destroy');
-        
+
 
         // Route::post('seePayment/{id}',[App\Http\Controllers\Admin\BookingDataController::class, 'savePayment']);
         Route::get('seePayment/{id}', [App\Http\Controllers\Admin\BookingDataController::class, 'seePayment']);
@@ -240,7 +243,7 @@ Route::group(['middleware' => ['web', 'auth', 'cekrole']], function () { // web 
 
 
 
-    Route::group(['cekrole' => 'pemilik'], function () { // jika rolenya pemilik
+    Route::group(['cekrole' => 'pemilik', 'middleware' => 'auth'], function () { // jika rolenya pemilik
         Route::get('/pemilik/home', [App\Http\Controllers\HomeController::class, 'pemilikHome'])->name('pemilik.home');
         Route::resource('laporansparepart', 'App\Http\Controllers\Pemilik\LaporanSparepartController');
 
@@ -274,8 +277,8 @@ Route::group(['middleware' => ['web', 'auth', 'cekrole']], function () { // web 
     });
 
 
-    Route::group(['cekrole' => 'pelanggan'], function () {
-        Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    Route::group(['cekrole' => 'pelanggan', 'middleware' => 'auth'], function () {
+        // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
         Route::get('/contactCus', [App\Http\Controllers\ContactController::class, 'index'])->name('contactCus');
         Route::post('contact/{id}', [App\Http\Controllers\ContactController::class, 'save']);
         Route::get('/about', [App\Http\Controllers\AboutController::class, 'index'])->name('about');
@@ -310,4 +313,4 @@ Route::group(['middleware' => ['web', 'auth', 'cekrole']], function () { // web 
         // Layanan
         Route::get('/layanan', [LayananController::class, 'index'])->name('layanan');
     });
-});
+// });

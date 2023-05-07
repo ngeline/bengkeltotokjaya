@@ -49,7 +49,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        // $this->middleware('auth');
     }
 
     /**
@@ -73,7 +73,7 @@ class HomeController extends Controller
         ]);
     }
 
-    
+
     public function adminHome(Request $request)
     {
         $today = Carbon::today();
