@@ -170,9 +170,7 @@
                                 <a class="dropdown-item" href="{{ url('profileAdmin') }}"><i
                                         class="ti-user m-r-5 m-l-5"></i>
                                     My Profile</a>
-                                <a class="dropdown-item" href="javascript:void(0)"><i class="ti-wallet m-r-5 m-l-5"></i>
-                                    My Balance</a>
-                                <a class="dropdown-item" href="javascript:void(0)"><i class="ti-email m-r-5 m-l-5"></i>
+                                <a class="dropdown-item" href="{{ route('contact') }}"><i class="ti-email m-r-5 m-l-5"></i>
                                     Inbox</a>
                                 <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                         document.getElementById('logout-form').submit();">

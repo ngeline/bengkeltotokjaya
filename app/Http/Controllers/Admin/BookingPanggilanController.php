@@ -68,7 +68,7 @@ class BookingPanggilanController extends Controller
         $booking->save();
 
         //redirect kembali ke halaman sebelumnya
-        return redirect('bookingdata');
+        return redirect('bookingpanggilanadmin');
     }
 
     public function update(Request $request, $id)
@@ -83,7 +83,7 @@ class BookingPanggilanController extends Controller
         $booking->complaint = $request->complaint;
         $booking->update();
         alert()->success('Booking berhasil diperbarui', 'Success');
-        return redirect('bookingdata');
+        return redirect('bookingpanggilanadmin');
     }
 
     public function save(Request $request, $id)
@@ -101,7 +101,7 @@ class BookingPanggilanController extends Controller
         // dd($request, $id);
         $service->update();
         alert()->success('Input data is successfull');
-        return redirect('bookingdata');
+        return redirect('bookingpanggilanadmin');
     }
 
     public function seePayment($id)
@@ -125,7 +125,7 @@ class BookingPanggilanController extends Controller
                 ->orderBy('services.created_at', 'desc')
                 ->paginate(10);
 
-            return view('admin.bookingpanggilan', ['services' => $services]);
+            return view('admin.bookingpanggilanadmin', ['services' => $services]);
         } else {
             $services = DB::table('services')
                 ->join('users', 'services.user_id', '=', 'users.id')
@@ -134,7 +134,7 @@ class BookingPanggilanController extends Controller
                 ->whereBetween('services.tanggal', [$request->start_date, $request->end_date])
                 ->orderBy('services.created_at', 'desc')
                 ->paginate(10);
-            return view('admin.bookingpanggilan', ['services' => $services, 'start_date' => $request->start_date, 'end_date' => $request->end_date]);
+            return view('admin.bookingpanggilanadmin', ['services' => $services, 'start_date' => $request->start_date, 'end_date' => $request->end_date]);
         }
     }
 
@@ -164,7 +164,7 @@ class BookingPanggilanController extends Controller
         }
 
         alert()->success('Bayar langsung sukses!');
-        return redirect('bookingdata');
+        return redirect('bookingpanggilanadmin');
     }
 
     public function verifikasipembayaran(Request $request, $id)
@@ -178,7 +178,7 @@ class BookingPanggilanController extends Controller
             $service = 'Pembayaran diverifikasi';
             $service = Service::where('id', $id)->update(['status' => 'Pembayaran diverifikasi']);
         }
-        return redirect('bookingdata');
+        return redirect('bookingpanggilanadmin');
 
     }
 
@@ -189,7 +189,7 @@ class BookingPanggilanController extends Controller
         $service->status = $request->status;
         $service->update();
         alert()->success('Input data is successfull');
-        return redirect('bookingdata');
+        return redirect('bookingpanggilanadmin');
     }
 
     public function updatePayment(Request $request, $id)
@@ -199,7 +199,7 @@ class BookingPanggilanController extends Controller
         $service->status = $request->status;
         $service->update();
         alert()->success('Booking berhasil diperbarui', 'Success');
-        return redirect('bookingdata');
+        return redirect('bookingpanggilanadmin');
     }
 
     public function cetak_pdf($id)
@@ -293,6 +293,6 @@ class BookingPanggilanController extends Controller
 
         Montir::where('name', $request->montir)->update(['status' => 'Bekerja']);
         alert()->success('Tambah Data Service Berhasil!!!');
-        return redirect('bookingdata');
+        return redirect('bookingpanggilanadmin');
     }
 }

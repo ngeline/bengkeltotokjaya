@@ -92,7 +92,7 @@
                             <div class="card">
                                 <div class="card-body">
                                     <form method="POST"
-                                        action="{{ url('bookingpanggilan/detail/input_queue') }}/{{ $booking->id }}"
+                                        action="{{ url('bookingpanggilanadmin/detail/input_queue') }}/{{ $booking->id }}"
                                         enctype="multipart/form-data">
                                         @csrf
                                         <div class="form-group row">

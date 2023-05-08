@@ -11,10 +11,10 @@
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb mb-0 d-flex align-items-center">
                       <li class="breadcrumb-item"><a href="index.html" class="link"><i class="mdi mdi-home-outline fs-4"></i></a></li>
-                      <li class="breadcrumb-item active" aria-current="page">Basic Table</li>
+                      <li class="breadcrumb-item active" aria-current="page">Edit Booking Service</li>
                     </ol>
                   </nav>
-                <h1 class="mb-0 fw-bold">Basic Table</h1> 
+                <h1 class="mb-0 fw-bold">Edit Booking Service</h1> 
             </div>
             
         </div>

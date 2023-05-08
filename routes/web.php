@@ -87,6 +87,11 @@ Route::POST('/postlogin', [LoginController::class, 'postlogin'])->name('postLogi
 //reject
 Route::get('/reject', [LoginController::class, 'reject'])->name('reject');
 
+// Layanan Pengguna
+Route::get('/layanan', [LayananController::class, 'index'])->name('layanan');
+Route::get('/sparepart', [App\Http\Controllers\SparepartController::class, 'render'])->name('sparepart');
+Route::get('/about', [App\Http\Controllers\AboutController::class, 'index'])->name('about');
+
 //rejectrole
 Route::get('/rejectrole', [LoginController::class, 'rejectrole'])->name('rejectrole');
 Route::auth();
@@ -281,7 +286,6 @@ Route::auth();
         // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
         Route::get('/contactCus', [App\Http\Controllers\ContactController::class, 'index'])->name('contactCus');
         Route::post('contact/{id}', [App\Http\Controllers\ContactController::class, 'save']);
-        Route::get('/about', [App\Http\Controllers\AboutController::class, 'index'])->name('about');
         Route::get('/profile', [App\Http\Controllers\ProfileController::class, 'index'])->name('profile');
         Route::post('/profile', [App\Http\Controllers\ProfileController::class, 'update']);
         Route::get('/booking', [App\Http\Controllers\ServiceController::class, 'index']);
@@ -294,7 +298,6 @@ Route::auth();
         Route::get('payment/{id}', [App\Http\Controllers\PaymentController::class, 'index']);
         Route::get('history/seePayment/{id}', [App\Http\Controllers\PaymentController::class, 'seePayment']);
         Route::post('payment/{id}', [App\Http\Controllers\PaymentController::class, 'save']);
-        Route::get('/sparepart', [App\Http\Controllers\SparepartController::class, 'render'])->name('sparepart');
         Route::get('cari', [App\Http\Controllers\SparepartController::class, 'cari']);
         Route::get('/sparepart/category/{category}', [App\Http\Controllers\CategoryController::class, 'render'])->name('spareparts.category');
         Route::get('invoice/{id}', [App\Http\Controllers\HistoryController::class, 'invoice']);
@@ -311,6 +314,6 @@ Route::auth();
         Route::get('customerService/{id}', [App\Http\Controllers\CustomerServiceController::class, 'customerservice']);
 
         // Layanan
-        Route::get('/layanan', [LayananController::class, 'index'])->name('layanan');
+        
     });
 // });
