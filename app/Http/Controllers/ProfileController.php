@@ -48,7 +48,7 @@ class ProfileController extends Controller
     {
         $user = User::where('id', Auth::user()->id)->first();
 		$categories = Category::all();
-    	return view('profileAdmin', compact('user', 'categories'));
+    	return view('admin.profileAdmin', compact('user', 'categories'));
     }
 
 	public function profilAdmin(Request $request)
@@ -79,7 +79,7 @@ class ProfileController extends Controller
     {
         $user = User::where('id', Auth::user()->id)->first();
 		$categories = Category::all();
-    	return view('profilePemilik', compact('user', 'categories'));
+    	return view('pemilik.profilePemilik', compact('user', 'categories'));
     }
 
 	public function profilPemilik(Request $request)

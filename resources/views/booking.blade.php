@@ -12,7 +12,7 @@
                             <div class="col">
                                 <div class="row align-items-center justify-content-center">
                                     <div class="col-lg-12 text-center">
-                                        <h1 class="text-white display-1">BOOKING SERVICE BERAT </h1>
+                                        <h1 class="text-white display-1">BOOKING SERVICE</h1>
                                     </div>
                                 </div>
                             </div>

@@ -36,9 +36,10 @@
                         <div class="col-md-12">
                             <div class="card">
                                 <div class="card-body">
-                                        <h6 class="m-0 font-weight-bold" style="color: 	#1E1E2D;">Data Suku Cadang</h6>
+                                        <h3 class="m-0 font-weight-bold" style="color: 	#1E1E2D;">Data Suku Cadang</h3>
+                                        <br>
 
-                                    <div class="card-body">
+                                    <!-- <div class="card-body">
                                         <form action="{{ route('addscari') }}" method="GET">
                                             <div class="row mb-3">
                                                 <div class="col-3">
@@ -46,15 +47,13 @@
                                                         placeholder="Cari" id="cari" name="cari">
                                                 </div>
                                                 <div class="col-4">
-                                                    <button class="btn btn-primary" type="submit"><i
-                                                            class="fa fa-search" aria-hidden="true"></i> Search</button>
-                                                    <a href="/addSparepart" class="btn btn-primary"><i
-                                                            class="fa fa-refresh"></i> Refresh </a>
+                                                    <button class="btn btn-primary" type="submit"><i class="fa fa-search" aria-hidden="true"></i> Search</button>
+                                                    <a href="javascript:window.location.reload(true)" class="btn btn-primary"><i class="fa fa-refresh"></i> Refresh </a>
                                                 </div>
                                         </form>
-                                    </div>
+                                    </div> -->
 
-                                    <table class="table table-striped">
+                                    <table class="table table-striped" id="datatable">
                                         <thead>
                                             <tr class="text-center">
                                                 <th>No</th>
@@ -75,7 +74,7 @@
                                                 <td style="color: #444;">{{ $sparepart->nameS }}</td>
                                                 <td style="color: #444;">Rp. {{ number_format($sparepart->price) }}
                                                     @if($sparepart->stock != null)
-                                                    <span class="badge badge-success"> <i class="fas fa-check"></i>
+                                                    <span style="color: #00ff00;" class="badge badge-success"> <i class="fas fa-check"></i>
                                                         Ready Stock</span>
                                                     @else
                                                     <span class="badge badge-danger"> <i class="fas fa-times"></i> Out
@@ -110,3 +109,11 @@
         </div>
     </div>
     @endsection
+    @push('js')
+<script>
+    $('#datatable').DataTable({
+        responsive: true
+    });
+
+</script>
+@endpush

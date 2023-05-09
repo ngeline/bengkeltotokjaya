@@ -25,7 +25,7 @@ class LaporanTransaksiController extends Controller
         // $service = Service::all()->load('payments', 'user')->dd();
         $services =  DB::table('services')
         ->join('users', 'services.user_id', '=', 'users.id')
-        ->select('users.name', 'services.service_date', 'services.status', 'queue',  'nama_mobil', 'number_plat','services.id','total_price')
+        ->select('users.name', 'services.service_date', 'services.status', 'status_service', 'queue',  'nama_mobil', 'number_plat','services.id','total_price')
         ->whereIn('services.status', ['Sudah mengirim pembayaran','Pembayaran diverifikasi'])
         ->orderBy('services.created_at','desc')
         ->paginate(10);
@@ -112,14 +112,14 @@ class LaporanTransaksiController extends Controller
         
         $pdf = PDF::loadView('templatepdf', ['data' => $data]);
      
-        return $pdf->download('LaporanTransaksi2022.pdf');
+        return $pdf->download('LaporanTransaksi2023.pdf');
     
     }
 
     public function laporan_excel($start_date, $end_date)
     {
         // dd("$start_date - $end_date");
-        return Excel::download(new LaporanTransaksiExport($start_date, $end_date), 'LaporanTransaksi2022.xlsx');
+        return Excel::download(new LaporanTransaksiExport($start_date, $end_date), 'LaporanTransaksi2023.xlsx');
     }
 
 }

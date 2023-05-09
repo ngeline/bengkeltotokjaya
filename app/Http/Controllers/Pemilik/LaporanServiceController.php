@@ -41,7 +41,7 @@ class LaporanServiceController extends Controller
             ->orWhere('status', 'LIKE', '%' . $cari . '%')
             ->orWhere('status_service', 'LIKE', '%' . $cari . '%')
             ->join('users', 'services.user_id', '=', 'users.id')
-            ->select('users.name', 'services.service_date', 'services.status', 'queue', 'no_antrian', 'nama_mobil', 'montir','services.id')
+            ->select('users.name', 'services.service_date', 'services.status', 'status_service', 'queue', 'no_antrian', 'nama_mobil', 'montir','services.id')
             ->whereNotIn('services.status',['expired'])
             ->paginate(10);
             return view('pemilik.laporanservice', compact('services','cari'));

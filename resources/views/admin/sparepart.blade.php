@@ -37,7 +37,7 @@
                             <div class="tab-content rounded-bottom">
                                 <div class="tab-pane p-3 active preview" role="tabpanel" id="preview-416">
                                     <button class="btn btn-primary btn-l mb-4" type="button" data-toggle="modal" data-target="#CreateArticleModal">
-                                        Tambah Pengguna
+                                        Tambah Sparepart
                                     </button>
                                     <table id="tabel-data" class="table table-striped table-hover yajra-datatable">
                                         <thead>

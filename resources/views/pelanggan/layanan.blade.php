@@ -18,7 +18,7 @@
                     </a>
                     <a href="/bookingpanggilan" class="btn btn-warning btn-icon mt-3 mb-sm-0">
                         <span class="btn-inner--icon"><i class="ni ni-delivery-fast"></i></span>
-                        <span class="btn-inner--text">SERVICE DARURAT</span>
+                        <span class="btn-inner--text">SERVICE PANGGILAN</span>
                     </a>
                 </div>
             </div>

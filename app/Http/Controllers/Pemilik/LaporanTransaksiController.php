@@ -37,7 +37,7 @@ class LaporanTransaksiController extends Controller
         if (empty($request->all())) {
             $services =  DB::table('services')
             ->join('users', 'services.user_id', '=', 'users.id')
-            ->select('users.name','name_stnk', 'services.service_date', 'services.status', 'queue', 'status_service', 'no_antrian', 'montir',  'nama_mobil', 'jenis_mobil', 'number_plat','services.id','total_price','complaint')
+            ->select('users.name','name_stnk', 'services.service_date', 'services.status', 'status_service', 'queue', 'status_service', 'no_antrian', 'montir',  'nama_mobil', 'jenis_mobil', 'number_plat','services.id','total_price','complaint')
             ->whereIn('services.status', ['Sudah mengirim pembayaran','Pembayaran diverifikasi'])
             ->orderBy('services.created_at','desc')
             ->paginate(10);
@@ -56,7 +56,7 @@ class LaporanTransaksiController extends Controller
             ->orWhere('status', 'LIKE', '%' . $cari . '%')
             ->orWhere('status_service', 'LIKE', '%' . $cari . '%')
             ->join('users', 'services.user_id', '=', 'users.id')
-            ->select('users.name', 'services.service_date', 'services.status', 'queue', 'no_antrian', 'nama_mobil', 'montir','services.id')
+            ->select('users.name', 'services.service_date', 'services.status', 'status_service', 'queue', 'no_antrian', 'nama_mobil', 'montir','services.id')
             ->whereNotIn('services.status',['expired'])
             ->paginate();
             return view('pemilik.laporantransaksi', compact('services','cari'));
@@ -156,14 +156,14 @@ class LaporanTransaksiController extends Controller
         
         $pdf = PDF::loadView('templatepdf', ['data' => $data]);
      
-        return $pdf->download('LaporanTransaksi2022.pdf');
+        return $pdf->download('LaporanTransaksi2023.pdf');
     
     }
 
     public function laporan_excelpemilik($start_date, $end_date)
     {
         // dd("$start_date - $end_date");
-        return Excel::download(new LaporanTransaksiExport($start_date, $end_date), 'LaporanTransaksi2022.xlsx');
+        return Excel::download(new LaporanTransaksiExport($start_date, $end_date), 'LaporanTransaksi2023.xlsx');
     }
 
 }

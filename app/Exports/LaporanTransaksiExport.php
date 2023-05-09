@@ -45,8 +45,8 @@ class LaporanTransaksiExport implements FromCollection, WithHeadings, WithMappin
     public function headings(): array
     {
     return [
-                ["DATA LAPORAN TRANSAKSI BENGKEL MOBIL DELTA"],
-                ["TEMPAT  : BENGKEL MOBIL DELTA KEDIRI"],
+                ["DATA LAPORAN TRANSAKSI BENGKEL MOBIL TOTOK JAYA"],
+                ["TEMPAT  : BENGKEL MOBIL TOTOK JAYA"],
                 ["BULAN     : "],
                 ["NO.", "NAMA AKUN", "NO ANTRIAN", "TANGGAL", "MONTIR", "NAMA STNK", "NOMOR PLAT", "NAMA MOBIL", "TANGGAL SERVICE", "KELUHAN", "STATUS", "HARGA SERVICE", "TOTAL KESELURUHAN"],
                 

@@ -224,6 +224,7 @@ Route::auth();
         Route::get('bookingpanggilanadmin/edit/{id}', [App\Http\Controllers\Admin\BookingPanggilanController::class, 'edit']);
         Route::post('/bookingpanggilanadmin/{id}', [App\Http\Controllers\Admin\BookingPanggilanController::class, 'update']);
         Route::post('bookingpanggilanadmin/detail/input_queue/{id}', [App\Http\Controllers\Admin\BookingPanggilanController::class, 'save']);
+        
         Route::get('bookingpanggilanadmin/invoice/{id}', [App\Http\Controllers\Admin\InvoiceController::class, 'detail']);
         Route::get('bookingpanggilanadmin/invoiceDone/{id}', [App\Http\Controllers\Admin\InvoiceController::class, 'invoice']);
         // Hapus Booking Servie
@@ -231,12 +232,12 @@ Route::auth();
 
 
         // Route::post('seePayment/{id}',[App\Http\Controllers\Admin\BookingDataController::class, 'savePayment']);
-        Route::get('seePayment/{id}', [App\Http\Controllers\Admin\BookingDataController::class, 'seePayment']);
-        Route::post('bookingpanggilanadmin', [App\Http\Controllers\Admin\BookingDataController::class, 'update']);
-        Route::post('/seePayment/update/{id}', [App\Http\Controllers\Admin\BookingDataController::class, 'verifikasipembayaran'])->name('seePayment.update');
+        // Route::get('seePayment/{id}', [App\Http\Controllers\Admin\BookingDataController::class, 'seePayment']);
+        // Route::post('bookingpanggilanadmin', [App\Http\Controllers\Admin\BookingDataController::class, 'update']);
+        // Route::post('/seePayment/update/{id}', [App\Http\Controllers\Admin\BookingDataController::class, 'verifikasipembayaran'])->name('seePayment.update');
 
         // verifikasi pembayaran
-        Route::post('/sparepart/need/{id}', [App\Http\Controllers\Admin\InvoiceController::class, 'order']);
+        // Route::post('/sparepart/need/{id}', [App\Http\Controllers\Admin\InvoiceController::class, 'order']);
 
         // verfikasi pembayaran bayar langsung
         Route::get('/bookingpanggilanadmin/update/{id}', [App\Http\Controllers\Admin\BookingPanggilanController::class, 'bayarlangsung'])->name('bookingpanggilanadmin.update');

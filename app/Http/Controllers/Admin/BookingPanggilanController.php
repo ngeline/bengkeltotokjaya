@@ -25,7 +25,7 @@ class BookingPanggilanController extends Controller
     {
         $services = DB::table('services')
             ->join('users', 'services.user_id', '=', 'users.id')
-            ->select('users.name', 'services.service_date', 'services.status', 'queue', 'no_antrian', 'montir', 'services.id', 'maps', 'photo')
+            ->select('users.name', 'services.service_date', 'services.status', 'status_service','queue', 'no_antrian', 'montir', 'services.id', 'maps', 'photo')
             ->whereIn('services.status', ['Menunggu diproses', 'Servis diproses', 'Servis selesai', 'Menunggu pembayaran', 'Sudah mengirim pembayaran'])
             ->whereIn('services.status_service', ['service panggilan'])
             ->orderBy('services.created_at', 'desc')
@@ -120,7 +120,7 @@ class BookingPanggilanController extends Controller
         if (empty($request->all())) {
             $services = DB::table('services')
                 ->join('users', 'services.user_id', '=', 'users.id')
-                ->select('users.name', 'services.service_date', 'services.status', 'no_antrian', 'queue', 'montir', 'nama_mobil', 'number_plat', 'services.id', 'total_price', 'photo', 'maps')
+                ->select('users.name', 'services.service_date', 'services.status', 'no_antrian', 'status_service', 'queue', 'montir', 'nama_mobil', 'number_plat', 'services.id', 'total_price', 'photo', 'maps')
                 ->whereIn('services.status', ['Menunggu diproses', 'Servis diproses', 'Servis selesai', 'Menunggu pembayaran', 'Sudah mengirim pembayaran'])
                 ->orderBy('services.created_at', 'desc')
                 ->paginate(10);
@@ -129,7 +129,7 @@ class BookingPanggilanController extends Controller
         } else {
             $services = DB::table('services')
                 ->join('users', 'services.user_id', '=', 'users.id')
-                ->select('users.name', 'services.service_date', 'services.status', 'no_antrian', 'queue', 'montir', 'nama_mobil', 'number_plat', 'services.id', 'total_price', 'photo', 'maps')
+                ->select('users.name', 'services.service_date', 'services.status', 'no_antrian', 'status_service', 'queue', 'montir', 'nama_mobil', 'number_plat', 'services.id', 'total_price', 'photo', 'maps')
                 ->whereIn('services.status', ['Menunggu diproses', 'Servis diproses', 'Servis selesai', 'Menunggu pembayaran', 'Sudah mengirim pembayaran'])
                 ->whereBetween('services.tanggal', [$request->start_date, $request->end_date])
                 ->orderBy('services.created_at', 'desc')

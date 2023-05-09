@@ -167,7 +167,7 @@
                             </a>
                             <ul class="dropdown-menu dropdown-menu-end user-dd animated"
                                 aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{ url('profileAdmin') }}"><i
+                                <a class="dropdown-item" href="{{ url('profilePemilik') }}"><i
                                         class="ti-user m-r-5 m-l-5"></i>
                                     My Profile</a>
                                 <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
