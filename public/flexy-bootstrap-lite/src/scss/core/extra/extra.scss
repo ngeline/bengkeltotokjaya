@@ -38,6 +38,39 @@ File: scss
   opacity: 1;
 }
 
+.chartist-tooltip2 {
+  position: absolute;
+  display: inline-block;
+  opacity: 0;
+  border-radius: $border-radius;
+  padding: 10px 20px;
+  background: $info;
+  color: $white;
+  text-align: center;
+  pointer-events: none;
+  z-index: 1;
+  -webkit-transition: opacity 0.2s linear;
+  -moz-transition: opacity 0.2s linear;
+  -o-transition: opacity 0.2s linear;
+  transition: opacity 0.2s linear;
+}
+
+.chartist-tooltip2:before {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  margin-left: -5px;
+  border: 5px solid transparent;
+  border-top-color: $info;
+}
+
+.chartist-tooltip2.tooltip-show {
+  opacity: 1;
+}
+
 // Custom select
 .custom-select {
   -moz-appearance: none;

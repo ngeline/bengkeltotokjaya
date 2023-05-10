@@ -225,16 +225,28 @@ Route::auth();
         Route::post('/bookingpanggilanadmin/{id}', [App\Http\Controllers\Admin\BookingPanggilanController::class, 'update']);
         Route::post('bookingpanggilanadmin/detail/input_queue/{id}', [App\Http\Controllers\Admin\BookingPanggilanController::class, 'save']);
         
-        Route::get('bookingpanggilanadmin/invoice/{id}', [App\Http\Controllers\Admin\InvoiceController::class, 'detail']);
-        Route::get('bookingpanggilanadmin/invoiceDone/{id}', [App\Http\Controllers\Admin\InvoiceController::class, 'invoice']);
+        Route::get('bookingpanggilanadmin/invoice/{id}', [App\Http\Controllers\Admin\InvoiceBookingPanggilanController::class, 'detail']);
+        Route::get('bookingpanggilanadmin/invoiceDone/{id}', [App\Http\Controllers\Admin\InvoiceBookingPanggilanController::class, 'invoice']);
         // Hapus Booking Servie
         Route::get('/bookingpanggilanadmin/destroy/{id}', [App\Http\Controllers\Admin\BookingPanggilanController::class, 'destroy'])->name('bookingpanggilanadmin.destroy');
 
 
-        // Route::post('seePayment/{id}',[App\Http\Controllers\Admin\BookingDataController::class, 'savePayment']);
-        // Route::get('seePayment/{id}', [App\Http\Controllers\Admin\BookingDataController::class, 'seePayment']);
-        // Route::post('bookingpanggilanadmin', [App\Http\Controllers\Admin\BookingDataController::class, 'update']);
-        // Route::post('/seePayment/update/{id}', [App\Http\Controllers\Admin\BookingDataController::class, 'verifikasipembayaran'])->name('seePayment.update');
+        Route::post('seePaymentbookingpanggilan/{id}',[App\Http\Controllers\Admin\BookingPanggilanController::class, 'savePayment']);
+        Route::get('seePaymentbookingpanggilan/{id}', [App\Http\Controllers\Admin\BookingPanggilanController::class, 'seePayment']);
+        Route::post('bookingpanggilanadmin', [App\Http\Controllers\Admin\BookingPanggilanController::class, 'update']);
+        Route::post('/seePaymentbookingpanggilan/update/{id}', [App\Http\Controllers\Admin\BookingPanggilanController::class, 'verifikasipembayaran'])->name('seePayment.update');
+
+
+        // Booking Service dan Invoice
+        Route::get('/addSparepartbookingpanggilan/{idService}', [App\Http\Controllers\Admin\InvoiceBookingPanggilanController::class, 'render']);
+        Route::get('/addTypeServicebookingpanggilan/{idService}', [App\Http\Controllers\Admin\InvoiceBookingPanggilanController::class, 'renderService']);
+        Route::post('/sparepart/need/{idSparepart}/{idService}', [App\Http\Controllers\Admin\InvoiceBookingPanggilanController::class, 'order']);
+        Route::post('/TypeService/{idJenisService}/{idService}', [App\Http\Controllers\Admin\InvoiceBookingPanggilanController::class, 'addService']);
+
+        Route::delete('sparepartDelete/{id}', [App\Http\Controllers\Admin\InvoiceBookingPanggilanController::class, 'delete']);
+        Route::delete('serviceDelete/{id}', [App\Http\Controllers\Admin\InvoiceBookingPanggilanController::class, 'deleteJenis']);
+
+        Route::post('InvoiceCompleted/{id}', [App\Http\Controllers\Admin\InvoiceBookingPanggilanController::class, 'konfirmasi']);
 
         // verifikasi pembayaran
         // Route::post('/sparepart/need/{id}', [App\Http\Controllers\Admin\InvoiceController::class, 'order']);

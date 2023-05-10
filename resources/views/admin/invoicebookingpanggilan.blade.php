@@ -85,11 +85,11 @@
                         <div class="col-md-12">
                             <div class="form-group row mb-0 mt-0">
                                 <div class="col-md-12 offset-md-0">
-                                    <a href="/addSparepart/{{ $booking->id }}" class="btn"
+                                    <a href="/addSparepartbookingpanggilan/{{ $booking->id }}" class="btn"
                                         style=" width: 200px;font-weight: bold; font-size: 16px; background:  #1E1E2D; color: white;">
                                         Suku Cadang
                                     </a>
-                                    <a href="/addTypeService/{{ $booking->id }}" class="btn"
+                                    <a href="/addTypeServicebookingpanggilan/{{ $booking->id }}" class="btn"
                                         style=" width: 200px;font-weight: bold; font-size: 16px; background: #1E1E2D; color: white;">
                                         Tipe Servis
                                     </a>

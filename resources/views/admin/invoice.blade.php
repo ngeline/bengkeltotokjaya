@@ -40,7 +40,7 @@
                         <div class="col-md-12">
                             <center>
                                 <p style="color: #008080;"><b style="font-size: 20px;">Bengkel Mobil Totok Jaya </b><br>
-                                Jalan Raya, Jombok, Ngoro, Jombang Regency, East Java 61473 <br> No.
+                                    Jalan Raya, Jombok, Ngoro, Jombang Regency, East Java 61473 <br> No.
                                     HP : 0852-3577-5571
                                 </p>
                             </center>
@@ -71,6 +71,22 @@
                                                 <td>Nomor Plat Mobil</td>
                                                 <td>:</td>
                                                 <td>{{ $booking->number_plat }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Service</td>
+                                                <td>:</td>
+                                                @php
+                                                $serviceNames = [];
+                                                foreach ($detailJenis as $detailJeniss) {
+                                                $serviceNames[] = $detailJeniss->jenisService->name;
+                                                }
+                                                $uniqueServiceNames = array_unique($serviceNames);
+                                                @endphp
+                                                <td>
+                                                    @foreach($uniqueServiceNames as $serviceName)
+                                                    {{ $serviceName }}@if(!$loop->last),@endif
+                                                    @endforeach
+                                                </td>
                                             </tr>
                                             <tr>
                                                 <td>Keluhan</td>
