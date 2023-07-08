@@ -240,13 +240,15 @@ Route::auth();
         // Booking Service dan Invoice
         Route::get('/addSparepartbookingpanggilan/{idService}', [App\Http\Controllers\Admin\InvoiceBookingPanggilanController::class, 'render']);
         Route::get('/addTypeServicebookingpanggilan/{idService}', [App\Http\Controllers\Admin\InvoiceBookingPanggilanController::class, 'renderService']);
-        Route::post('/sparepart/need/{idSparepart}/{idService}', [App\Http\Controllers\Admin\InvoiceBookingPanggilanController::class, 'order']);
+        Route::post('/sparepart/order/{idSparepart}/{idService}', [App\Http\Controllers\Admin\InvoiceBookingPanggilanController::class, 'order']);
+        Route::post('/sparepart/orderBookingPanggilan/{idSparepart}/{idService}', [App\Http\Controllers\Admin\InvoiceBookingPanggilanController::class, 'orderBookingPanggilan']);
         Route::post('/TypeService/{idJenisService}/{idService}', [App\Http\Controllers\Admin\InvoiceBookingPanggilanController::class, 'addService']);
 
         Route::delete('sparepartDelete/{id}', [App\Http\Controllers\Admin\InvoiceBookingPanggilanController::class, 'delete']);
         Route::delete('serviceDelete/{id}', [App\Http\Controllers\Admin\InvoiceBookingPanggilanController::class, 'deleteJenis']);
 
         Route::post('InvoiceCompleted/{id}', [App\Http\Controllers\Admin\InvoiceBookingPanggilanController::class, 'konfirmasi']);
+        Route::post('InvoiceCompleted/konfirmasiPanggilanAdmin/{id}', [App\Http\Controllers\Admin\InvoiceBookingPanggilanController::class, 'konfirmasiPanggilanAdmin']);
 
         // verifikasi pembayaran
         // Route::post('/sparepart/need/{id}', [App\Http\Controllers\Admin\InvoiceController::class, 'order']);

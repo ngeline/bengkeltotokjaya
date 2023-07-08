@@ -100,12 +100,73 @@ class InvoiceBookingPanggilanController extends Controller
 
         //jika melebihi stok
         if ($request->total_sparepart > $sparepart->stock) {
+            return redirect('/addSparepart');
+        }
+
+        //cek validasi
+        // $check_service = Service::where('status', 'Servis selesai')->first();
+        $check_service = Service::where('id', $idService)->first();
+        // dd($check_service);
+        //menyimpang ke database Service
+        if (empty($check_service)) {
+            $check_service->total_price = 0;
+            $check_service->update();
+        }
+
+
+        //simpan ke databaseServicedetail
+        // $new_service = Service::where('status', 'Servis selesai')->first();
+        $new_service = Service::where('id', $idService)->first();
+
+        //cek Servicedetail
+        $check_service_detail = DetailService::where('sparepart_id', $sparepart->id)
+            ->where('service_id', $new_service->id)
+            ->first();
+
+        if (empty($check_service_detail)) {
+            $service_detail = new DetailService();
+            $service_detail->service_id = $new_service->id;
+            $service_detail->sparepart_id = $sparepart->id;
+            $service_detail->sparepartName = $sparepart->nameS;
+            $service_detail->total_sparepart = $request->total_sparepart;
+            $service_detail->price = $sparepart->price;
+            $service_detail->biayaPemasangan = $sparepart->biayaPemasangan;
+            $service_detail->total_price = $sparepart->price * $request->total_sparepart + $sparepart->biayaPemasangan;
+            $service_detail->save();
+
+        } else {
+            $service_detail = DetailService::where('sparepart_id', $sparepart->id)->where('service_id', $new_service->id)->first();
+
+            $service_detail->total_sparepart = $service_detail->total_sparepart + $request->total_sparepart;
+
+            //harga sekarang
+            $newPrice_service_detail = $sparepart->price * $request->total_sparepart;
+            $service_detail->total_price = $service_detail->total_price + $newPrice_service_detail;
+            $service_detail->update();
+        }
+
+        //jumlah total
+        $service = Service::where('status', 'Servis selesai')->first();
+        $service->total_price = $service->total_price + $sparepart->price * $request->total_sparepart + $sparepart->biayaPemasangan;
+        $service->update();
+        alert()->success('Berhasil menambahkan sparepart ke tagihan', 'Success');
+        return redirect('bookingdata/invoice/' . $new_service->id);
+
+    }
+
+    public function orderBookingPanggilan(Request $request, $idSparepart, $idService)
+    {
+        $sparepart = Sparepart::where('id', $idSparepart)->first();
+
+        //jika melebihi stok
+        if ($request->total_sparepart > $sparepart->stock) {
             return redirect('/addSparepartbookingpanggilan');
         }
 
         //cek validasi
         // $check_service = Service::where('status', 'Servis selesai')->first();
         $check_service = Service::where('id', $idService)->first();
+        // dd($check_service);
         //menyimpang ke database Service
         if (empty($check_service)) {
             $check_service->total_price = 0;
@@ -225,6 +286,23 @@ class InvoiceBookingPanggilanController extends Controller
         return redirect('bookingpanggilanadmin/invoice/' . $service->id);
     }
 
+    public function konfirmasiPanggilanAdmin($id)
+    {
+        $service = Service::where('id', $id)->where('status', 'Servis selesai')->first();
+        $service_id = $service->id;
+        $service->status = 'Menunggu pembayaran';
+        $service->update();
+        $service_details = DetailService::where('service_id', $service_id)->get();
+        foreach ($service_details as $service_detail) {
+            $sparepart = Sparepart::where('id', $service_detail->sparepart_id)->first();
+            $sparepart->stock = $sparepart->stock - $service_detail->total_sparepart;
+            $sparepart->update();
+        }
+
+        alert()->success('Invoice Berhasil disimpan. Tolong, beri tahu pelanggan untuk melakukan pemembayaran!');
+        return redirect('bookingpanggilanadmin');
+    }
+
     public function konfirmasi($id)
     {
         $service = Service::where('id', $id)->where('status', 'Servis selesai')->first();
@@ -239,7 +317,7 @@ class InvoiceBookingPanggilanController extends Controller
         }
 
         alert()->success('Invoice Berhasil disimpan. Tolong, beri tahu pelanggan untuk melakukan pemembayaran!');
-        return redirect('bookingpanggilan');
+        return redirect('bookingdata');
     }
 
     public function invoice($id)

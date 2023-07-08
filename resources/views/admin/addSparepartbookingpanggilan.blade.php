@@ -86,7 +86,7 @@
                                                 <td style="color: #444;">{{ $sparepart->stock }} pcs</td>
                                                 <td>
                                                     <form method="post"
-                                                        action="{{ url('/sparepart/need') }}/{{ $sparepart->id }}/{{ $id_service }}">
+                                                        action="{{ url('/sparepart/orderBookingPanggilan') }}/{{ $sparepart->id }}/{{ $id_service }}">
                                                         <input type="text" name="total_sparepart" class="form-control"
                                                             required="" style="background-color: white; width: 100px;">
                                                         @csrf

@@ -59,7 +59,6 @@ class InvoiceController extends Controller
                 ->paginate();
             $category = Category::all();
             return view('admin.addSparepart', compact('spareparts', 'category', 'cari', 'id_service'));
-
         }
     }
 

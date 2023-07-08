@@ -127,7 +127,8 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <?php $no = 1; ?>
+                                            <?php $no = 1;
+                                                $total = 0;?>
                                             @foreach($service_details as $service_detail)
                                             <tr>
                                                 <td>{{ $no++ }}</td>
@@ -136,6 +137,9 @@
                                                 <td>Rp. {{ number_format($service_detail->sparepart->price) }} </td>
                                                 <td>Rp. {{ number_format($service_detail->biayaPemasangan) }}</td>
                                                 <td>Rp. {{ number_format($service_detail->total_price) }}</td>
+                                                @php
+                                                    $total += $service_detail->total_price;
+                                                @endphp
                                                 <td>
                                                     <form
                                                         action=" {{ url('sparepartDelete') }}/{{ $service_detail->id }}"
@@ -158,6 +162,9 @@
                                                 <td></td>
                                                 <td>Rp. {{ number_format($detailJeniss->jenisService->price) }}</td>
                                                 <td>
+                                                    @php
+                                                        $total += $detailJeniss->jenisService->price;
+                                                    @endphp
                                                     <form action="{{ url('serviceDelete') }}/{{ $detailJeniss->id }}"
                                                         method="post">
                                                         @csrf
@@ -174,7 +181,7 @@
                                                 <td></td>
                                                 <td></td>
                                                 <td colspan="2" align="right"><strong>Total :</strong></td>
-                                                <td><strong>Rp. {{ number_format($booking->total_price) }}</strong></td>
+                                                <td><strong>Rp. {{ number_format($total) }}</strong></td>
                                                 <td></td>
                                             </tr>
                                         </tbody>

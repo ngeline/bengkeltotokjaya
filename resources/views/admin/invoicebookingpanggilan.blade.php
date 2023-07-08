@@ -111,7 +111,8 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <?php $no = 1; ?>
+                                            <?php $no = 1; 
+                                            $total = 0;?>
                                             @foreach($service_details as $service_detail)
                                             <tr>
                                                 <td>{{ $no++ }}</td>
@@ -120,6 +121,9 @@
                                                 <td>Rp. {{ number_format($service_detail->sparepart->price) }} </td>
                                                 <td>Rp. {{ number_format($service_detail->biayaPemasangan) }}</td>
                                                 <td>Rp. {{ number_format($service_detail->total_price) }}</td>
+                                                @php
+                                                    $total += $service_detail->total_price;
+                                                @endphp
                                                 <td>
                                                     <form
                                                         action=" {{ url('sparepartDelete') }}/{{ $service_detail->id }}"
@@ -141,6 +145,9 @@
                                                 <td>Rp. {{ number_format($detailJeniss->jenisService->price) }}</td>
                                                 <td></td>
                                                 <td>Rp. {{ number_format($detailJeniss->jenisService->price) }}</td>
+                                                @php
+                                                        $total += $detailJeniss->jenisService->price;
+                                                    @endphp
                                                 <td>
                                                     <form action="{{ url('serviceDelete') }}/{{ $detailJeniss->id }}"
                                                         method="post">
@@ -158,12 +165,12 @@
                                                 <td></td>
                                                 <td></td>
                                                 <td colspan="2" align="right"><strong>Total :</strong></td>
-                                                <td><strong>Rp. {{ number_format($booking->total_price) }}</strong></td>
+                                                <td><strong>Rp. {{ number_format($total) }}</strong></td>
                                                 <td></td>
                                             </tr>
                                         </tbody>
                                     </table>
-                                    <form method="POST" action="{{ url('InvoiceCompleted') }}/{{ $booking->id }}"
+                                    <form method="POST" action="{{ url('InvoiceCompleted/konfirmasiPanggilanAdmin/') }}/{{ $booking->id }}"
                                         enctype="multipart/form-data">
                                         @csrf
                                         {{ method_field('POST') }}
