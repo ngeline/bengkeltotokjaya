@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Service;
 use App\Models\CustomerService;
 use Alert;
+use App\Exports\LaporanTransaksiExport;
 use App\Models\Category;
 use App\Models\DetailJenisService;
 use App\Models\Payment;
@@ -22,12 +23,11 @@ use Excel;
 class LaporanTransaksiController extends Controller
 {
     public function index(){
-        // $service = Service::all()->load('payments', 'user')->dd();
-        $services =  DB::table('services')
-        ->join('users', 'services.user_id', '=', 'users.id')
-        ->select('users.name', 'services.service_date', 'services.status', 'status_service', 'queue',  'nama_mobil', 'number_plat','services.id','total_price')
-        ->whereIn('services.status', ['Sudah mengirim pembayaran','Pembayaran diverifikasi'])
-        ->orderBy('services.created_at','desc')
+        
+        $services =  Service::with('user', 'detail_services')
+        ->whereIn('status', ['Sudah mengirim pembayaran','Pembayaran diverifikasi'])
+        ->whereMonth('created_at', date('m'))
+        ->orderBy('created_at','desc')
         ->paginate(10);
         return view('admin.laporantransaksi', compact('services'));
     }
@@ -39,8 +39,8 @@ class LaporanTransaksiController extends Controller
      	return view('admin.transaksidetail', compact('booking', 'bookings'));
     }
 
-    public function save(Request $request, $id){
-        
+    public function save(Request $request, $id)
+    {        
         $service = Service::where('id', $id)->first();
         $service->status = $request->status;
         $service->queue= $request->queue;
@@ -80,18 +80,15 @@ class LaporanTransaksiController extends Controller
     {
       
         if (empty($request->all())) {
-            $services =  DB::table('services')
-            ->join('users', 'services.user_id', '=', 'users.id')
-            ->select('users.name', 'services.service_date', 'services.status', 'queue',  'nama_mobil', 'number_plat','services.id','total_price')
+            $services =  Service::with('user', 'detail_services')
             ->whereIn('services.status', ['Sudah mengirim pembayaran','Pembayaran diverifikasi'])
+            ->whereMonth('created_at', date('m'))
             ->orderBy('services.created_at','desc')
             ->paginate(10);
 
             return view('admin.laporantransaksi', ['services' => $services]);
         } else {
-            $services =  DB::table('services')
-            ->join('users', 'services.user_id', '=', 'users.id')
-            ->select('users.name', 'services.service_date', 'services.status', 'queue',  'nama_mobil', 'number_plat','services.id','total_price')
+            $services =  Service::with('user', 'detail_services')
             ->whereIn('services.status', ['Sudah mengirim pembayaran','Pembayaran diverifikasi'])
             ->whereBetween('services.tanggal', [$request->start_date, $request->end_date])
             ->orderBy('services.created_at','desc')

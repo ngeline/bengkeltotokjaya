@@ -35,13 +35,15 @@
                         <form action="{{ route('acari') }}" method="GET">
                             <div class="row mb-3">
                                 <div class="col-md-2">
-                                    <input type="date" class="form-control" id="tgl_awal" name="start_date" required>
+                                    <input type="date" class="form-control" id="tgl_awal" name="start_date" value="{{
+                                        isset($_GET['start_date']) ? $_GET['start_date'] : ''}}" required>
                                 </div>
                                 <div class="col-md-1">
                                         <p class="mt-2">Sampai</p>
                                     </div>
                                     <div class="col-md-2">
-                                    <input type="date" class="form-control" id="tgl_akhir" name="end_date" required>
+                                    <input type="date" class="form-control" id="tgl_akhir" name="end_date" value="{{
+                                        isset($_GET['end_date']) ? $_GET['end_date'] : ''}}" required>
                                 </div>
                                 <div class="col-md-6">
                                     <button id="filtercari" class="btn btn-primary"><i class="fa fa-filter"></i> Filter </button>
@@ -88,7 +90,7 @@
                                         <th>Plat Mobil</th>
                                         <th>Tanggal</th>
                                         <th>Total Transaksi</th>
-                                        <th>Bukti Pembayaran</th>
+                                        <th>Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -96,18 +98,25 @@
                                     @foreach ($services as $service)
                                     <tr>
                                         <td>{{ $no++ }}</td>
-                                        <td>{{ $service->name }}</td>
+                                        <td>{{ $service->user->name }}</td>
                                         <td>{{ $service->nama_mobil }}</td>
                                         <td>{{ $service->number_plat }}</td>
                                         <td>{{ $service->service_date }}</td>
-                                        <td>{{ $service->total_price }}</td>
+                                        <?php 
+                                        $total_spareparts = 0;
+                                        foreach($service->detail_services as $item) {
+                                            $total_spareparts += $item->total_price;
+                                        } 
+                                        $total_spareparts += $service->total_price?>
+                                        <td>Rp. {{ number_format($total_spareparts, 0, ',', '.') }}</td>
                                         <td>
                                             @if($service->status == 'Menunggu diproses' || $service->status == 'Servis diproses' || $service->status == 'Queue available')
-                                            @elseif($service->status == 'Servis selesai')
+                                            @elseif($service->status == 'Servis Pembayaran')
                                             @elseif($service->status == 'Menunggu pembayaran')
                                             @elseif($service->status == 'Sudah mengirim pembayaran'||  $service->status == 'Menunggu pembayaran' ||  $service->status == 'Pembayaran diverifikasi')
                                             <a href="{{ url('seePaymentTransaksi') }}/{{ $service->id }}" class="btn" style="background: #008000; color: white;"><i class="fa fa-info"></i> Bukti Pembayaran</a>
                                             <a href="{{ url('bookingdata/invoiceDone') }}/{{ $service->id }}" class="btn" style="background: #4D73DD; color: white;"><i class="fa fa-info"></i> Data Servis</a>
+                                            
                                             @endif
                                         </td>
                                     </tr>

@@ -31,11 +31,11 @@ class LaporanTransaksiExport implements FromCollection, WithHeadings, WithMappin
     public function collection()
     {
         if ($this->formdate== "semua" || $this->todate == "semua") {
-            $data = Service::whereIn('status',['Pembayaran diverifikasi'])->get();
+            $data = Service::with('detail_services')->whereMonth('created_at', date('m'))->whereIn('status',['Pembayaran diverifikasi'])->get();
             $this->totalData = count($data);
             
         } else {
-            $data = Service::whereBetween('tanggal', [$this->formdate, $this->todate])->get();      
+            $data = Service::with('detail_services')->whereBetween('tanggal', [$this->formdate, $this->todate])->get();      
             $this->totalData = count($data);      
         }
         // dd($data);
@@ -44,18 +44,26 @@ class LaporanTransaksiExport implements FromCollection, WithHeadings, WithMappin
 
     public function headings(): array
     {
-    return [
+        $date = $this->formdate == 'semua' ? date('Y-m-d') : date('Y-m-d', strtotime($this->formdate));
+        return [
                 ["DATA LAPORAN TRANSAKSI BENGKEL MOBIL TOTOK JAYA"],
                 ["TEMPAT  : BENGKEL MOBIL TOTOK JAYA"],
-                ["BULAN     : "],
-                ["NO.", "NAMA AKUN", "NO ANTRIAN", "TANGGAL", "MONTIR", "NAMA STNK", "NOMOR PLAT", "NAMA MOBIL", "TANGGAL SERVICE", "KELUHAN", "STATUS", "HARGA SERVICE", "TOTAL KESELURUHAN"],
-                
+                ["TANGGAL     : ".$date ],
+                ["NO.", "NAMA AKUN", "NO ANTRIAN", "TANGGAL", "MONTIR", "NAMA STNK", "NOMOR POLISI", "NAMA MOBIL", "TANGGAL SERVICE", "KELUHAN", "STATUS", "HARGA SERVICE", "SPAREPART + BIAYA PEMASANGAN", "TOTAL KESELURUHAN"],
             ];
     }
 
     public function map($row): array
     {
         $no = "";
+        $list_spareparts = '';
+        $total_price_sparepart = 0;
+        foreach ($row->detail_services as $value) {
+            $total_price_sparepart += $value->total_price;
+            $total_price = number_format($value->total_price, 0, ',', ',');
+            $list_spareparts .= "- {$value->sparepartName} ({$value->total_sparepart}) - {$total_price}\n";
+        }
+        $total_price_sparepart += $row->total_price;
         return [
             $no,
             $row->user->name,
@@ -68,8 +76,9 @@ class LaporanTransaksiExport implements FromCollection, WithHeadings, WithMappin
             $row->service_date,
             $row->complaint,
             $row->status,
-            $row->priceService,
-            $row->total_price,
+            number_format($row->priceService, 0, ',',','),
+            $list_spareparts,
+            number_format($total_price_sparepart, 0, ',', ','),
 
         ];
     }
@@ -90,6 +99,7 @@ class LaporanTransaksiExport implements FromCollection, WithHeadings, WithMappin
             "K" => 25,
             "L" => 25,
             "M" => 30,
+            "N" => 30,
         ];
     }
 
@@ -106,16 +116,20 @@ class LaporanTransaksiExport implements FromCollection, WithHeadings, WithMappin
         ];
 
         // TERAPKAN BORDER BERDASARKAN COLOMN
-        $sheet->getStyle('A4:M4')->applyFromArray($styleArray);
-        $sheet->getStyle('A5:M5')->applyFromArray($styleArray);
+        $sheet->getStyle('A4:N4')->applyFromArray($styleArray);
+        $sheet->getStyle('A5:N5')->applyFromArray($styleArray);
 
         $setSheet = $this->totalData + 1;
         for ($i = 1; $i < $setSheet; $i++) {
             $x = 4;
             $x += $i;
 
+            
+            $sheet->getStyle("M".$x)->getAlignment()->setWrapText(true);
+            $sheet->getStyle("A$x:N$x")->getAlignment()->setVertical('top');
+
             // TERAPKAN BORDER BERDASRKAN COLUMN
-            $sheet->getStyle('A' . $x . ':M' . $x)->applyFromArray($styleArray);
+            $sheet->getStyle('A' . $x . ':N' . $x)->applyFromArray($styleArray);
 
             // TERAPKAN VALUE BERDASRKAN COLUMN
             $sheet->getCell('A' . $x)->setValue($i);
@@ -129,9 +143,9 @@ class LaporanTransaksiExport implements FromCollection, WithHeadings, WithMappin
         }
 
         // MENGGABUNGKAN COLUMN
-        $sheet->mergeCells('A1:M1');
-        $sheet->mergeCells('A2:M2');
-        $sheet->mergeCells('A3:M3');
+        $sheet->mergeCells('A1:N1');
+        $sheet->mergeCells('A2:N2');
+        $sheet->mergeCells('A3:N3');
 
         // MENGGABUNGKAN COLUMN SECARA HORIZONTAL
         // $sheet->mergeCells('A4:A5');
@@ -146,29 +160,30 @@ class LaporanTransaksiExport implements FromCollection, WithHeadings, WithMappin
         // $sheet->mergeCells('J4:J5');
         // $sheet->mergeCells('K4:K5');
         // $sheet->mergeCells('L4:L5');
-        // $sheet->mergeCells('M4:M5');
+        // $sheet->mergeCells('M4:N5');
 
         // SETTING KOLOM MENJADI WRAP TEXT
         $sheet->getStyle("G4:G5")->getAlignment()->setWrapText(true);
         $sheet->getStyle("F4:F5")->getAlignment()->setWrapText(true);
+        $sheet->getStyle("M4:M5")->getAlignment()->setWrapText(true);
 
         // MEMBUAT TULISAN TEBAL (BOLD)
-        $sheet->getStyle('A1:M1')->getFont()->setBold(true);
-        $sheet->getStyle('A4:M4')->getFont()->setBold(true);
-        // $sheet->getStyle('A5:M5')->getFont()->setBold(true);
+        $sheet->getStyle('A1:N1')->getFont()->setBold(true);
+        $sheet->getStyle('A4:N4')->getFont()->setBold(true);
+        // $sheet->getStyle('A5:N5')->getFont()->setBold(true);
 
         /**
          * MEMBUAT TULISAN MENJADI VERTIKAL TENGAH
          */
-        $sheet->getStyle('A1:M1')->getAlignment()->setVertical('center');
-        $sheet->getStyle('A4:M4')->getAlignment()->setVertical('center');
-        // $sheet->getStyle('A5:M5')->getAlignment()->setVertical('center');
+        $sheet->getStyle('A1:N1')->getAlignment()->setVertical('center');
+        $sheet->getStyle('A4:N4')->getAlignment()->setVertical('center');
+        // $sheet->getStyle('A5:N5')->getAlignment()->setVertical('center');
 
         /**
          *  MEMBUAT TULISAN MENJADI HORIZONTAL TENGAH
          */
-        $sheet->getStyle('A1:M1')->getAlignment()->setHorizontal('center');
-        $sheet->getStyle('A4:M4')->getAlignment()->setHorizontal('center');
+        $sheet->getStyle('A1:N1')->getAlignment()->setHorizontal('center');
+        $sheet->getStyle('A4:N4')->getAlignment()->setHorizontal('center');
         // $sheet->getStyle('A5:M5')->getAlignment()->setHorizontal('center');
     }
 }
