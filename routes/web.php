@@ -36,6 +36,7 @@ use App\Http\Controllers\Visitor;
 
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\LayananController;
+use App\Http\Controllers\RegistersController;
 // model
 
 use App\Models\DetailService;
@@ -76,7 +77,8 @@ Route::get('/beranda', [App\Http\Controllers\HomeController::class, 'index'])->n
 Route::get('/login', [LoginController::class, 'login'])->name('Login');
 
 //register
-Route::get('/register', [LoginController::class, 'register'])->name('Register');
+Route::get('/register', [RegistersController::class, 'index'])->name('Register');
+Route::post('/register/store', [RegistersController::class, 'store'])->name('register.store');
 
 //logout
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
@@ -256,6 +258,11 @@ Route::auth();
         // verfikasi pembayaran bayar langsung
         Route::get('/bookingpanggilanadmin/update/{id}', [App\Http\Controllers\Admin\BookingPanggilanController::class, 'bayarlangsung'])->name('bookingpanggilanadmin.update');
         Route::get('/bookingpanggilanadmin/update/{id}', [App\Http\Controllers\Admin\BookingPanggilanController::class, 'bayarlangsungpanggilan'])->name('bookingpanggilanadmin.update');
+
+
+        // Tambah Data Service Booking Panngilan
+        Route::get('/tambahbookingpanggilan', [App\Http\Controllers\Admin\BookingPanggilanController::class, 'tambahdatabookingpanggilan']);
+        Route::post('/tambahbookingpanggilan/{id}', [App\Http\Controllers\Admin\BookingPanggilanController::class, 'tambahservicepanggilan']);
 
         // gratiservice
 //         });

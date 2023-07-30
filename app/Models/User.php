@@ -45,6 +45,11 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    public function owned_cars()
+    {
+        return $this->hasMany(OwnedCars::class, 'user_id', 'id');
+    }
+
     public function contacts()
     {
         return $this->hasMany(Contact::class, 'user_id', 'id');

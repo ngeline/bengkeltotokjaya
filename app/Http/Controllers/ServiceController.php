@@ -14,6 +14,7 @@ use App\Models\DetailJenisService;
 use App\Models\DetailService;
 use App\Transformers\AntrianTransformer;
 use App\Models\JenisService;
+use App\Models\OwnedCars;
 use App\Models\Sparepart;
 
 class ServiceController extends Controller
@@ -30,7 +31,8 @@ class ServiceController extends Controller
         // $service = JenisService::latest()->get();
         return view('booking', [
             'categories' => Category::all(),
-            'service' => JenisService::all()
+            'service' => JenisService::all(),
+            'owned_cars' => OwnedCars::where('user_id', auth()->user()->id)->get()
         ]);
     }
 
@@ -67,6 +69,24 @@ class ServiceController extends Controller
 
         $user = User::where('id', $id)->first();
         $service = Service::where('user_id', $user->id)->first();
+
+        $service_day = Service::where('service_date', $request->service_date)->get();
+
+        if (count($service_day) >= 3) {
+            return redirect()->back()->withErrors(['message' => "Booking service pada tanggal {$request->service_date} sudah penuh."]);
+        }
+
+        $owned_cars = new OwnedCars();
+        $is_exist = $owned_cars->where('name_stnk', $request->name_stnk)->where('number_plat', $request->number_plat)->get();
+        if (count($is_exist) == 0) {
+            $owned_cars->user_id = auth()->user()->id;
+            $owned_cars->name_stnk = $request->name_stnk;
+            $owned_cars->number_plat = $request->number_plat;
+            $owned_cars->nama_mobil = $request->nama_mobil;
+            $owned_cars->jenis_mobil = $request->jenis_mobil;
+            $owned_cars->save();
+        }
+
         $service = new Service();
         $service->user_id = $user->id;
         $service->no_antrian = $this->getNoAntrian();
@@ -75,7 +95,8 @@ class ServiceController extends Controller
         $service->number_plat = $request->number_plat;
         $service->nama_mobil = $request->nama_mobil;
         $service->jenis_mobil = $request->jenis_mobil;
-        $service->service_date = now();
+        $service->service_date = $request->service_date;
+        // $service->service_date = now();
         $service->status_service = $this->status_service;
         $service->complaint = $request->complaint;
         $service->expired_at = Carbon::now()->addDays(1); // menambah 1 hari kedepan

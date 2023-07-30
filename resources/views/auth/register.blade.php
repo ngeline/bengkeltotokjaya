@@ -78,78 +78,130 @@
             </div>
             <div class="container pt-lg-3">
                 <div class="row justify-content-center">
-                    <div class="col-lg-5">
+                    <div class="col-lg-12">
                         <div class="card bg-secondary shadow border-0">
                             <div class="card-body px-lg-5 py-lg-5">
                                 <div class="text-center text-muted mb-4">
                                     <h3>REGISTER</h3>
                                 </div>
-                                <form role="form" method="POST" action="{{ route('register') }}">
+                                <form role="form" method="POST" action="{{ route('register.store') }}">
                                     @csrf
-                                    <div class="form-group">
-                                        <div class="input-group input-group-alternative mb-3">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text"><i class="ni ni-hat-3"></i></span>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <div class="input-group input-group-alternative mb-3">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text"><i class="ni ni-hat-3"></i></span>
+                                                    </div>
+                                                    <input class="form-control" type="text" id="name" name="name"
+                                                        placeholder="Nama" alue="{{ old('name') }}" required
+                                                        autocomplete="name">
+                                                    @error('name')
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                    @enderror
+                                                </div>
                                             </div>
-                                            <input class="form-control" type="text" id="name" name="name"
-                                                placeholder="Nama" alue="{{ old('name') }}" required
-                                                autocomplete="name">
-                                            @error('name')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                            @enderror
+                                            <div class="form-group">
+                                                <div class="input-group input-group-alternative mb-3">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text"><i class="ni ni-email-83"></i></span>
+                                                    </div>
+                                                    <input class="form-control" id="email" type="text" name="email"
+                                                        placeholder="Email" value="{{ old('email') }}" required
+                                                        autocomplete="email">
+                                                    @error('email')
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                    @enderror
+                                                </div>
+                                            </div>
+                                            <div class="form-group focused">
+                                                <div class="input-group input-group-alternative">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text"><i
+                                                                class="ni ni-lock-circle-open"></i></span>
+                                                    </div>
+                                                    <input class="form-control" id="password" type="password" name="password"
+                                                        placeholder="Password" required autocomplete="new-password">
+                                                    @error('password')
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                    @enderror
+                                                </div>
+                                            </div>
+                                            <div class="form-group focused">
+                                                <div class="input-group input-group-alternative">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text"><i
+                                                                class="ni ni-lock-circle-open"></i></span>
+                                                    </div>
+                                                    <input class="form-control" id="password" tid="password-confirm"
+                                                        name="password_confirmation" type="password"
+                                                        placeholder="Konfirmasi Password" required autocomplete="new-password">
+                                                    @error('password')
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                    @enderror
+                                                </div>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="input-group input-group-alternative mb-3">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text"><i class="ni ni-email-83"></i></span>
+                                        <div class="col-md-6">
+                                            <div class="input-group input-group-alternative mb-3">
+                                                <input class="form-control" type="text" id="name_stnk" name="name_stnk"
+                                                    placeholder="Nama STNK" alue="{{ old('name_stnk') }}" required
+                                                    autocomplete="name_stnk">
+                                                @error('name_stnk')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                                @enderror
                                             </div>
-                                            <input class="form-control" id="email" type="text" name="email"
-                                                placeholder="Email" value="{{ old('email') }}" required
-                                                autocomplete="email">
-                                            @error('email')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                            @enderror
-                                        </div>
-                                    </div>
-                                    <div class="form-group focused">
-                                        <div class="input-group input-group-alternative">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text"><i
-                                                        class="ni ni-lock-circle-open"></i></span>
+                                            <div class="input-group input-group-alternative mb-3">
+                                                <input class="form-control" type="text" id="number_plat" name="number_plat"
+                                                    placeholder="Plat Nomor" alue="{{ old('number_plat') }}" required
+                                                    autocomplete="number_plat">
+                                                @error('number_plat')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                                @enderror
                                             </div>
-                                            <input class="form-control" id="password" type="password" name="password"
-                                                placeholder="Password" required autocomplete="new-password">
-                                            @error('password')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                            @enderror
-                                        </div>
-                                    </div>
-                                    <div class="form-group focused">
-                                        <div class="input-group input-group-alternative">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text"><i
-                                                        class="ni ni-lock-circle-open"></i></span>
+                                            <div class="input-group input-group-alternative mb-3">
+                                                <input class="form-control" type="text" id="nama_mobil" name="nama_mobil"
+                                                    placeholder="Nama Mobil" alue="{{ old('nama_mobil') }}" required
+                                                    autocomplete="nama_mobil">
+                                                @error('nama_mobil')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                                @enderror
                                             </div>
-                                            <input class="form-control" id="password" tid="password-confirm"
-                                                name="password_confirmation" type="password"
-                                                placeholder="Konfirmasi Password" required autocomplete="new-password">
-                                            @error('password')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                            @enderror
+                                            <div class="form-group">
+                                                <select class="user form-control @error('jenis_mobil') is-invalid @enderror"
+                                                    id="jenis_mobil" type="text" name="jenis_mobil" required>
+                                                    <option value="">Merek Mobil</option>
+                                                    @foreach ($categories as $categorie)
+                                                    <option value="{{ $categorie->name }}">
+                                                        {{ $categorie->name }}</option>
+                                                    @endforeach
+                                                    <option value="Lainnya">Lainnya</option>
+                                                </select>
+                                                @error('jenis_mobil')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                                @enderror
+                                            </div>
                                         </div>
                                     </div>
 
                                     <!-- <div class="text-muted font-italic"><small>password strength: <span class="text-success font-weight-700">strong</span></small></div> -->
-                                    <div class="row my-4">
+                                    <div class="row my-4 text-center">
                                         <div class="col-12">
                                             <div class="custom-control custom-control-alternative custom-checkbox">
                                                 <input class="custom-control-input" id="customCheckRegister"
